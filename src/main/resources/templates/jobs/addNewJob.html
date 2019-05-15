@@ -6,24 +6,25 @@
     </head>
 
     <body>
-    <h1>Create a new job listing</h1>
-    <form:form method="POST"
-            action="/spring-mvc-xml/addJob" modelAttribute="job">
-        <table>
-            <tr>
-                <td><form:label path="title">Title:</form:label></td>
-                <td><form:input path="title"/></td>
-            </tr>
-            <tr>
-                <td><form:label path="description">Description:</form:label></td>
-                <td><form:input path="description"/></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Submit"/></td>
-            </tr>
-        </table>
-    </form:form>
+        <h1>Create a new job listing</h1>
+        <form:form action="/spring-mvc-xml/addJob"
+                   method="POST" modelAttribute="job">
+            <table>
+                <tr>
+                    <td><form:label path="title">Title:</form:label></td>
+                    <td><form:input path="title"/></td>
+                </tr>
 
+                <tr>
+                    <td><form:label path="description">Description:</form:label></td>
+                    <td><form:input path="description"/></td>
+                </tr>
+
+                <tr>
+                    <td><input type="submit" value="Submit"/></td>
+                </tr>
+            </table>
+        </form:form>
 
     </body>
 </html>
