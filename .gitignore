@@ -28,6 +28,5 @@ HELP.md
 ### VS Code ###
 .vscode/
 
-.properties
-
+### Application Properties ###
 application.properties
