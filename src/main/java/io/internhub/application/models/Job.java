@@ -12,13 +12,11 @@ public class Job {
     private long id;
 
     @Column(nullable = false)
-    private String email;
+    private String title;
 
     @Column(nullable = false)
-    private String username;
+    private String description;
 
-    @Column(nullable = false)
-    private String password;
 
 
 
@@ -26,45 +24,23 @@ public class Job {
     }
 
 
-
-
-
-
-    public long getId() {
-        return id;
+    // Getters & Setters
+    public String getTitle() {
+        return getTitle();
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
 
-    public String getEmail() {
-        return email;
+    public String getDescription() {
+        return getDescription();
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDescription(String description) {
+        this.description = description;
     }
-
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
 
 
 }  // Jobs class
