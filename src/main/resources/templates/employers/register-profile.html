@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Sign up</title>
+</head>
+<body>
+<h1>Create an account</h1>
+<form th:action="@{/employers/profile}" method="POST" th:object="${employer}">
+    <label for="name">Company name:</label>
+    <input id="name" th:field="*{name}" />
+
+    <label for="supervisor">Point of contact's name:</label>
+    <input id="supervisor" th:field="*{supervisor}" />
+
+    <label for="email">Point of contact's email:</label>
+    <input id="email" th:field="*{email}" />
+
+    <label for="industry">Industry:</label>
+    <input id="industry" th:field="*{industry}" />
+
+    <label for="location">Company location:</label>
+    <input id="location" th:field="*{location}" />
+
+    <label for="website-url">Website URL:</label>
+    <input id="website-url" th:field="*{websiteUrl}" />
+
+    <label for="description">Company description:</label>
+    <input id="description" th:field="*{description}" />
+
+    <input value="Create company profile!" type="submit" />
+</form>
+</body>
+</html>
