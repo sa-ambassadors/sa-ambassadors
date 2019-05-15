@@ -1,11 +1,12 @@
 package io.internhub.application.models;
 
+
 import javax.persistence.*;
 
 
 @Entity
-    @Table(name = "jobs")
-    public class Jobs {
+@Table(name = "jobs")
+public class Job {
 
     @Id @GeneratedValue
     private long id;
@@ -21,16 +22,11 @@ import javax.persistence.*;
 
 
 
-    public Jobs() {
+    public Job() {
     }
 
 
-    public Job(job copy) {
-        id = copy.id;
-        email = copy.email;
-        username = cope.username;
-        password = copy.password;
-    }
+
 
 
 
