@@ -24,7 +24,7 @@ public class Job {
     }
 
 
-
+    // Getters & Setters
     public String getTitle() {
         return getTitle();
     }
@@ -41,7 +41,6 @@ public class Job {
     public void setDescription(String description) {
         this.description = description;
     }
-
 
 
 }  // Jobs class
