@@ -1,5 +1,7 @@
 package io.internhub.application.models;
 
+import io.internhub.application.repositories.InternRepository;
+
 import javax.persistence.*;
 
 @Entity
