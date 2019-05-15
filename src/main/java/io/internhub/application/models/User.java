@@ -4,7 +4,7 @@ import io.internhub.application.repositories.InternRepository;
 
 import javax.persistence.*;
 
-@Entity
+    @Entity
     @Table(name = "users")
     public class User {
 
@@ -16,7 +16,10 @@ import javax.persistence.*;
         private String username;
         @Column (nullable = false)
         private String password;
-
+        @OneToOne(fetch = FetchType.LAZY,
+                cascade =  CascadeType.ALL,
+                mappedBy = "user")
+        private EmployerProfile employerProfile;
 
         public User() {
         }
@@ -59,5 +62,15 @@ import javax.persistence.*;
         public void setPassword(String password) {
             this.password = password;
         }
+
+        public EmployerProfile getEmployerProfile() {
+            return employerProfile;
+        }
+
+        public void setEmployerProfile(EmployerProfile employerProfile) {
+            this.employerProfile = employerProfile;
+        }
+
+
     }
 
