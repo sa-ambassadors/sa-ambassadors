@@ -5,14 +5,11 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class JobsController {
     private Jobs jobs;
-  
+
+
     public JobsController(Jobs jobs) {
         this.jobs = jobs;
 
+    }
 
-
-
-
-
-
-}
+}  // JobsController class
