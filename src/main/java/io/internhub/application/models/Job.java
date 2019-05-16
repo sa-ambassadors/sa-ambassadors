@@ -1,6 +1,5 @@
 package io.internhub.application.models;
 
-
 import javax.persistence.*;
 
 
