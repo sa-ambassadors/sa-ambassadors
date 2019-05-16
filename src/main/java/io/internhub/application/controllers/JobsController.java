@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class JobsController {
+
     private EmployerProfiles employerProfiles;
     private Users users;
   
@@ -44,6 +45,4 @@ public class JobsController {
         return "redirect:/employers/add-job";
     }
 
-
-
-}
+}  // JobsController class
