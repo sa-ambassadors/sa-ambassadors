@@ -21,7 +21,7 @@ public class Job {
 
     @Column(nullable = false)
     private String location;
-
+  
     @Column(nullable = false)
     private String jobDescription;
 
@@ -84,6 +84,7 @@ public class Job {
 
     public String getJobDescription() {
         return jobDescription;
+
     }
 
     public void setJobDescription(String jobDescription) {
@@ -108,8 +109,8 @@ public class Job {
 
     public void setBasicQualifications(String basicQualifications) {
         this.basicQualifications = basicQualifications;
-    }
 
+    }
 
 
     public String getAboutUs() {
@@ -119,6 +120,7 @@ public class Job {
     public void setAboutUs(String aboutUs) {
         this.aboutUs = aboutUs;
     }
+
 
 
     public EmployerProfile getEmployerProfile() {
