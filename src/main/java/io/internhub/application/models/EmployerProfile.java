@@ -1,6 +1,8 @@
 package io.internhub.application.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="employers")
@@ -26,6 +28,8 @@ public class EmployerProfile {
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employerProfile")
+    private List<Job> jobs = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -97,5 +101,9 @@ public class EmployerProfile {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void addJob (Job job) {
+        jobs.add(job);
     }
 }
