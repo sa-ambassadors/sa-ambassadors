@@ -7,9 +7,6 @@
 
     <body>
 
-    <!-- copy fields from a real job posting -->
-
-
         <h1>Create a job listing</h1>
 
         <form th:action="@{/job}" method="POST" th:object="${job}">
@@ -44,11 +41,7 @@
             <input id="about-us" th:field="*{aboutUs}"/>
 
 
-
-
-
             <input value="Submit" type="submit"/>
-
 
         </form>
     </body>

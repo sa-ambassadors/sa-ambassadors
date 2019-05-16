@@ -15,9 +15,25 @@ public class Job {
     private String title;
 
     @Column(nullable = false)
-    private String description;
+    private String companyName;
 
+    @Column(nullable = false)
+    private String industry;
 
+    @Column(nullable = false)
+    private String location;
+
+    @Column(nullable = false)
+    private String jobDescription;
+
+    @Column(nullable = false)
+    private String responsibilities;
+
+    @Column(nullable = false)
+    private String basicQualifications;
+
+    @Column(nullable = false)
+    private String aboutUs;
 
 
     public Job() {
@@ -34,13 +50,76 @@ public class Job {
     }
 
 
-    public String getDescription() {
-        return getDescription();
+
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
+
+
+
+    public String getIndustry() {
+        return industry;
+    }
+
+    public void setIndustry(String industry) {
+        this.industry = industry;
+    }
+
+
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+
+
+    public String getJobDescription() {
+        return jobDescription;
+    }
+
+    public void setJobDescription(String jobDescription) {
+        this.jobDescription = jobDescription;
+    }
+
+
+
+    public String getResponsibilities() {
+        return responsibilities;
+    }
+
+    public void setResponsibilities(String responsibilities) {
+        this.responsibilities = responsibilities;
+    }
+
+
+
+    public String getBasicQualifications() {
+        return basicQualifications;
+    }
+
+    public void setBasicQualifications(String basicQualifications) {
+        this.basicQualifications = basicQualifications;
+    }
+
+
+
+    public String getAboutUs() {
+        return aboutUs;
+    }
+
+    public void setAboutUs(String aboutUs) {
+        this.aboutUs = aboutUs;
+    }
+
+
 
 
 }  // Jobs class

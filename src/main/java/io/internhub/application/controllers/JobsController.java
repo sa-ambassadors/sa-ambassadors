@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 public class JobsController {
     private Jobs jobs;
 
-    public JobsController(Jobs jobs) {
+    public JobsController(Jobs job) {
 
     }
 
