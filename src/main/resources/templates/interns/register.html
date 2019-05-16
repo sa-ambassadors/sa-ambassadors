@@ -1,7 +1,7 @@
 <head th:replace="fragments/head :: head('Sign-Up')" />
 <body>
 <h1>Create an account</h1>
-<form th:action="@{/sign-up}" method="POST" th:object="${user}">
+<form th:action="@{/interns/register}" method="POST" th:object="${user}">
 	<label for="username">Username</label>
 	<input id="username" th:field="*{username}" />
 
@@ -14,3 +14,4 @@
 	<input value="Sign me up!" type="submit" />
 </form>
 </body>
+<footer th:replace="fragments/footer" />

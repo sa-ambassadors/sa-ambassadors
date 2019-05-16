@@ -1,16 +1,10 @@
-<!--<head th:replace="fragments/head :: head('Sign-Up')" />-->
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome</title>
-</head>
+<head th:replace="fragments/head :: head('Welcome!')" />
 
 <body>
-<a th:href="employers/register">Employers Register Here</a>
-<a th:href="intern/register">Interns Register Here</a>
+<a th:href="@{employers/register}">Employers Register Here</a>
+<br />
+<a th:href="@{interns/register}">Interns Register Here</a>
 </body>
 <footer th:replace="fragments/footer" />
-</html>
 
 
