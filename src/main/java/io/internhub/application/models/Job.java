@@ -21,7 +21,7 @@ public class Job {
 
     @Column(nullable = false)
     private String location;
-
+  
     @Column(nullable = false)
     private String jobDescription;
 
@@ -34,10 +34,12 @@ public class Job {
     @Column(nullable = false)
     private String aboutUs;
 
+    @ManyToOne
+    @JoinColumn(name = "employer_id")
+    private EmployerProfile employerProfile;
 
     public Job() {
     }
-
 
     // Getters & Setters
     public String getTitle() {
@@ -82,6 +84,7 @@ public class Job {
 
     public String getJobDescription() {
         return jobDescription;
+
     }
 
     public void setJobDescription(String jobDescription) {
@@ -106,8 +109,8 @@ public class Job {
 
     public void setBasicQualifications(String basicQualifications) {
         this.basicQualifications = basicQualifications;
-    }
 
+    }
 
 
     public String getAboutUs() {
@@ -120,5 +123,11 @@ public class Job {
 
 
 
+    public EmployerProfile getEmployerProfile() {
+        return employerProfile;
+    }
 
+    public void setEmployerProfile(EmployerProfile employerProfile) {
+        this.employerProfile = employerProfile;
+    }
 }  // Jobs class

@@ -6,6 +6,7 @@
     </head>
 
     <body>
+
         <h1>Create a job listing</h1>
 
         <form th:action="@{/job}" method="POST" th:object="${job}">
@@ -16,7 +17,7 @@
             <label for="company-name">Company Name:</label>
             <input id="company-name" th:field="*{companyName}"/>
 
-
+          
             <label for="industry">Industry:</label>
             <input id="industry" th:field="*{industry}"/>
 
