@@ -102,4 +102,8 @@ public class EmployerProfile {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public void addJob (Job job) {
+        jobs.add(job);
+    }
 }
