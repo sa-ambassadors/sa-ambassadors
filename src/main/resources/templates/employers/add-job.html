@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" />
         <title>Add a Job</title>
     </head>
 
@@ -9,7 +9,7 @@
 
         <h1>Create a job listing</h1>
 
-        <form th:action="@{/job}" method="POST" th:object="${job}">
+        <form th:action="@{/employers/add-job}" method="POST" th:object="${job}">
 
             <label for="title">Job Title:</label>
             <input id="title" th:field="*{title}"/>
