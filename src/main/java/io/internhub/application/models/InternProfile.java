@@ -57,6 +57,10 @@ public class InternProfile {
     @Column
     private boolean isApproved;
 
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     public long getId() {
         return id;
     }
@@ -193,4 +197,11 @@ public class InternProfile {
         isApproved = approved;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

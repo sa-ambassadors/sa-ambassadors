@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<head th:replace="fragments/head :: head('Welcome!')" />
 
+<body>
+<a th:href="@{employers/register}">Employers Register Here</a>
+<br />
+<a th:href="@{interns/register}">Interns Register Here</a>
 </body>
-</html>
+<footer th:replace="fragments/footer" />
+
+

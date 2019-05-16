@@ -21,6 +21,11 @@ import javax.persistence.*;
                 mappedBy = "user")
         private EmployerProfile employerProfile;
 
+        @OneToOne(fetch = FetchType.LAZY,
+                cascade =  CascadeType.ALL,
+                mappedBy = "user")
+        private InternProfile internProfile;
+
         public User() {
         }
 
@@ -71,6 +76,12 @@ import javax.persistence.*;
             this.employerProfile = employerProfile;
         }
 
+        public InternProfile getInternProfile() {
+            return internProfile;
+        }
 
+        public void setInternProfile(InternProfile internProfile) {
+            this.internProfile = internProfile;
+        }
     }
 
