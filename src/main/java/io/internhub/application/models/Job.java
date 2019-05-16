@@ -43,7 +43,7 @@ public class Job {
 
     // Getters & Setters
     public String getTitle() {
-        return getTitle();
+        return title;
     }
 
     public void setTitle(String title) {
