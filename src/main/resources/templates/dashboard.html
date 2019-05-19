@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+<body>
+<div sec:authorize="hasRole('ROLE_EMPLOYER')">
+<tbody>
+<tr th:each="job : ${jobs}">
+    <td><span th:text="*{job.title}"> </span></td>
+    <td><span th:text="*{job.aboutUs}"> </span></td>
+    <td><a th:href="@{/jobs/{id}(id=${job.id})}">view</a></td>
+</tr>
+</tbody>
+</div>
+
+<div sec:authorize="hasRole('ROLE_INTERN')">
+    intern
+</div>
+
+test
+
+
+</body>
+</html>

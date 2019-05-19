@@ -35,27 +35,44 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 /* Login configuration */
+//                .formLogin()
+//                .loginPage("/login")
+//                .defaultSuccessUrl("/") // user's home page, it can be any URL
+//                .permitAll() // Anyone can go to the login page
+//                /* Logout configuration */
+//                .and()
+//                .logout()
+//                .logoutSuccessUrl("/login?logout") // append a query string value
+//                /* Pages that can be viewed without having to log in */
+////                .and()
+////                .authorizeRequests()
+////                .antMatchers("/", "/ads") // anyone can see the home and the ads pages
+////                .permitAll()
+////                /* Pages that require authentication */
+////                .and()
+////                .authorizeRequests()
+////                .antMatchers(
+////                        "/ads/create", // only authenticated users can create ads
+////                        "/ads/{id}/edit" // only authenticated users can edit ads
+////                )
+////                .authenticated()
+//                .and()
+//                .authorizeRequests()
+//                .antMatchers(
+//                        "/employers/add-job" // only authenticated users can create ads
+//                        // only authenticated users can edit ads
+//                )
+//                .hasRole("USER")
+//                .anyRequest().authenticated()
+            .csrf().disable()
+            .authorizeRequests()
+            .antMatchers("/employers/add-job")
+            .hasRole("EMPLOYER")
+            .and()
                 .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/") // user's home page, it can be any URL
                 .permitAll() // Anyone can go to the login page
-                /* Logout configuration */
-                .and()
-                .logout()
-                .logoutSuccessUrl("/login?logout") // append a query string value
-                /* Pages that can be viewed without having to log in */
-                .and()
-                .authorizeRequests()
-                .antMatchers("/", "/ads") // anyone can see the home and the ads pages
-                .permitAll()
-                /* Pages that require authentication */
-                .and()
-                .authorizeRequests()
-                .antMatchers(
-                        "/ads/create", // only authenticated users can create ads
-                        "/ads/{id}/edit" // only authenticated users can edit ads
-                )
-                .authenticated()
         ;
     }
 }

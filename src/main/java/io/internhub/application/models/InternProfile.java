@@ -30,7 +30,7 @@ public class InternProfile {
     private int field_3;
 
     @Column
-    private String transcipt_link;
+    private String transcript_link;
 
     @Lob
     @Column(length = 63535)
@@ -126,11 +126,11 @@ public class InternProfile {
     }
 
     public String getTranscipt_link() {
-        return transcipt_link;
+        return transcript_link;
     }
 
     public void setTranscipt_link(String transcipt_link) {
-        this.transcipt_link = transcipt_link;
+        this.transcript_link = transcipt_link;
     }
 
     public String getEssay() {

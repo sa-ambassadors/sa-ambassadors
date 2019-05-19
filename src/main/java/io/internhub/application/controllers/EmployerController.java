@@ -1,9 +1,11 @@
 package io.internhub.application.controllers;
 
 import io.internhub.application.models.EmployerProfile;
+import io.internhub.application.models.Role;
 import io.internhub.application.models.User;
 import io.internhub.application.models.UserTransporter;
 import io.internhub.application.repositories.EmployerProfiles;
+import io.internhub.application.repositories.Roles;
 import io.internhub.application.repositories.Users;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -18,12 +20,14 @@ public class EmployerController {
     private Users users;
     private PasswordEncoder passwordEncoder;
     private EmployerProfiles employerProfiles;
+    private Roles roles;
     UserTransporter userTransporter = new UserTransporter();
 
-    public EmployerController(Users users, PasswordEncoder passwordEncoder, EmployerProfiles employerProfiles) {
+    public EmployerController(Users users, PasswordEncoder passwordEncoder, EmployerProfiles employerProfiles, Roles roles) {
         this.users = users;
         this.passwordEncoder = passwordEncoder;
         this.employerProfiles = employerProfiles;
+        this.roles = roles;
     }
 
     @GetMapping("employers/register")
@@ -50,8 +54,9 @@ public class EmployerController {
     public String employerProfile(@ModelAttribute EmployerProfile employerProfile) {
         User user = userTransporter.getUser();
         user.setEmployerProfile(employerProfile);
+        user.setRole(roles.findOne(4L));
         employerProfile.setUser(user);
         users.save(user);
-        return "redirect:/index";
+        return "redirect:/login";
     }
 }

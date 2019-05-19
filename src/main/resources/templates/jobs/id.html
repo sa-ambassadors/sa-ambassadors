@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+<body>
+<div sec:authorize="hasRole('ROLE_EMPLOYER')">
+    <p th:text="*{job.title}"></p>
+    <p th:text="*{job.aboutUs}"></p>
+    <p th:text="*{job.industry}"></p>
+</div>
+
+<div sec:authorize="hasRole('ROLE_INTERN')">
+    intern
+</div>
+
+test
+
+
+</body>
+</html>

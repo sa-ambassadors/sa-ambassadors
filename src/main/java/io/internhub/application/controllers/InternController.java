@@ -2,6 +2,7 @@ package io.internhub.application.controllers;
 
 import io.internhub.application.models.User;
 import io.internhub.application.repositories.InternRepository;
+import io.internhub.application.repositories.Roles;
 import io.internhub.application.repositories.Users;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -11,16 +12,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class internController {
+public class InternController {
 
     private final InternRepository internDao;
     private final Users userDao;
     private PasswordEncoder passwordEncoder;
+    private Roles roles;
 
-    public internController(InternRepository internDao, Users userDao, PasswordEncoder passwordEncoder){
+    public InternController(InternRepository internDao, Users userDao, PasswordEncoder passwordEncoder, Roles roles){
         this.internDao = internDao;
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
+        this.roles = roles;
 
     }
 
@@ -36,6 +39,7 @@ public class internController {
         System.out.println(password);
         String hash = passwordEncoder.encode(password);
         user.setPassword(hash);
+        user.setRole(roles.findOne(3L));
         userDao.save(user);
         return "redirect:/login";
     }
