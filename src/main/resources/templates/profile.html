@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+<body>
+<div sec:authorize="hasRole('ROLE_EMPLOYER')">
+    Employer name: <p th:text="*{employerProfile.name}"></p>
+    Employer description: <p th:text="*{employerProfile.description}"></p>
+    Employer location: <p th:text="*{employerProfile.location}"></p>
+</div>
+
+<div sec:authorize="hasRole('ROLE_INTERN')">
+    Only the intern can see this text...
+</div>
+
+Everyone should be able to see this text...
+
+</body>
+</html>

@@ -106,4 +106,8 @@ public class EmployerProfile {
     public void addJob (Job job) {
         jobs.add(job);
     }
+
+    public List<Job> getJobs() {
+        return jobs;
+    }
 }

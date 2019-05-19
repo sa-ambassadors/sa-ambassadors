@@ -1,10 +1,8 @@
 package io.internhub.application.models;
 
-import io.internhub.application.repositories.InternRepository;
-
 import javax.persistence.*;
 
-    @Entity
+@Entity
     @Table(name = "users")
     public class User {
 
@@ -20,11 +18,15 @@ import javax.persistence.*;
                 cascade =  CascadeType.ALL,
                 mappedBy = "user")
         private EmployerProfile employerProfile;
-
         @OneToOne(fetch = FetchType.LAZY,
                 cascade =  CascadeType.ALL,
                 mappedBy = "user")
         private InternProfile internProfile;
+        private boolean enabled;
+        @OneToOne
+        @JoinColumn(name = "role_id")
+        private Role role;
+
 
         public User() {
         }
@@ -61,8 +63,8 @@ import javax.persistence.*;
         }
 
         public String getPassword() {
-            return password;
-        }
+                    return password;
+                }
 
         public void setPassword(String password) {
             this.password = password;
@@ -83,5 +85,13 @@ import javax.persistence.*;
         public void setInternProfile(InternProfile internProfile) {
             this.internProfile = internProfile;
         }
-    }
+
+        public Role getRole() {
+            return role;
+        }
+
+        public void setRole(Role role) {
+            this.role = role;
+        }
+}
 

@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface Jobs extends CrudRepository <Job, Long> {
 
-    Jobs findByTitle(String title);
+    Job findByTitle(String title);
 
 }

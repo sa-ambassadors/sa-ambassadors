@@ -4,12 +4,14 @@ import io.internhub.application.models.Job;
 import io.internhub.application.models.User;
 import io.internhub.application.models.UserWithRoles;
 import io.internhub.application.repositories.EmployerProfiles;
+import io.internhub.application.repositories.Jobs;
 import io.internhub.application.repositories.Users;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -17,10 +19,12 @@ public class JobsController {
 
     private EmployerProfiles employerProfiles;
     private Users users;
+    private Jobs jobs;
   
-    public JobsController(EmployerProfiles employerProfiles, Users users) {
+    public JobsController(EmployerProfiles employerProfiles, Users users, Jobs jobs) {
         this.employerProfiles = employerProfiles;
         this.users = users;
+        this.jobs = jobs;
     }
 
     @GetMapping("employers/add-job")
@@ -45,4 +49,12 @@ public class JobsController {
         return "redirect:/employers/add-job";
     }
 
-}  // JobsController class
+    @GetMapping("jobs/{jobId}")
+    public String getJobPage (Model model, @PathVariable String jobId) {
+        Long jobLongId = Long.parseLong(jobId);
+        Job job = jobs.findOne(jobLongId);
+        model.addAttribute("job", job);
+        return "jobs/id";
+    }
+
+}
