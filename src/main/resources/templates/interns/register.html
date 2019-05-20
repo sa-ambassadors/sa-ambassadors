@@ -1,17 +1,20 @@
-<head th:replace="fragments/head :: head('Sign-Up')" />
-<body>
-<h1>Create an account</h1>
-<form th:action="@{/interns/register}" method="POST" th:object="${user}">
-	<label for="username">Username</label>
-	<input id="username" th:field="*{username}" />
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head th:replace="fragments/head :: head('Sign-Up')" />
 
-	<label for="email">Email</label>
-	<input id="email" th:field="*{email}" />
+	<body>
+		<h1>Create an account</h1>
+		<form th:action="@{/interns/register}" method="POST" th:object="${user}">
+			<label for="username">Username</label>
+			<input id="username" th:field="*{username}" />
 
-	<label for="password">Password</label>
-	<input id="password" type="password" th:field="*{password}" />
+			<label for="email">Email</label>
+			<input id="email" th:field="*{email}" />
 
-	<input value="Sign me up!" type="submit" />
-</form>
-</body>
-<footer th:replace="fragments/footer" />
+			<label for="password">Password</label>
+			<input id="password" type="password" th:field="*{password}" />
+
+			<input value="Sign me up!" type="submit" />
+		</form>
+	</body>
+	<footer th:replace="fragments/footer" />
+</html>
