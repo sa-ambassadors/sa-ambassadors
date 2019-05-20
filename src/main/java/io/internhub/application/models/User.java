@@ -1,6 +1,8 @@
 package io.internhub.application.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
     @Table(name = "users")
@@ -26,7 +28,6 @@ import javax.persistence.*;
         @OneToOne
         @JoinColumn(name = "role_id")
         private Role role;
-
 
         public User() {
         }
@@ -93,5 +94,6 @@ import javax.persistence.*;
         public void setRole(Role role) {
             this.role = role;
         }
+
 }
 

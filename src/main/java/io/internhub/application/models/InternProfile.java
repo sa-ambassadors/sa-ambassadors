@@ -1,5 +1,7 @@
 package io.internhub.application.models;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="intern_profile")
@@ -60,6 +62,11 @@ public class InternProfile {
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "applied_jobs", joinColumns = @JoinColumn(name = "intern_id"),
+            inverseJoinColumns = @JoinColumn(name = "job_id"))
+    private List<Job> appliedJobs = new ArrayList<>();
 
     public long getId() {
         return id;
@@ -203,5 +210,17 @@ public class InternProfile {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void addJobToAppliedList (Job job) {
+        appliedJobs.add(job);
+    }
+
+    public List<Job> getAppliedJobs() {
+        return appliedJobs;
+    }
+
+    public void setAppliedJobs(List<Job> appliedJobs) {
+        this.appliedJobs = appliedJobs;
     }
 }
