@@ -12,13 +12,89 @@
 
     <form th:action="@{/interns/profile}" method="POST" th:object="${internProfile}">
 
-        <label for="first-name">First Name:</label>
-        <input id="first-name" th:field="*{first_name}"/>
+        <label for="first_name">First Name:</label>
+        <input id="first_name" th:field="*{first_name}"/>
 
-        <label for="last-name">Last Name:</label>
-        <input id="last-name" th:field="*{last_name}"/>
+        <label for="last_name">Last Name:</label>
+        <input id="last_name" th:field="*{last_name}"/>
+
+        <label for="major">College major:</label>
+        <input id="major" th:field="*{major}"/>
+
+        <label for="minor">minor:</label>
+        <input id="minor" th:field="*{minor}"/>
+
+        <label for="field_1">Field 1:</label>
+        <input id="field_1" th:field="*{field_1}"/>
+
+        <label for="field_2">Field 2:</label>
+        <input id="field_2" th:field="*{field_2}"/>
+
+        <label for="field_3">Field 3:</label>
+        <input id="field_3" th:field="*{field_3}"/>
+
+        <label for="transcript">Upload Transcript:</label>
+        <input id="transcript" th:field="*{transcript_link}"/>
+
+        <label for="essay">Upload Essay:</label>
+        <input id="essay" th:field="*{essay}"/>
+
+        <label for="sa_highschool">Attended high-school in San Antonio, TX?</label>
+        <input id="sa_highschool" th:field="*{sa_highschool}"/>
+
+        <label for="sa_college">Attending college in San Antonio, TX?</label>
+        <input id="sa_college" th:field="*{sa_college}"/>
+
+        <label for="first_to_college">Are you the first in your family to attend college?</label>
+        <input id="first_to_college" th:field="*{first_to_college}">
+
+        <label for="sa_educational_program">Recipient of San Antonio Education Partnership (SAEP) Scholarship?</label>
+        <input id="sa_educational_program" th:field="*{sa_educational_program}"/>
+
+        <label for="priority">Priority candidate?</label>
+        <input id="priority" th:field="*{priority}"/>
+
+        <label for="complete">Application complete?</label>
+        <input id="complete" th:field="*{complete}"/>
+
+        <label for="approved">Application approved?</label>
+        <input id="approved" th:field="*{approved}"/>
+
+        <label for="user">User:</label>
+        <input id="user" th:field="*{user}"/>
+
+        <label for="appliedjobs">Applied jobs:</label>
+        <input id="appliedjobs" th:field="*{appliedJobs}"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <input value="Submit" type="submit"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </form>
     </body>
