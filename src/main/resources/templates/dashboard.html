@@ -1,28 +1,114 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments/head :: head('Dashboard')" />
 
-    <head>
-        <meta charset="UTF-8" />
-        <title></title>
-    </head>
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+<body>
+<nav> </nav>
 
-    <body>
-        <div sec:authorize="hasRole('ROLE_EMPLOYER')">
-        <tbody>
-        <tr th:each="job : ${jobs}">
-            <td><span th:text="*{job.title}"> </span></td>
-            <td><span th:text="*{job.aboutUs}"> </span></td>
-            <td><a th:href="@{/jobs/{id}(id=${job.id})}">view</a></td>
-        </tr>
-        </tbody>
+<ul id="slide-out" class="sidenav">
+	<li><a href="#!">View Profile</a></li>
+	<li><a href="/logout">Logout</a></li>
+</ul>
+<a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
+
+<!-- ONLY VISIBLE TO EMPLOYERS-->
+<div sec:authorize="hasRole('ROLE_EMPLOYER')">
+<div class="row">
+    <!--FIRST CARD SHOWS NUMBER OF JOBS-->
+    <div class="col s12 m4 l3">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">Total Job Postings</span>
+                <h1 th:text="${numOfJobs}"></h1>
+            </div>
+            <div class="card-action">
+                <p><a href="/employers/index">View My Postings</a></p>
+                <p><a href="/employers/add-job">Add A Posting</a></p>
+            </div>
         </div>
-
-        <div sec:authorize="hasRole('ROLE_INTERN')">
-            intern
+    </div>
+    <!--SECOND CARD SHOWS TOTAL APPLICANTS-->
+    <div class="col s12 m4 l3">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">Total Applicants</span>
+                <h1 th:text="${totalApps}"></h1>
+            </div>
+            <div class="card-action">
+                <p><a href="/employers/index">View Applications by Job</a></p>
+                <p><a href="/employers/add-job">View All Applicants</a></p>
+            </div>
         </div>
+    </div>
 
-        test
+    <div class="col s12 m4 l3">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">Open Positions</span>
+                <h1 th:text="${totalApps}"></h1>
+            </div>
+            <div class="card-action">
+                <p><a href="/employers/index">View Applications by Job</a></p>
+                <p><a href="/employers/add-job">View All Applicants</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m4 l3">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">Filled Positions</span>
+                <h1 th:text="${totalApps}"></h1>
+            </div>
+            <div class="card-action">
+               <p> <a href="/employers/index">View Applications by Job</a></p>
+                <p><a href="/employers/add-job">View All Applicants</a></p>
+            </div>
+        </div>
+    </div>
+    <!--ROW ENDS-->
+</div>
+</div>
+<!--EMPLOYER DIV ENDS-->
 
+<div sec:authorize="hasRole('ROLE_INTERN')">
+	<div class="row">
+		<!--FIRST CARD SHOWS NUMBER OF ALL JOBS AVAILABLE FOR INTERN -->
+		<div class="col s12 m4 l3">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title">Positions Available</span>
+					<h1 th:text="${totalJobs}"></h1>
+				</div>
+				<div class="card-action">
+					<p><a href="/employers/index">View Available Positions</a></p>
+				</div>
+			</div>
+		</div>
+		<!--SECOND CARD SHOWS JOBS THE INTERN HAS APPLIED FOR-->
+		<div class="col s12 m4 l3">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title">Positions I've Applied For</span>
+					<h1 th:text="${appliedTotal}"></h1>
+				</div>
+				<div class="card-action">
+					<p><a href="/employers/add-job">View All Jobs I've Applied For</a></p>
+				</div>
+			</div>
+		</div>
 
-    </body>
+		<!--ROW ENDS-->
+	</div>
+</div>
+    
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+   admin
+</div>
+</body>
+<footer th:replace="fragments/footer" />
 </html>
