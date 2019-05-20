@@ -52,6 +52,13 @@ public class InternController {
 
     @GetMapping("interns/profile")
     public String getInternProfileForm(Model model) {
+
+        // security
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (!(principal instanceof UserWithRoles)) {
+            return "redirect: /login";
+        }
+
         model.addAttribute("internProfile", new InternProfile());
         return "interns/profile";
     }
