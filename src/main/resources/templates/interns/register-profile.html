@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Sign up</title>
+</head>
+<body>
+<h1>Create an account</h1>
+<form th:action="@{/interns/profile}" method="POST" th:object="${internProfile}">
+	<label for="firstName">First Name:</label>
+	<input id="firstName" th:field="*{first_name}" />
+
+	<label for="lastName">Last Name:</label>
+	<input id="lastName" th:field="*{last_name}" />
+
+	<label for="major">Industry:</label>
+	<input id="major" th:field="*{major}" />
+
+	<label for="minor">Company location:</label>
+	<input id="minor" th:field="*{minor}" />
+
+	<label for="field1">Primary Field:</label>
+	<input id="field1" th:field="*{field_1}" />
+
+	<label for="field2">Secondary Field:</label>
+	<input id="field2" th:field="*{field_2}" />
+
+	<label for="field3">Third Field:</label>
+	<input id="field3" th:field="*{field_3}" />
+
+	<label for="transcript">Upload Transcripts:</label>
+	<input id="transcript" th:field="*{transcipt_link}" />
+
+	<label for="essay">Upload Essay:</label>
+	<input id="essay" th:field="*{essay_link}" />
+
+	<label for="sa_highschool">Did you attend high school in San Antonio?</label>
+	<input id="sa_highschool" th:field="*{sa_highschool}" />
+
+
+
+
+
+
+
+	<input value="Create company profile!" type="submit" />
+</form>
+</body>
+</html>

@@ -34,9 +34,8 @@ public class InternProfile {
     @Column
     private String transcript_link;
 
-    @Lob
-    @Column(length = 63535)
-    private String essay;
+    @Column
+    private String essay_link;
 
     @Column
     private boolean sa_highschool;
@@ -140,12 +139,12 @@ public class InternProfile {
         this.transcript_link = transcript_link;
     }
 
-    public String getEssay() {
-        return essay;
+    public String getEssay_link() {
+        return essay_link;
     }
 
-    public void setEssay(String essay) {
-        this.essay = essay;
+    public void setEssay_link(String essay) {
+        this.essay_link = essay_link;
     }
 
     public boolean isSa_highschool() {

@@ -145,4 +145,12 @@ public class Job {
     public void setEmployerProfile(EmployerProfile employerProfile) {
         this.employerProfile = employerProfile;
     }
+
+    public List<InternProfile> getInternProfiles() {
+        return internProfiles;
+    }
+
+    public void setInternProfiles(List<InternProfile> internProfiles) {
+        this.internProfiles = internProfiles;
+    }
 }

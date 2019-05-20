@@ -44,13 +44,13 @@ public class InternController {
         user.setPassword(hash);
         user.setRole(roles.findOne(3L));
         userDao.save(user);
-        return "redirect:/login";
+        return "redirect:/interns/profile";
     }
 
     @GetMapping("interns/profile")
     public String getInternProfileForm(Model model) {
         model.addAttribute("internProfile", new InternProfile());
-        return "interns/profile";
+        return "interns/register-profile";
     }
 
     @PostMapping("interns/profile")
@@ -58,9 +58,8 @@ public class InternController {
         UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findByUsername(userWithRoles.getUsername());
         user.setInternProfile(internProfile);
-        internProfile.setUser(user);
         userDao.save(user);
-        return "redirect:/profile";
+        return "redirect:/dashboard";
     }
 
 }
