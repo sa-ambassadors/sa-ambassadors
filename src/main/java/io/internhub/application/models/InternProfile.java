@@ -131,12 +131,12 @@ public class InternProfile {
         this.field_3 = field_3;
     }
 
-    public String getTranscipt_link() {
+    public String getTranscript_link() {
         return transcript_link;
     }
 
-    public void setTranscipt_link(String transcipt_link) {
-        this.transcript_link = transcipt_link;
+    public void setTranscript_link(String transcript_link) {
+        this.transcript_link = transcript_link;
     }
 
     public String getEssay_link() {
