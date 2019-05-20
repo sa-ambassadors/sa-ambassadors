@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Add a Job</title>
-    </head>
-
-    <body>
+<head th:replace="fragments/head :: head('Welcome!')" />
+<body>
 
         <h1>Create a job listing</h1>
 
@@ -41,4 +35,4 @@
 
         </form>
     </body>
-</html>
+<footer th:replace="fragments/footer" />
