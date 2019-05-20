@@ -46,8 +46,8 @@ public class Job {
     public Job() {
     }
 
-    // Getters & Setters
 
+    // Getters & Setters
 
     public long getId() {
         return id;
