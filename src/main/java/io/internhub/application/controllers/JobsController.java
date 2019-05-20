@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class JobsController {
 
@@ -46,7 +48,18 @@ public class JobsController {
         employerProfile.addJob(job);
         job.setEmployerProfile(employerProfile);
         employerProfiles.save(employerProfile);
-        return "redirect:/employers/add-job";
+        return "redirect:/dashboard";
+    }
+
+    @GetMapping("employers/index")
+    public String showAllJobs(Model model){
+        UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = users.findByUsername(userWithRoles.getUsername());
+        EmployerProfile employerProfile = user.getEmployerProfile();
+        List<Job> jobs = employerProfile.getJobs();
+        model.addAttribute("jobs", jobs);
+        return("employers/index");
+
     }
 
     @GetMapping("jobs/{jobId}")
