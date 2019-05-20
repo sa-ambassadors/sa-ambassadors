@@ -110,4 +110,6 @@ public class EmployerProfile {
     public List<Job> getJobs() {
         return jobs;
     }
+
+
 }

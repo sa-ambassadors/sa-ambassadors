@@ -1,9 +1,12 @@
 package io.internhub.application.controllers;
 
+import io.internhub.application.models.InternProfile;
 import io.internhub.application.models.User;
+import io.internhub.application.models.UserWithRoles;
 import io.internhub.application.repositories.InternRepository;
 import io.internhub.application.repositories.Roles;
 import io.internhub.application.repositories.Users;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,6 +45,22 @@ public class InternController {
         user.setRole(roles.findOne(3L));
         userDao.save(user);
         return "redirect:/login";
+    }
+
+    @GetMapping("interns/profile")
+    public String getInternProfileForm(Model model) {
+        model.addAttribute("internProfile", new InternProfile());
+        return "interns/profile";
+    }
+
+    @PostMapping("interns/profile")
+    public String postInternProfileForm(@ModelAttribute InternProfile internProfile){
+        UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findByUsername(userWithRoles.getUsername());
+        user.setInternProfile(internProfile);
+        internProfile.setUser(user);
+        userDao.save(user);
+        return "redirect:/profile";
     }
 
 }

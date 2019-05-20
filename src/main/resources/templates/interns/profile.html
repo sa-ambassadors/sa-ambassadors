@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+
+<body>
+<h1>Create an intern profile</h1>
+
+<!--Need to finish this profile form-->
+
+<form th:action="@{/interns/profile}" method="POST" th:object="${internProfile}">
+
+    <label for="first-name">First Name:</label>
+    <input id="first-name" th:field="*{first_name}"/>
+
+    <label for="last-name">Last Name:</label>
+    <input id="last-name" th:field="*{last_name}"/>
+
+    <input value="Submit" type="submit"/>
+
+</form>
+</body>
+</html>

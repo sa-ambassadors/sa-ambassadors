@@ -1,6 +1,8 @@
 package io.internhub.application.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -37,6 +39,9 @@ public class Job {
     @ManyToOne
     @JoinColumn(name = "employer_id")
     private EmployerProfile employerProfile;
+
+    @ManyToMany(mappedBy = "appliedJobs")
+    List<InternProfile> internProfiles = new ArrayList<>();
 
     public Job() {
     }
@@ -140,4 +145,4 @@ public class Job {
     public void setEmployerProfile(EmployerProfile employerProfile) {
         this.employerProfile = employerProfile;
     }
-}  // Jobs class
+}
