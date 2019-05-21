@@ -222,4 +222,5 @@ public class InternProfile {
     public void setAppliedJobs(List<Job> appliedJobs) {
         this.appliedJobs = appliedJobs;
     }
+
 }
