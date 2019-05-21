@@ -21,6 +21,13 @@ public class ProfileController {
 
     @GetMapping("/profile")
     public String getProfilePage(Model model) {
+
+        // security
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (!(principal instanceof UserWithRoles)) {
+            return "redirect: /login";
+        }
+
         UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = users.findByUsername(userWithRoles.getUsername());
         if (user.getEmployerProfile()!= null) {

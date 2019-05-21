@@ -59,4 +59,5 @@ public class EmployerController {
         users.save(user);
         return "redirect:/login";
     }
+
 }

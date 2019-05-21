@@ -82,16 +82,16 @@ public class ApiController {
             ResponseEntity.badRequest().build();
         }
         InternProfile internProfile = foundUser.getInternProfile();
-        if (updatingInternProfile.getEssay() != null) {
-            internProfile.setEssay(updatingInternProfile.getEssay());
+        if (updatingInternProfile.getEssay_link() != null) {
+            internProfile.setEssay_link(updatingInternProfile.getEssay_link());
         }
-        if (updatingInternProfile.getField_1() != 0) {
+        if (updatingInternProfile.getField_1() != null) {
             internProfile.setField_1(updatingInternProfile.getField_1());
         }
-        if (updatingInternProfile.getField_2() != 0) {
+        if (updatingInternProfile.getField_2() != null) {
             internProfile.setField_2(updatingInternProfile.getField_2());
         }
-        if (updatingInternProfile.getField_3() != 0) {
+        if (updatingInternProfile.getField_3() != null) {
             internProfile.setField_3(updatingInternProfile.getField_3());
         }
         if (updatingInternProfile.getFirst_name() != null) {
