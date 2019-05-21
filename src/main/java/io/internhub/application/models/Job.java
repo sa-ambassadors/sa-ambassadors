@@ -9,7 +9,8 @@ import java.util.List;
 @Table(name = "jobs")
 public class Job {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private long id;
 
     @Column(nullable = false)
@@ -23,7 +24,7 @@ public class Job {
 
     @Column(nullable = false)
     private String location;
-  
+
     @Column(nullable = false)
     private String jobDescription;
 
@@ -66,7 +67,6 @@ public class Job {
     }
 
 
-
     public String getCompanyName() {
         return companyName;
     }
@@ -74,7 +74,6 @@ public class Job {
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
-
 
 
     public String getIndustry() {
@@ -86,7 +85,6 @@ public class Job {
     }
 
 
-
     public String getLocation() {
         return location;
     }
@@ -94,7 +92,6 @@ public class Job {
     public void setLocation(String location) {
         this.location = location;
     }
-
 
 
     public String getJobDescription() {
@@ -107,7 +104,6 @@ public class Job {
     }
 
 
-
     public String getResponsibilities() {
         return responsibilities;
     }
@@ -115,7 +111,6 @@ public class Job {
     public void setResponsibilities(String responsibilities) {
         this.responsibilities = responsibilities;
     }
-
 
 
     public String getBasicQualifications() {
@@ -135,7 +130,6 @@ public class Job {
     public void setAboutUs(String aboutUs) {
         this.aboutUs = aboutUs;
     }
-
 
 
     public EmployerProfile getEmployerProfile() {
