@@ -60,7 +60,7 @@ public class InternController {
         }
 
         model.addAttribute("internProfile", new InternProfile());
-        return "interns/register-profile";
+        return "interns/profile";
     }
 
     @PostMapping("interns/profile")
