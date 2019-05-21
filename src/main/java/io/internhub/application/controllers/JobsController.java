@@ -1,8 +1,5 @@
 package io.internhub.application.controllers;
-import io.internhub.application.models.EmployerProfile;
-import io.internhub.application.models.Job;
-import io.internhub.application.models.User;
-import io.internhub.application.models.UserWithRoles;
+import io.internhub.application.models.*;
 import io.internhub.application.repositories.EmployerProfiles;
 import io.internhub.application.repositories.Jobs;
 import io.internhub.application.repositories.Users;
@@ -60,6 +57,18 @@ public class JobsController {
         model.addAttribute("jobs", jobs);
         return("employers/index");
 
+    }
+
+    @GetMapping("interns/index")
+    public String showAllInternJobs(Model model){
+
+        return("interns/index");
+    }
+
+    @GetMapping("interns/applied_index")
+    public String showAllAppliedJobs(Model model){
+
+        return("interns/applied_index");
     }
 
     @GetMapping("jobs/{jobId}")
