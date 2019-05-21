@@ -149,6 +149,7 @@ public class Job {
 
     public void addToInternProfile(InternProfile internProfile) {
         internProfiles.add(internProfile);
+    }
 
     public List<InternProfile> getInternProfiles() {
         return internProfiles;

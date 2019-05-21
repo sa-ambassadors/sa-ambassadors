@@ -47,7 +47,13 @@ public class InternController {
         user.setPassword(hash);
         user.setRole(roles.findOne(3L));
         userDao.save(user);
-        return "redirect:/interns/profile";
+        User newUser = userDao.findByUsername(user.getUsername());
+        InternProfile newProfile = new InternProfile();
+        newProfile.setComplete(false);
+        newProfile.setUser(newUser);
+        internDao.save(newProfile);
+
+        return "redirect:/login";
     }
 
     @GetMapping("interns/profile")

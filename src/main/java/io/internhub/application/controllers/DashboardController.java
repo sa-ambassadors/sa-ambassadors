@@ -17,13 +17,16 @@ public class DashboardController {
     private Jobs jobs;
     private Users users;
 
-    public DashboardController (Users users) {
+    public DashboardController (Users users, Jobs jobs) {
         this.users = users;
+        this.jobs = jobs;
     }
+
     @GetMapping("dashboard")
     public String getDashboardPage(Model model) {
         UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = users.findByUsername(userWithRoles.getUsername());
+
 
 //        EMPLOYER DASHBOARD
         if (user.getEmployerProfile()!= null) {
@@ -47,26 +50,37 @@ public class DashboardController {
         }
 
 //        INTERN DASHBOARD
-        if(user.getInternProfile()!= null){
-            //Get intern profile
-            InternProfile internProfile =user.getInternProfile();
-            //Get total number of all jobs
-            Iterable<Job> totalJobsList = jobs.findAll();
-            int totalJobs = 0;
-            if (totalJobsList instanceof Collection) {
-                totalJobs = ((Collection<?>) totalJobsList).size();
-            }
-            //Get total number of jobs intern has applied for
-            int appliedTotal = 0;
-            List<Job> appliedList = internProfile.getAppliedJobs();
-            if(appliedList.size() != 0){
-                appliedTotal = appliedList.size();
+
+        InternProfile userProfile = user.getInternProfile();
+        //total number of jobs intern has applied for
+        int appliedTotal = 0;
+        int totalJobs = 0;
+        int totalRelevantJobs = 0;
+        if(!userProfile.isComplete()){
+            boolean isComplete = false;
+            if(jobs.findAll() == null) {
+                return "There are no current job postings";
+            }else{
+                Iterable<Job> allJobs = jobs.findAll();
+                totalJobs = ((List<Job>) allJobs).size();
             }
 
+        }
+        else{
+
+            List<Job> appliedList = userProfile.getAppliedJobs();
+                appliedTotal = appliedList.size();
+                List<Job> relevantJobs = jobs.findByIndustry(userProfile.getField_1(), userProfile.getField_2(), userProfile.getField_3());
+                totalRelevantJobs = relevantJobs.size();
+            }
+
+
+            model.addAttribute("userProfile", userProfile);
+            model.addAttribute("totalRelevantJobs", totalRelevantJobs);
             model.addAttribute("appliedTotal", appliedTotal);
             model.addAttribute("totalJobs", totalJobs);
-            model.addAttribute("firstName", internProfile.getFirst_name());
-        }
+
+
         return "dashboard";
     }
 }
