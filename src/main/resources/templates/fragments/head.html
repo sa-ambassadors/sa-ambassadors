@@ -2,55 +2,51 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
-<th:block th:fragment="head(title)">
-	<head>
-		<meta charset="UTF-8" />
-		<title th:text="'InternHub | ' + ${title}"></title>
+	<th:block th:fragment="head(title)">
+		<head>
+			<meta charset="UTF-8" />
+			<title th:text="'InternHub | ' + ${title}"></title>
 
-		<!-- Compiled and minified CSS Materialize-->
-		<link rel="stylesheet"
-		      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+			<!-- Compiled and minified CSS Materialize-->
+			<link rel="stylesheet"
+				  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 
 
-		<!-- Nav bar -->
+			<!-- Fixed Nav -->
+			<nav>
+				<div class="nav-wrapper">
+					<a href="#" class="brand-logo">SA Ambassadors</a>
+					<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+					<ul class="right hide-on-med-and-down right">
+						<li><a href="/faq">FAQ</a></li>
+						<li><a href="/interns/profile">Interns</a></li>
+						<li><a href="/employers/register">Employers</a></li>
+						<li><a href="/login">Login</a></li>
+					</ul>
+				</div>
+			</nav>
 
-		<!-- create FAQ,Contact html pages, *show current user id in nav* -->
-		<nav>
-			<div class="nav-wrapper">
-<<<<<<< HEAD
 
-				<!-- create FAQ, Sign-in, & Contact html pages -->
-=======
->>>>>>> 5e2140b109b4d6297b319669314702fb7807900c
-				<a href="#" class="brand-logo">SA Ambassadors</a>
-				<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-				<ul class="right hide-on-med-and-down">
-					<li><a href="/faq.html">FAQ</a></li>
-					<li><a href="/interns/profile.html">Interns</a></li>
-					<li><a href="/employers/register.html">Employers</a></li>
-					<li><a href="/contact.html">Contact</a></li>
-				</ul>
+			<!-- Collapsible side nav -->
+			<ul class="sidenav" id="mobile-demo">
+				<li><a href="/faq">FAQ</a></li>
+				<li><a href="/interns/profile">Interns</a></li>
+				<li><a href="/employers/register">Employers</a></li>
+				<li><a href="/login">Login</a></li>
+			</ul>
+
+
+			<!--Search-->
+			<div>
+				<form>
+					<div class="input-field">
+						<input id="search" type="search" required="required"/>
+						<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+						<i class="material-icons">close</i>
+					</div>
+				</form>
 			</div>
-		</nav>
 
-		<!-- Collapsible side nav -->
-		<ul class="sidenav" id="mobile-demo">
-			<li><a href="/faq.html">FAQ</a></li>
-			<li><a href="/interns/profile">Interns</a></li>
-			<li><a href="/employers/register.html">Employers</a></li>
-			<li><a href="/contact.html">Contact</a></li>
-		</ul>
-
-
-		<!-- Search -->
-		<div class="input-field">
-			<input id="search" type="search" required="required">
-			<label class="label-icon" for="search"><i class="material-icons">search</i></label>
-			<i class="material-icons">close</i>
-		</div>
-
-
-
-	</head>
-</th:block>
+		</head>
+	</th:block>
 </html>
