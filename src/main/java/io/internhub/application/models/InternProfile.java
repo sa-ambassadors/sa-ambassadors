@@ -10,10 +10,10 @@ public class InternProfile {
     @GeneratedValue
     private long id;
 
-    @Column(nullable = false)
+    @Column
     private String first_name;
 
-    @Column(nullable = false)
+    @Column
     private String last_name;
 
     @Column
@@ -23,13 +23,13 @@ public class InternProfile {
     private String minor;
 
     @Column
-    private int field_1;
+    private String field_1;
 
     @Column
-    private int field_2;
+    private String field_2;
 
     @Column
-    private int field_3;
+    private String field_3;
 
     @Column
     private String transcript_link;
@@ -52,7 +52,7 @@ public class InternProfile {
     @Column
     private boolean isPriority;
 
-    @Column
+    @Column(nullable = false)
     private boolean isComplete;
 
     @Column
@@ -107,27 +107,27 @@ public class InternProfile {
         this.minor = minor;
     }
 
-    public int getField_1() {
+    public String getField_1() {
         return field_1;
     }
 
-    public void setField_1(int field_1) {
+    public void setField_1(String field_1) {
         this.field_1 = field_1;
     }
 
-    public int getField_2() {
+    public String getField_2() {
         return field_2;
     }
 
-    public void setField_2(int field_2) {
+    public void setField_2(String field_2) {
         this.field_2 = field_2;
     }
 
-    public int getField_3() {
+    public String getField_3() {
         return field_3;
     }
 
-    public void setField_3(int field_3) {
+    public void setField_3(String field_3) {
         this.field_3 = field_3;
     }
 
@@ -222,4 +222,5 @@ public class InternProfile {
     public void setAppliedJobs(List<Job> appliedJobs) {
         this.appliedJobs = appliedJobs;
     }
+
 }
