@@ -2,51 +2,47 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
-	<th:block th:fragment="head(title)">
-		<head>
-			<meta charset="UTF-8" />
-			<title th:text="'InternHub | ' + ${title}"></title>
+<th:block th:fragment="head(title)">
+	<head>
+		<meta charset="UTF-8" />
+		<title th:text="'InternHub | ' + ${title}"></title>
 
-			<!-- Compiled and minified CSS Materialize-->
-			<link rel="stylesheet"
-				  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-
-
-			<!-- Fixed Nav -->
-			<nav>
-				<div class="nav-wrapper">
-					<a href="#" class="brand-logo">SA Ambassadors</a>
-					<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-					<ul class="right hide-on-med-and-down right">
-						<li><a href="/faq">FAQ</a></li>
-						<li><a href="/interns/profile">Interns</a></li>
-						<li><a href="/employers/register">Employers</a></li>
-						<li><a href="/login">Login</a></li>
-					</ul>
-				</div>
-			</nav>
+		<!-- Compiled and minified CSS Materialize-->
+		<link rel="stylesheet"
+		      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 
 
-			<!-- Collapsible side nav -->
-			<ul class="sidenav" id="mobile-demo">
-				<li><a href="/faq">FAQ</a></li>
-				<li><a href="/interns/profile">Interns</a></li>
-				<li><a href="/employers/register">Employers</a></li>
-				<li><a href="/login">Login</a></li>
-			</ul>
-
-
-			<!--Search-->
-			<div>
-				<form>
-					<div class="input-field">
-						<input id="search" type="search" required="required"/>
-						<label class="label-icon" for="search"><i class="material-icons">search</i></label>
-						<i class="material-icons">close</i>
-					</div>
-				</form>
+		<!-- Nav bar -->
+		<nav>
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo">SA Ambassadors</a>
+				<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="/faq">FAQ</a></li>
+					<li><a href="/interns/profile">Interns</a></li>
+					<li><a href="/employers/register">Employers</a></li>
+					<li><a href="/login">Login</a></li>
+				</ul>
 			</div>
+		</nav>
 
-		</head>
-	</th:block>
+
+		<!-- Collapsible side nav -->
+		<ul class="sidenav" id="mobile-demo">
+			<li><a href="/faq">FAQ</a></li>
+			<li><a href="/interns/profile">Interns</a></li>
+			<li><a href="/employers/register">Employers</a></li>
+			<li><a href="/login">Login</a></li>
+		</ul>
+
+
+		<!-- Search -->
+		<div class="input-field">
+			<input id="search" type="search" required>
+			<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+			<i class="material-icons">close</i>
+		</div>
+
+	</head>
+</th:block>
 </html>
