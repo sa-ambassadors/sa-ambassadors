@@ -82,7 +82,10 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 			<div class="card">
 				<div class="card-content">
 					<span class="card-title">Positions Available</span>
-					<h1 th:text="${totalJobs}"></h1>
+					<div th:switch="${totalRelevantJobs}">
+						<span th:case="${0}"><h1 th:text="${totalJobs}"></h1></span>
+						<span th:case="${totalRelevantJobs > 0}"><h1 th:text="${totalRelevantJobs}"></h1></span>
+					</div>
 				</div>
 				<div class="card-action">
 					<p><a href="/employers/index">View Available Positions</a></p>
