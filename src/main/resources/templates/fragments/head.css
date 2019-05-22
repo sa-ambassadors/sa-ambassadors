@@ -1,7 +1,7 @@
 
 
 .nav-wrapper {
-    background-color: #00B0FF;
+    @extend background-color: #00B0FF;
     font-size: 14px;
 
  }
