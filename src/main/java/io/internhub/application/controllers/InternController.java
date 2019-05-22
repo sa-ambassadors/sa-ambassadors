@@ -50,6 +50,7 @@ public class InternController {
         User newUser = userDao.findByUsername(user.getUsername());
         InternProfile newProfile = new InternProfile();
         newProfile.setComplete(false);
+        newProfile.setApproved(false);
         newProfile.setUser(newUser);
         internDao.save(newProfile);
 
