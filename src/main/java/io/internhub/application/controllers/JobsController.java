@@ -61,8 +61,22 @@ public class JobsController {
 
     @GetMapping("interns/index")
     public String showAllInternJobs(Model model){
+        UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = users.findByUsername(userWithRoles.getUsername());
+        InternProfile userProfile = user.getInternProfile();
+        if(userProfile.isApproved()){
+        List<Job> relevantJobs = jobs.findByIndustry(userProfile.getField_1(), userProfile.getField_2(), userProfile.getField_3());
+        if(relevantJobs != null) {
+            model.addAttribute("jobsList", relevantJobs);
+        }else{
+            Iterable<Job> allJobs = jobs.findAll();
+            model.addAttribute("jobsList",((List<Job>) allJobs));
+        }
+        return("interns/index");}
+        else{
+            return("interns/profile");
+        }
 
-        return("interns/index");
     }
 
     @GetMapping("interns/applied_index")

@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="fragments/head :: head('View Jobs')"></head>
+
 <body>
-This will show all jobs relevant to the Intern by field constraints
+<div th:each="job: ${jobsList}">
+	<h4 th:text="${job.getTitle()}" />
+	<p th:text="${job.getCompanyName()} - ${job.getLocation()}" />
+
+</div>
 
 </body>
+<footer th:replace="fragments/footer"></footer>
 </html>

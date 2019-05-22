@@ -59,6 +59,7 @@ public class DashboardController {
            int totalRelevantJobs = 0;
            if (!userProfile.isComplete()) {
                boolean isComplete = false;
+               String message = "You must complete your profile before applying for positions";
                if (jobs.findAll() == null) {
                    return "There are no current job postings";
                } else {
