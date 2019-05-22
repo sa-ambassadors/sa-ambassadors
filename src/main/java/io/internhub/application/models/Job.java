@@ -20,7 +20,7 @@ public class Job {
     private String companyName;
 
     @Column(nullable = false)
-    private String industry;
+    private int industry;
 
     @Column(nullable = false)
     private String location;
@@ -76,11 +76,11 @@ public class Job {
     }
 
 
-    public String getIndustry() {
+    public int getIndustry() {
         return industry;
     }
 
-    public void setIndustry(String industry) {
+    public void setIndustry(int industry) {
         this.industry = industry;
     }
 

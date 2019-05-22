@@ -171,7 +171,7 @@ public class ApiController {
             if (updatedJob.getCompanyName() != null) {
                 foundJob.setCompanyName(updatedJob.getCompanyName());
             }
-            if (updatedJob.getIndustry() != null) {
+            if (updatedJob.getIndustry() != 99) {
                 foundJob.setIndustry(updatedJob.getIndustry());
             }
             if (updatedJob.getLocation() != null) {
