@@ -145,8 +145,43 @@ public class ApiController {
         return ResponseEntity.ok("User does not own job");
     }
 
-//    @PatchMapping("{user}/employer/edit/{job}")
-//    public ResponseEntity<?> editEmployerJob
+    @PatchMapping("{user}/employer/edit/{job}")
+    public ResponseEntity<?> editEmployerJobPost(@PathVariable String user, @PathVariable String job, @RequestBody Job updatedJob) {
+        User foundUser = users.findByUsername(user);
+        boolean userOwnsJob = false;
+        if (foundUser == null) {
+            ResponseEntity.badRequest().build();
+        }
+        EmployerProfile employerProfile = foundUser.getEmployerProfile();
+        List<Job> employerJobs = employerProfile.getJobs();
+        for (Job j : employerJobs) {
+            if (j.getId() == Long.parseLong(job)) {
+                userOwnsJob = true;
+            }
+        }
+        if (userOwnsJob) {
+            Job foundJob = jobs.findOne(Long.parseLong(job));
+            if (updatedJob.getAboutUs() != null) {
+                foundJob.setAboutUs(updatedJob.getAboutUs());
+            }
+            if (updatedJob.getBasicQualifications() != null) {
+                foundJob.setBasicQualifications(updatedJob.getBasicQualifications());
+            }
+            if (updatedJob.getCompanyName() != null) {
+                foundJob.setCompanyName(updatedJob.getCompanyName());
+            }
+            if (updatedJob.getIndustry() != null) {
+                foundJob.setIndustry(updatedJob.getIndustry());
+            }
+            if (updatedJob.getLocation() != null) {
+                foundJob.setLocation(updatedJob.getLocation());
+            }
 
-
+            jobs.save(foundJob);
+            return ResponseEntity.ok("Job edited");
+        }
+        return ResponseEntity.ok("Job does not belong to user");
+    }
 }
+
+
