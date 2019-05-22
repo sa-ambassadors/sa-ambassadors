@@ -1,38 +1,94 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="fragments/head :: head('Welcome!')" />
 <body>
 
-        <h1>Create a job listing</h1>
+    <div class="container">
+        <h3 class="center-align">Create a job listing</h3>
+    <div class="row">
+        <form  class="col s12" th:action="@{/employers/add-job}" method="POST" th:object="${job}">
+            <div class="row">
+                <div class="input-field col s12">
+                    <label class="active" for="title">Job Title:</label>
+                    <input id="title" th:field="*{title}"/>
+                 </div>
 
-        <form th:action="@{/employers/add-job}" method="POST" th:object="${job}">
+                <div class="input-field col s12">
+                    <label for="company-name" class="active">Company Name:</label>
+                    <input id="company-name" th:field="*{companyName}"/>
+                </div>
 
-            <label for="title">Job Title:</label>
-            <input id="title" th:field="*{title}"/>
+                <div class="input-field col s12 m6">
+                    <label for="about-us" class="active">About Us:</label>
+                    <input id="about-us" th:field="*{aboutUs}"/>
+                </div>
 
-            <label for="company-name">Company Name:</label>
-            <input id="company-name" th:field="*{companyName}"/>
+                <div class="input-field col s12 m6">
+                    <label for="location" class="active">Job Location:</label>
+                    <input id="location" th:field="*{location}"/>
+                </div>
 
-          
-            <label for="industry">Industry:</label>
-            <input id="industry" th:field="*{industry}"/>
+                <div class="input-field col s12 m6">
+                    <label for="responsibilities" class="active">Key Responsibilities:</label>
+                    <input id="responsibilities" th:field="*{responsibilities}"/>
+                </div>
 
-            <label for="location">Job Location:</label>
-            <input id="location" th:field="*{location}"/>
+                <div class="input-field col s12 m6">
+                    <label for="basic-qualifications" class="active">Basic Qualifications:</label>
+                    <input id="basic-qualifications" th:field="*{basicQualifications}"/>
+                </div>
 
-            <label for="job-description">Job Description:</label>
-            <input id="job-description" th:field="*{jobDescription}"/>
+                <div class="input-field col s12">
+                    <label for="job-description" class="active">Job Description:</label>
+                    <textarea id="job-description" th:field="*{jobDescription}" class="materialize-textarea"></textarea>
+                </div>
 
-            <label for="responsibilities">Key Responsibilities:</label>
-            <input id="responsibilities" th:field="*{responsibilities}"/>
+                <div class="input-field col s12">
+                    <select id="industry" th:field="*{industry}">
+                        <option value="99" selected="selected">Choose Related Industry
+                        </option>
+                        <option value="1">Business, Management, &amp; Administration
+                        </option>
+                        <option value="2">Criminal Justice
+                        </option>
+                        <option value="3">Education &amp; Training
+                        </option>
+                        <option value="4">Engineering
+                        </option>
+                        <option value="5">Finance
+                        </option>
+                        <option value="6">Government &amp; Public Administration
+                        </option>
+                        <option value="7">Hospitality &amp; Tourism
+                        </option>
+                        <option value="8">Healthcare
+                        </option>
+                        <option value="9">Human Services
+                        </option>
+                        <option value="10">Information Technologies
+                        </option>
+                        <option value="11">Law, Public Safety, Corrections, &amp; Security
+                        </option>
+                        <option value="12">Manufacturing
+                        </option>
+                        <option value="13">Marketing
+                        </option>
+                        <option value="14">Public Relations
+                        </option>
+                        <option value="15">Science &amp; Research
+                        </option>
+                        <option value="16">Other
+                        </option>
+                    </select>
+                    <label>Choose Industry</label>
+                </div>
 
-            <label for="basic-qualifications">Basic Qualifications:</label>
-            <input id="basic-qualifications" th:field="*{basicQualifications}"/>
-
-            <label for="about-us">About Us:</label>
-            <input id="about-us" th:field="*{aboutUs}"/>
 
 
-            <input value="Submit" type="submit"/>
-
+                <input value="Submit" type="submit"/>
+            </div>
         </form>
-    </body>
+    </div>
+    </div>
+</body>
 <footer th:replace="fragments/footer" />
+</html>

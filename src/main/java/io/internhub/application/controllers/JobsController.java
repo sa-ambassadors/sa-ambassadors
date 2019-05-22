@@ -101,7 +101,7 @@ public class JobsController {
         Long jobLongId = Long.parseLong(jobId);
         Job job = jobs.findOne(jobLongId);
         model.addAttribute("job", job);
-        return "jobs/id";
+        return "jobs/post";
     }
 
 }
