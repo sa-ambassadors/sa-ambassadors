@@ -14,7 +14,8 @@
 			<!-- Nav bar -->
 			<nav>
 				<div class="nav-wrapper">
-					<a href="/dashboard" class="brand-logo">SA Ambassadors</a>
+					<span sec:authorize="isAuthenticated()"><a href="/dashboard" class="brand-logo">SA Ambassadors</a></span>
+					<span sec:authorize="isAnonymous()"><a href="/" class="brand-logo">SA Ambassadors</a></span>
 					<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 					<ul class="right hide-on-med-and-down">
 						<li>
@@ -24,20 +25,24 @@
 								<i class="material-icons">x</i>
 							</div>
 						</li>
-						<li><a href="/faq">FAQ</a></li>
+						<li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
+						<li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
+						<div sec:authorize="isAnonymous()">
 						<li><a href="/interns/register">Interns</a></li>
 						<li><a href="/employers/register">Employers</a></li>
-						<li><a href="/login">Login</a></li>
+						</div>
+						<li><a href="/faq">FAQ</a></li>
+
 					</ul>
 				</div>
 			</nav>
 
 			<!-- Collapsible side nav -->
 			<ul class="sidenav" id="mobile-demo">
-				<li><a href="/faq">FAQ</a></li>
+				<li><a href="/login">Login</a></li>
 				<li><a href="/interns/register">Interns</a></li>
 				<li><a href="/employers/register">Employers</a></li>
-				<li><a href="/login">Login</a></li>
+				<li><a href="/faq">FAQ</a></li>
 			</ul>
 
 			<!-- Search -->
