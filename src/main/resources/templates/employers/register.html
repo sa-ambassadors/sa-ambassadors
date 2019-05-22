@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="fragments/head :: head('Login')" >
     <meta charset="UTF-8" />
     <title>Sign up</title>
 </head>
+
 <body>
 <h1>Create an account</h1>
 <form th:action="@{/employers/register}" method="POST" th:object="${user}">
