@@ -51,35 +51,36 @@ public class DashboardController {
 
 //        INTERN DASHBOARD
 
-        InternProfile userProfile = user.getInternProfile();
-        //total number of jobs intern has applied for
-        int appliedTotal = 0;
-        int totalJobs = 0;
-        int totalRelevantJobs = 0;
-        if(!userProfile.isComplete()){
-            boolean isComplete = false;
-            if(jobs.findAll() == null) {
-                return "There are no current job postings";
-            }else{
-                Iterable<Job> allJobs = jobs.findAll();
-                totalJobs = ((List<Job>) allJobs).size();
-            }
+       if(user.getInternProfile() != null) {
+           InternProfile userProfile = user.getInternProfile();
+           //total number of jobs intern has applied for
+           int appliedTotal = 0;
+           int totalJobs = 0;
+           int totalRelevantJobs = 0;
+           if (!userProfile.isComplete()) {
+               boolean isComplete = false;
+               if (jobs.findAll() == null) {
+                   return "There are no current job postings";
+               } else {
+                   Iterable<Job> allJobs = jobs.findAll();
+                   totalJobs = ((List<Job>) allJobs).size();
+               }
 
-        }
-        else{
+           } else {
 
-            List<Job> appliedList = userProfile.getAppliedJobs();
-                appliedTotal = appliedList.size();
-                List<Job> relevantJobs = jobs.findByIndustry(userProfile.getField_1(), userProfile.getField_2(), userProfile.getField_3());
-                totalRelevantJobs = relevantJobs.size();
-            }
+               List<Job> appliedList = userProfile.getAppliedJobs();
+               appliedTotal = appliedList.size();
+               List<Job> relevantJobs = jobs.findByIndustry(userProfile.getField_1(), userProfile.getField_2(), userProfile.getField_3());
+               totalRelevantJobs = relevantJobs.size();
+           }
 
 
-            model.addAttribute("userProfile", userProfile);
-            model.addAttribute("totalRelevantJobs", totalRelevantJobs);
-            model.addAttribute("appliedTotal", appliedTotal);
-            model.addAttribute("totalJobs", totalJobs);
+           model.addAttribute("userProfile", userProfile);
+           model.addAttribute("totalRelevantJobs", totalRelevantJobs);
+           model.addAttribute("appliedTotal", appliedTotal);
+           model.addAttribute("totalJobs", totalJobs);
 
+       }
 
         return "dashboard";
     }
