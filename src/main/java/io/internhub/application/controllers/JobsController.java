@@ -62,6 +62,7 @@ public class JobsController {
     @GetMapping("interns/index")
     public String showAllInternJobs(Model model){
 
+
         return("interns/index");
     }
 
