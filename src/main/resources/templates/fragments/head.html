@@ -2,50 +2,74 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
-<th:block th:fragment="head(title)">
-	<head>
-		<meta charset="UTF-8" />
-		<title th:text="'InternHub | ' + ${title}"></title>
+	<th:block th:fragment="head(title)">
+		<head>
+			<meta charset="UTF-8" />
+			<title th:text="'InternHub | ' + ${title}"></title>
 
-		<!-- Compiled and minified CSS Materialize-->
-		<link rel="stylesheet"
-		      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-
-
-		<!-- Nav bar -->
-		<nav>
-			<div class="nav-wrapper">
+			<!-- Compiled and minified CSS Materialize-->
+			<link rel="stylesheet"
+				  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 
 
-				<a href="#" class="brand-logo">SA Ambassadors</a>
-				<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-				<ul class="right hide-on-med-and-down">
-					<li><a href="/faq">FAQ</a></li>
-					<li><a href="/interns/profile">Interns</a></li>
-					<li><a href="/employers/register">Employers</a></li>
-					<li><a href="/login">Login</a></li>
-				</ul>
-			</div>
-		</nav>
+			<!-- Nav bar -->
+			<nav>
+				<div class="nav-wrapper">
+					<a href="#" class="brand-logo">SA Ambassadors</a>
+					<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+					<ul class="right hide-on-med-and-down">
+						<li><a href="/faq">FAQ</a></li>
+						<li><a href="/interns/profile">Interns</a></li>
+						<li><a href="/employers/register">Employers</a></li>
+						<li><a href="/login">Login</a></li>
+					</ul>
+				</div>
+			</nav>
 
 
-		<!-- Collapsible side nav -->
-		<ul class="sidenav" id="mobile-demo">
-			<li><a href="/faq">FAQ</a></li>
-			<li><a href="/interns/profile">Interns</a></li>
-			<li><a href="/employers/register">Employers</a></li>
-			<li><a href="/login">Login</a></li>
-		</ul>
+			<!-- Collapsible side nav -->
+			<ul class="sidenav" id="mobile-demo">
+				<li><a href="/faq">FAQ</a></li>
+				<li><a href="/interns/profile">Interns</a></li>
+				<li><a href="/employers/register">Employers</a></li>
+				<li><a href="/login">Login</a></li>
+			</ul>
 
 
-		<!-- Search -->
-		<div class="input-field">
-			<input id="search" type="search" required="required" />
+			<!-- Search -->
+			<div class="input-field">
+				<input id="search" type="search" required>
+				<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+				<i class="material-icons">close</i>
+		</head>
 
-			<label class="label-icon" for="search"><i class="material-icons">search</i></label>
-			<i class="material-icons">close</i>
-		</div>
+		<body>
+			<div class="container">
+				<!-- Page Content goes here  -->
 
-	</head>
-</th:block>
+				<div class="divider"></div>
+					<div class="row">
+						<div class="col s6">
+							<h2>Content One</h2>
+							<p>
+								A big strong tree needs big strong roots. Clouds are free.
+								They just float around the sky all day and have fun.
+								All those little son of a guns.
+							</p>
+						</div>
+
+						<div class="col s6">
+							<h2>Content Two</h2>
+							<p>
+								A big strong tree needs big strong roots. Clouds are free.
+								They just float around the sky all day and have fun.
+								All those little son of a guns.
+							</p>
+						</div>
+					</div>
+				<div class="divider"></div>
+			</div>  <!-- /container -->
+
+		</body>
+	</th:block>
 </html>
