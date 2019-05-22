@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Intern Profile</title>
-    </head>
+<head th:replace="fragments/head :: head('Profile')" />
 
 
     <body>
@@ -45,7 +42,7 @@
         <input id="sa_college" th:field="*{sa_college}"/>
 
         <label for="first_to_college">Are you the first in your family to attend college?</label>
-        <input id="first_to_college" th:field="*{first_to_college}">
+        <input id="first_to_college" th:field="*{first_to_college}" />
 
         <label for="sa_educational_program">Recipient of San Antonio Education Partnership (SAEP) Scholarship?</label>
         <input id="sa_educational_program" th:field="*{sa_educational_program}"/>

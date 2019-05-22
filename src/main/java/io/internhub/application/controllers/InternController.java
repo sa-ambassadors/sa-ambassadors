@@ -57,7 +57,7 @@ public class InternController {
         return "redirect:/login";
     }
 
-    @GetMapping("interns/profile")
+    @GetMapping("interns/profile-register")
     public String getInternProfileForm(Model model) {
 
         // security
@@ -67,10 +67,10 @@ public class InternController {
         }
 
         model.addAttribute("internProfile", new InternProfile());
-        return "interns/profile";
+        return "interns/register-profile";
     }
 
-    @PostMapping("interns/profile")
+    @PostMapping("interns/profile-register")
     public String postInternProfileForm(@ModelAttribute InternProfile internProfile){
         UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findByUsername(userWithRoles.getUsername());

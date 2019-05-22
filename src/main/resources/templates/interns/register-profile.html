@@ -7,7 +7,7 @@
 <body>
 <h1>Create an account</h1>
 <div class="row">
-	<form class="col s12" th:action="@{/interns/profile}" method="POST" th:object="${internProfile}">
+	<form class="col s12" th:action="@{/interns/register-profile}" method="POST" th:object="${internProfile}">
 
 		<div class="row">
 			<div class="input-field col s6">
@@ -152,5 +152,5 @@
 </div>
 <script type="text/javascript" th:src="@{/profile-script.js}"></script>
 </body>
-<footer th:include="fragments/footer" />
+<footer th:replace="fragments/footer" />
 </html>
