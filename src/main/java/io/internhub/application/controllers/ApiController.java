@@ -145,4 +145,8 @@ public class ApiController {
         return ResponseEntity.ok("User does not own job");
     }
 
+//    @PatchMapping("{user}/employer/edit/{job}")
+//    public ResponseEntity<?> editEmployerJob
+
+
 }
