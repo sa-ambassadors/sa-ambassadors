@@ -121,6 +121,7 @@ public class ApiController {
         if (updatingInternProfile.isSa_college() != internProfile.isSa_college()) {
             internProfile.setSa_college(updatingInternProfile.isSa_college());
         }
+        internRepository.save(internProfile);
         return ResponseEntity.ok("Intern profile saved.");
     }
 
