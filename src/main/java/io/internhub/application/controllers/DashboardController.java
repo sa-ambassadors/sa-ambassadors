@@ -50,7 +50,6 @@ public class DashboardController {
         }
 
 //        INTERN DASHBOARD
-
        if(user.getInternProfile() != null) {
            InternProfile userProfile = user.getInternProfile();
            //total number of jobs intern has applied for
