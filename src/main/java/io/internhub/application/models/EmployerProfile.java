@@ -25,6 +25,8 @@ public class EmployerProfile {
     private String websiteUrl;
     @Column
     private String description;
+    @Column
+    private boolean isApproved;
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -111,7 +113,15 @@ public class EmployerProfile {
         return jobs;
     }
 
+    public boolean isApproved() {
+        return isApproved;
+    }
 
+    public void setApproved(boolean approved) {
+        isApproved = approved;
+    }
 
-
+    public void setJobs(List<Job> jobs) {
+        this.jobs = jobs;
+    }
 }

@@ -1,6 +1,8 @@
 package io.internhub.application.controllers;
 
 import io.internhub.application.models.*;
+import io.internhub.application.repositories.EmployerProfiles;
+import io.internhub.application.repositories.InternRepository;
 import io.internhub.application.repositories.Jobs;
 import io.internhub.application.repositories.Users;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,10 +18,14 @@ public class DashboardController {
 
     private Jobs jobs;
     private Users users;
+    private InternRepository interns;
+    private EmployerProfiles employers;
 
-    public DashboardController (Users users, Jobs jobs) {
+    public DashboardController (Users users, Jobs jobs, InternRepository interns, EmployerProfiles employers) {
         this.users = users;
         this.jobs = jobs;
+        this.employers = employers;
+        this.interns = interns;
     }
 
     @GetMapping("dashboard")
@@ -87,6 +93,50 @@ public class DashboardController {
            model.addAttribute("totalJobs", totalJobs);
 
        }
+
+//       ADMIN DASHBOARD
+        if(user.getRole().getId() == 5){
+            int approvedInternCount = 0;
+            int totalInternCount = 0;
+            int hiredCount = 0;
+
+            int totalEmployerCount = 0;
+            int approvedEmployerCount = 0;
+            int totalJobs;
+
+            Iterable<InternProfile> allInternProfiles = interns.findAll();
+            for (InternProfile intern: allInternProfiles
+                 ) {
+                totalInternCount += 1;
+                if(intern.isApproved()){
+                    approvedInternCount += 1;
+                }
+                if(intern.isHired()){
+                    hiredCount += 1;
+                }
+            }
+            Iterable<EmployerProfile> allEmployerProfiles = employers.findAll();
+            for(EmployerProfile employer : allEmployerProfiles){
+                totalEmployerCount += 1;
+                if(employer.isApproved()){
+                    approvedEmployerCount += 1;
+                }
+            }
+            Iterable<Job> allJobs = jobs.findAll();
+            totalJobs = ((List<Job>) allJobs).size();
+
+            totalInternCount = 10;
+            approvedInternCount = 5;
+            model.addAttribute("totalInternCount",totalInternCount);
+            model.addAttribute("approvedInternCount",approvedInternCount);
+            model.addAttribute("hiredCount",hiredCount);
+            model.addAttribute("totalEmployerCount",totalEmployerCount);
+            model.addAttribute("approvedEmployerCount",approvedEmployerCount);
+            model.addAttribute("totalJobs",totalJobs);
+
+
+        }
+
 
         return "dashboard";
     }
