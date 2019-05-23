@@ -34,12 +34,12 @@
             <label for="transcript">Transcript:</label>
             <input id="transcript" th:field="*{transcript_link}"/>
             <input id="transcript_button" type="button" class="btn btn-block btn-primary" name="transcript" value="Upload">
-            <input id="transcript_file" name="transcript_file" type="text" style="visibility: hidden">
+            <input id="transcript_file" name="transcript_file" type="file" style="visibility: hidden">
 
             <label for="essay">Essay:</label>
             <input id="essay" th:field="*{essay}"/>
             <input id="essay_button" type="button" class="btn btn-block btn-primary" name="essay" value="Upload">
-            <input id="essay_file" name="essay_file" type="text" style="visibility: hidden">
+            <input id="essay_file" name="essay_file" type="file" style="visibility: hidden">
 
 
             <label for="sa_highschool">Attended high-school in San Antonio, TX?</label>
@@ -69,7 +69,7 @@
             <label for="appliedjobs">Applied jobs:</label>
             <input id="appliedjobs" th:field="*{appliedJobs}"/>
 
-            <input value="Submit" type="submit"/>
+            <input value="Submit Application" type="submit"/>
         </form>
 
         <script>
@@ -89,7 +89,8 @@
                 client.picker({
                     onFileUploadFinished: function(response){
                         this.value ="https://cdn.filestackcontent.com/" + (response.handle);
-                        document.getElementById("essay").value = this.value
+                        document.getElementById("transcript").value = this.value
+
                     }
                 }).open();
             })
