@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="fragments/head :: faq('faq')">
-        <meta charset="UTF-8">
+    <!-- dynamic nav -->
+    <head th:replace="fragments/head :: head('faq')">
+        <meta charset="UTF-8"/>
         <title>FAQ</title>
     </head>
 
-
     <body>
-    <h1>FAQ</h1>
-    <!-- Content -->
-    <a th:href="@{/faq}">FAQ</a>
+        <h1>FAQ</h1>
+        <a th:href="@{/faq}"></a>
 
-    <footer th:replace="fragments/footer"></footer>
+        <footer th:replace="fragments/footer"></footer>
     </body>
 </html>
