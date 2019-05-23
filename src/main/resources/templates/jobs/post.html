@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="fragments/head :: head('Job!')" />
+<div class="container">
+
+<body>
+<h5 th:text="${job.getTitle()}"></h5>
+<span th:text="${job.getCompanyName()}"></span> <span th:text="${job.getLocation()}"></span>
+<span th:text="${job.getResponsibilities()}"></span>
+<p th:text="${job.getJobDescription()}"></p>
+<span th:text="${job.getBasicQualifications()}"></span><span th:text="${job.getIndustry()}"></span>
+
+</body>
+
+</div>
+</html>

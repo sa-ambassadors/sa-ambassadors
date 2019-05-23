@@ -121,6 +121,7 @@ public class ApiController {
         if (updatingInternProfile.isSa_college() != internProfile.isSa_college()) {
             internProfile.setSa_college(updatingInternProfile.isSa_college());
         }
+        internRepository.save(internProfile);
         return ResponseEntity.ok("Intern profile saved.");
     }
 
@@ -170,7 +171,7 @@ public class ApiController {
             if (updatedJob.getCompanyName() != null) {
                 foundJob.setCompanyName(updatedJob.getCompanyName());
             }
-            if (updatedJob.getIndustry() != null) {
+            if (updatedJob.getIndustry() != 99) {
                 foundJob.setIndustry(updatedJob.getIndustry());
             }
             if (updatedJob.getLocation() != null) {

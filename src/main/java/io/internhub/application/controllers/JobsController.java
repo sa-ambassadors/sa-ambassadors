@@ -70,19 +70,30 @@ public class JobsController {
             model.addAttribute("jobsList", relevantJobs);
         }else{
             Iterable<Job> allJobs = jobs.findAll();
+            boolean isRelevant = false;
+            model.addAttribute("isRelevant", isRelevant);
             model.addAttribute("jobsList",((List<Job>) allJobs));
         }
         return("interns/index");}
         else{
-            return("interns/profile");
+            return("redirect:/interns/profile-register");
         }
 
     }
 
     @GetMapping("interns/applied_index")
     public String showAllAppliedJobs(Model model){
-
-        return("interns/applied_index");
+        UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = users.findByUsername(userWithRoles.getUsername());
+        InternProfile userProfile = user.getInternProfile();
+        if(userProfile.isApproved()){
+            if(userProfile.getAppliedJobs().isEmpty()) {
+                String message = "Positions you have applied for will appear here";
+                model.addAttribute("message", message);
+                return ("interns/applied_index");
+            }
+        }
+        return("redirect:/interns/profile-register");
     }
 
     @GetMapping("jobs/{jobId}")
@@ -90,7 +101,7 @@ public class JobsController {
         Long jobLongId = Long.parseLong(jobId);
         Job job = jobs.findOne(jobLongId);
         model.addAttribute("job", job);
-        return "jobs/id";
+        return "jobs/post";
     }
 
 }

@@ -24,7 +24,12 @@ public class DashboardController {
 
     @GetMapping("dashboard")
     public String getDashboardPage(Model model) {
-        UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (!(principal instanceof UserWithRoles)) {
+            return "redirect:/login";
+        }
+
+        UserWithRoles userWithRoles = (UserWithRoles) principal;
         User user = users.findByUsername(userWithRoles.getUsername());
 
 
