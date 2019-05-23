@@ -58,6 +58,9 @@ public class InternProfile {
     @Column
     private boolean isApproved;
 
+    @Column
+    private boolean isHired;
+
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -223,5 +226,11 @@ public class InternProfile {
         this.appliedJobs = appliedJobs;
     }
 
+    public boolean isHired() {
+        return isHired;
+    }
 
+    public void setHired(boolean hired) {
+        isHired = hired;
+    }
 }

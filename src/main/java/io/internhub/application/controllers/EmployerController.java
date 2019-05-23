@@ -53,10 +53,14 @@ public class EmployerController {
     @PostMapping("employers/profile")
     public String employerProfile(@ModelAttribute EmployerProfile employerProfile) {
         User user = userTransporter.getUser();
-        user.setEmployerProfile(employerProfile);
         user.setRole(roles.findOne(4L));
-        employerProfile.setUser(user);
         users.save(user);
+        User newUser = users.findByUsername(user.getUsername());
+        newUser.setEmployerProfile(employerProfile);
+        employerProfile.setUser(newUser);
+        employerProfile.setApproved(false);
+        employerProfiles.save(employerProfile);
+
         return "redirect:/login";
     }
 
