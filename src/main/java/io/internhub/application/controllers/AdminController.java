@@ -1,8 +1,10 @@
 package io.internhub.application.controllers;
 
 import io.internhub.application.models.InternProfile;
+import io.internhub.application.models.Job;
 import io.internhub.application.models.User;
 import io.internhub.application.repositories.InternRepository;
+import io.internhub.application.repositories.Jobs;
 import io.internhub.application.repositories.Roles;
 import io.internhub.application.repositories.Users;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,12 +20,14 @@ public class AdminController {
     private PasswordEncoder passwordEncoder;
     private Roles roles;
     private InternRepository internProfiles;
+    private Jobs jobs;
 
-    public AdminController(Users users, PasswordEncoder passwordEncoder, Roles roles, InternRepository internProfiles){
+    public AdminController(Users users, PasswordEncoder passwordEncoder, Roles roles, InternRepository internProfiles, Jobs jobs){
         this.users = users;
         this.passwordEncoder = passwordEncoder;
         this.roles = roles;
         this.internProfiles = internProfiles;
+        this.jobs = jobs;
 
 
     }
@@ -52,6 +56,15 @@ public class AdminController {
 
         model.addAttribute("allProfiles",allProfiles);
         return"admin/applicant-index";
+    }
+
+    @GetMapping("admin/job-index")
+    public String jobIndex(Model model)
+    {
+        Iterable<Job> allJobs = jobs.findAll();
+
+        model.addAttribute("allJobs",allJobs);
+        return"admin/job-index";
     }
 }
 

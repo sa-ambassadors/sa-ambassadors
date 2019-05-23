@@ -10,14 +10,13 @@
 <body>
 <div th:each="intern: ${allProfiles}">
 	<div class="row">
+
 		<div class="col l3">
-			<h5 th:text="${intern.getFirst_name()}" />
+			<h5> <span th:text="${intern.getFirst_name()}" /> <span th:text="${intern.getLast_name()}" /> </h5>
 			<hr />
 		</div>
 
 	</div>
-
-
 </div>
 
 </body>
