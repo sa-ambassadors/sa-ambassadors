@@ -5,6 +5,8 @@
     document.querySelector("#save").addEventListener("click", saveInternProfile);
 
     let username = document.querySelector("#username").innerHTML;
+
+    //Intern profile fields
     let firstName = null;
     let lastName = null;
     let major = null;
@@ -17,9 +19,18 @@
     let saHighSchool = false;
     let firstToCollege = false;
 
+    //Employer profile fields
+    let empName = null;
+    let supervisor = null;
+    let email = null;
+    let industry = null;
+    let location = null;
+    let websiteURL = null;
+    let description = null;
+
     function saveInternProfile(event) {
         event.preventDefault();
-        setVars();
+        setInternVars();
         fetch("/api/v1/" + username + "/intern/profile/edit", {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
@@ -40,7 +51,26 @@
 
     }
 
-    function setVars() {
+    function saveEmployerProfile(event) {
+        event.preventDefault();
+        setEmployerVars();
+        fetch("/api/v1/" + username + "/employer/profile/edit", {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                "name": empName,
+                "supervisor": supervisor,
+                "email": email,
+                "industry": industry,
+                "location": location,
+                "websiteUrl": websiteURL,
+                "description": description
+            })
+        })
+
+    }
+
+    function setInternVars() {
         firstName = document.querySelector("#firstName").innerHTML;
         lastName = document.querySelector("#lastName").innerHTML;
         major = document.querySelector("#major").innerHTML;
@@ -53,6 +83,9 @@
         saHighSchool = document.querySelector("#sa_highschool").innerHTML;
         document.querySelector("#sa_college").innerHTML;
         firstToCollege = document.querySelector("#first_to_college").innerHTML;
+    }
+
+    function setEmployerVars() {
     }
 
 })();
