@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class FaqController {
 
     @GetMapping(value = "/faq")
-    public String faq(Model model){
-        return "Frequently Asked Questions:";
+    public String faq(){
+        return "faq/faq";
     }
 }
 
