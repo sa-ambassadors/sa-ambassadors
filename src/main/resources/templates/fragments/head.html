@@ -28,11 +28,15 @@
 						</li>
 						<li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
 						<li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
-						<div sec:authorize="isAnonymous()">
-						<li><a href="/interns/register">Interns</a></li>
-						<li><a href="/employers/register">Employers</a></li>
-						</div>
-						<li><a href="/faq">FAQ</a></li>
+						<li sec:authorize="isAnonymous()">
+						<a href="/interns/register">Interns</a>
+						</li>
+						<li sec:authorize="isAnonymous()">
+						<a href="/employers/register">Employers</a>
+						</li>
+						<li sec:authorize="isAnonymous()">
+						<a href="/faq">FAQ</a>
+						</li>
 
 					</ul>
 				</div>
