@@ -25,7 +25,7 @@ public class ProfileController {
         // security
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (!(principal instanceof UserWithRoles)) {
-            return "redirect: /login";
+            return "redirect:/login";
         }
 
         UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

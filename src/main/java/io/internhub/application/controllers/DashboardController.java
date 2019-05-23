@@ -24,7 +24,12 @@ public class DashboardController {
 
     @GetMapping("dashboard")
     public String getDashboardPage(Model model) {
-        UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (!(principal instanceof UserWithRoles)) {
+            return "redirect:/login";
+        }
+
+        UserWithRoles userWithRoles = (UserWithRoles) principal;
         User user = users.findByUsername(userWithRoles.getUsername());
 
 
@@ -50,7 +55,6 @@ public class DashboardController {
         }
 
 //        INTERN DASHBOARD
-
        if(user.getInternProfile() != null) {
            InternProfile userProfile = user.getInternProfile();
            //total number of jobs intern has applied for

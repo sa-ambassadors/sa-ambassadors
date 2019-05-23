@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Sign-Up')" />
 <body>
 <h1>Create an account</h1>
@@ -12,9 +14,6 @@
     <label for="email">Point of contact's email:</label>
     <input id="email" th:field="*{email}" />
 
-    <label for="industry">Industry:</label>
-    <input id="industry" th:field="*{industry}" />
-
     <label for="location">Company location:</label>
     <input id="location" th:field="*{location}" />
 
@@ -28,3 +27,4 @@
 </form>
 </body>
 <footer th:replace="fragments/footer"></footer>
+</html>
