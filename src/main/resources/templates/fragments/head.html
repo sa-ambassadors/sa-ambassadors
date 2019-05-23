@@ -14,8 +14,10 @@
 			<!-- Nav bar -->
 			<nav>
 				<div class="nav-wrapper">
+					<a href="#" class="brand-logo">InternHub</a>
 					<span sec:authorize="isAuthenticated()"><a href="/dashboard" class="brand-logo">SA Ambassadors</a></span>
 					<span sec:authorize="isAnonymous()"><a href="/" class="brand-logo">SA Ambassadors</a></span>
+
 					<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 					<ul class="right hide-on-med-and-down">
 						<li>
