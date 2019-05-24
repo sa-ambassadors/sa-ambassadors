@@ -11,6 +11,7 @@
 			<!-- Compiled and minified CSS Materialize-->
 			<link rel="stylesheet"
 				  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
 			<!-- Nav bar -->
 			<nav>
 				<div class="nav-wrapper">
@@ -34,16 +35,17 @@
 						</div>
 						<li><a href="/faq">FAQ</a></li>
 					</ul>
-				</div>
 
-				<!-- Display current logged-in user -->
-				<div sec:authorize="isAuthenticated()">
-					<form th:action="@{/logout}" th:method="post"></form>
-					User ID: <span id ="username" th:text="${#authentication.principal.id}"></span>
-					Username: <span th:text="${#authentication.principal.username}"></span>
-                    test
-				</div>
+					<!-- Display current logged-in user -->
+					<div class="navbar-user">
+						<div sec:authorize="isAuthenticated()">
+							<form th:action="@{/logout}" th:method="post"></form>
+							<span id ="username" th:text="${#authentication.principal.id}"></span>
+							Username: <span th:text="${#authentication.principal.username}"></span>
+						</div>
+					</div>
 
+				</div>  <!--  /nav-wrapper -->
 			</nav>
 
 			<!-- Collapsible side nav -->
@@ -55,6 +57,5 @@
 			</ul>
 
 		</head>
-
 	</th:block>
 </html>
