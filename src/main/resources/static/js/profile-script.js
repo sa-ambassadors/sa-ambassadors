@@ -2,6 +2,8 @@
 
     "use script";
 
+    console.log("test");
+
     document.querySelector("#save").addEventListener("click", saveInternProfile);
 
     let username = document.querySelector("#username").innerHTML;
@@ -31,6 +33,8 @@
     function saveInternProfile(event) {
         event.preventDefault();
         setInternVars();
+        console.log(firstName);
+        console.log("test");
         fetch("/api/v1/" + username + "/intern/profile/edit", {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
@@ -48,7 +52,6 @@
                 "first_to_college": firstToCollege
             })
         })
-
     }
 
     function saveEmployerProfile(event) {

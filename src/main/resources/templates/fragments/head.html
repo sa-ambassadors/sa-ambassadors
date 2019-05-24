@@ -6,7 +6,7 @@
 		<head>
 			<meta charset="UTF-8" />
 			<title th:text="'InternHub | ' + ${title}"></title>
-            <link rel="icon" href="ih-favicon.png" type="image">
+            <link rel="icon" href="ih-favicon.png" type="image" />
 
 			<!-- Compiled and minified CSS Materialize-->
 			<link rel="stylesheet"
@@ -39,8 +39,8 @@
 				<!-- Display current logged-in user -->
 				<div sec:authorize="isAuthenticated()">
 					<form th:action="@{/logout}" th:method="post"></form>
-					User ID: <span id ="username" th:text="${#authentication.principal.id}"></span>
-					Username: <span th:text="${#authentication.principal.username}"></span>
+					User ID: <span th:text="${#authentication.principal.id}"></span>
+					Username: <span id="username" th:text="${#authentication.principal.username}"></span>
                     test
 				</div>
 
