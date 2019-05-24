@@ -5,15 +5,18 @@
 
 		<head>
 			<meta charset="UTF-8" />
+			<link rel="stylesheet" type="text/css" href="../css/head.css" />
+            <link rel="icon" href="../../static/img/ih-favicon.png" type="image" />
 			<title th:text="'InternHub | ' + ${title}"></title>
-            <link rel="icon" href="ih-favicon.png" type="image" />
+
 
 			<!-- Compiled and minified CSS Materialize-->
 			<link rel="stylesheet"
 				  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
 			<!-- Nav bar -->
 			<nav>
-				<div class="nav-wrapper">
+				<div class="nav-wrapper blue">
 					<a href="#" class="brand-logo">InternHub</a>
 					<span sec:authorize="isAuthenticated()"><a href="/dashboard" class="brand-logo">InternHub</a></span>
 					<span sec:authorize="isAnonymous()"><a href="/" class="brand-logo">InternHub</a></span>
@@ -34,7 +37,6 @@
 						</div>
 						<li><a href="/faq">FAQ</a></li>
 					</ul>
-				</div>
 
 				<!-- Display current logged-in user -->
 				<div sec:authorize="isAuthenticated()">
@@ -44,6 +46,8 @@
                     test
 				</div>
 
+
+				</div>  <!--  /nav-wrapper -->
 			</nav>
 
 			<!-- Collapsible side nav -->
@@ -55,6 +59,6 @@
 			</ul>
 
 		</head>
-
 	</th:block>
+	<footer th:replace="fragments/footer" />
 </html>
