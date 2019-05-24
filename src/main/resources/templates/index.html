@@ -4,32 +4,33 @@
 </head>
 
 	<body>
-		<div class="container">
-			<!-- Content goes here  -->
-			<div class="divider"></div>
-				<div class="row">
-					<div class="col s6">
-						<h2>Interns</h2>
-						<p>
-							A big strong tree needs big strong roots. Clouds are free.
-							They just float around the sky all day and have fun.
-							All those little son of a guns.
-						</p>
-						<a th:href="@{interns/register}">Interns Register here</a>
-					</div>
-					<div class="col s6">
-						<h2>Employers</h2>
-						<p>
-							A big strong tree needs big strong roots. Clouds are free.
-							They just float around the sky all day and have fun.
-							All those little son of a guns.
-						</p>
-						<a th:href="@{employers/register}">Employers Register here</a>
-					</div>
-				</div>
-			<div class="divider"></div>
-		</div>  <!-- /container -->
-	</body>
+  <div class="container">
+    <!-- Page Content goes here  -->
+    <div class="divider"></div>
+    <div class="row">
+      <div class="col s6">
+        <h2>Interns</h2>
+        <p>
+          A big strong tree needs big strong roots. Clouds are free.
+          They just float around the sky all day and have fun.
+          All those little son of a guns.
+        </p>
+        <a th:href="@{interns/register}">Interns Register here</a>
+      </div>
+      <div class="col s6">
+        <h2>Employers</h2>
+        <p>
+          A big strong tree needs big strong roots. Clouds are free.
+          They just float around the sky all day and have fun.
+          All those little son of a guns.
+        </p>
+        <a th:href="@{employers/register}">Employers Register here</a>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <a th:href="@{admin/register}">admin</a>
+  </div>  <!-- /container -->
+</body>
 
 <footer th:replace="fragments/footer" />
 

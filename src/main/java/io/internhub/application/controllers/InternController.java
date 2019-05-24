@@ -42,7 +42,6 @@ public class InternController {
     @PostMapping("interns/register")
     public String internRegisterPost(@ModelAttribute User user){
         String password = user.getPassword();
-        System.out.println(password);
         String hash = passwordEncoder.encode(password);
         user.setPassword(hash);
         user.setRole(roles.findOne(3L));
@@ -51,6 +50,7 @@ public class InternController {
         InternProfile newProfile = new InternProfile();
         newProfile.setComplete(false);
         newProfile.setApproved(false);
+        newProfile.setHired(false);
         newProfile.setUser(newUser);
         internDao.save(newProfile);
 
