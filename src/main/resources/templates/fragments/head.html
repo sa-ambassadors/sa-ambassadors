@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+	<th:block th:fragment="head(title)">
 
-<th:block th:fragment="head(title)">
 		<head>
 			<meta charset="UTF-8" />
 			<title th:text="'InternHub | ' + ${title}"></title>
+            <link rel="icon" href="ih-favicon.png" type="image">
 
 			<!-- Compiled and minified CSS Materialize-->
 			<link rel="stylesheet"
@@ -16,7 +17,6 @@
 					<a href="#" class="brand-logo">InternHub</a>
 					<span sec:authorize="isAuthenticated()"><a href="/dashboard" class="brand-logo">InternHub</a></span>
 					<span sec:authorize="isAnonymous()"><a href="/" class="brand-logo">InternHub</a></span>
-
 					<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 					<ul class="right hide-on-med-and-down">
 						<li>
@@ -28,18 +28,22 @@
 						</li>
 						<li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
 						<li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
-						<li sec:authorize="isAnonymous()">
-						<a href="/interns/register">Interns</a>
-						</li>
-						<li sec:authorize="isAnonymous()">
-						<a href="/employers/register">Employers</a>
-						</li>
-						<li sec:authorize="isAnonymous()">
-						<a href="/faq">FAQ</a>
-						</li>
-
+						<div sec:authorize="isAnonymous()">
+						<li><a href="/interns/register">Interns</a></li>
+						<li><a href="/employers/register">Employers</a></li>
+						</div>
+						<li><a href="/faq">FAQ</a></li>
 					</ul>
 				</div>
+
+				<!-- Display current logged-in user -->
+				<div sec:authorize="isAuthenticated()">
+					<form th:action="@{/logout}" th:method="post"></form>
+					User ID: <span id ="username" th:text="${#authentication.principal.id}"></span>
+					Username: <span th:text="${#authentication.principal.username}"></span>
+                    test
+				</div>
+
 			</nav>
 
 			<!-- Collapsible side nav -->
