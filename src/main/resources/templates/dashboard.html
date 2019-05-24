@@ -15,6 +15,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
         </ul>
         <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
 
+
         <!-- ONLY VISIBLE TO EMPLOYERS-->
         <div sec:authorize="hasRole('ROLE_EMPLOYER')">
         <div class="row">
@@ -30,7 +31,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                         <p><a href="/employers/add-job">Add A Posting</a></p>
                     </div>
                 </div>
-            </div>
+
+              
             <!--SECOND CARD SHOWS TOTAL APPLICANTS-->
             <div class="col s12 m4 l3">
                 <div class="card">
@@ -72,8 +74,16 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
             <!--ROW ENDS-->
         </div>
         </div>
+
         <!--EMPLOYER DIV ENDS-->
 
+    </div>
+    <!--ROW ENDS-->
+</div>
+</div>
+<!--EMPLOYER SECTION ENDS-->
+
+<!--ONLY INTERN CAN SEE SECTION BELOW-->
         <div sec:authorize="hasRole('ROLE_INTERN')">
             <div class="row">
                 <!--FIRST CARD SHOWS NUMBER OF ALL JOBS AVAILABLE FOR INTERN -->
@@ -104,6 +114,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                     </div>
                 </div>
 
+
                 <!--ROW ENDS-->
             </div>
         </div>
@@ -111,6 +122,71 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
         <div sec:authorize="hasRole('ROLE_ADMIN')">
            admin
         </div>
-    </body>
+
+<!--INTERN SECTION ENDS-->
+
+<!--ONLY ADMIN CAN SEE THE SECTION BELOW-->
+    
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+	<div class="row">
+		<!--FIRST CARD SHOWS INTERN STATS-->
+		<div class="col s12 m4 l3">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title">Approved Interns</span>
+					<h1><span th:text="${approvedInternCount}" />/<span th:text="${totalInternCount}" /></h1>
+
+				</div>
+				<div class="card-action">
+					<p><a href="/admin/applicant-index">View Pending Applications</a></p>
+				</div>
+			</div>
+		</div>
+
+		<!--SECOND CARD SHOWS EMPLOYER STATS-->
+		<div class="col s12 m4 l3">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title">Approved Employers</span>
+					<h1><span th:text="${approvedEmployerCount}" />/<span th:text="${totalEmployerCount}" /> </h1>
+				</div>
+				<div class="card-action">
+					<p><a href="/admin/employer-index">View Pending Applications</a></p>
+				</div>
+			</div>
+		</div>
+
+		<!--THIRD CARD SHOWS TOTAL JOBS-->
+		<div class="col s12 m4 l3">
+		<div class="card">
+			<div class="card-content">
+				<span class="card-title">Total Job Postings</span>
+				<h1 th:text="${totalJobs}"></h1>
+			</div>
+			<div class="card-action">
+				<p><a href="/admin/job-index">Review Job Postings</a></p>
+
+			</div>
+		</div>
+	</div>
+
+		<!--FOURTH CARD SHOWS PLACEMENT STATS-->
+		<div class="col s12 m4 l3">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title">Hired</span>
+					<h1> <span th:text="${approvedInternCount}" />/<span th:text="${hiredCount}" /></h1>
+				</div>
+				<div class="card-action">
+					<p> <a href="/admin/applicant-index/">View Hired Interns</a></p>
+				</div>
+			</div>
+		</div>
+		<!--ROW ENDS-->
+
+	</div>
+</div>
+</body>
+
 <footer th:replace="fragments/footer" />
 </html>
