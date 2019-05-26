@@ -6,12 +6,48 @@
     <div class="container">
 
     <body>
+        <span id="job-id" th:text="${job.getId()}"></span>
         <h5 th:text="${job.getTitle()}"></h5>
+        <div sec:authorize="hasRole('ROLE_INTERN')" id="job-apply-div" th:switch="${userHasApplied}">
+            <div th:case="false">
+            <button id="apply">Apply to job</button>
+            </div>
+            <div th:case="true">
+            <p>Your application has been submitted.</p>
+            </div>
+        </div>
         <span th:text="${job.getCompanyName()}"></span> <span th:text="${job.getLocation()}"></span>
         <span th:text="${job.getResponsibilities()}"></span>
         <p th:text="${job.getJobDescription()}"></p>
         <span th:text="${job.getBasicQualifications()}"></span><span th:text="${job.getIndustry()}"></span>
 
+    <script>
+
+        (function() {
+
+            "use script";
+
+            let jobId = document.querySelector("#job-id").innerText;
+            let username = document.querySelector("#username").innerText;
+
+            document.querySelector("#apply").addEventListener('click', allowUserToApplyToJob);
+
+            function allowUserToApplyToJob() {
+                fetch('/api/v1/' + username + /add/ + jobId).then(response => {
+                    response.json().then(data => {
+                        console.log(data);
+                    })
+                });
+                changeJobAppliedDiv();
+            }
+
+            function changeJobAppliedDiv() {
+                document.querySelector("#job-apply-div").innerHTML = "You application has been submitted."
+            }
+
+        })();
+
+    </script>
     </body>
 
     </div>
