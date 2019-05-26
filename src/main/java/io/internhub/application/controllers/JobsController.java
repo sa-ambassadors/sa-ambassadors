@@ -98,6 +98,19 @@ public class JobsController {
 
     @GetMapping("jobs/{jobId}")
     public String getJobPage (Model model, @PathVariable String jobId) {
+        boolean userHasAppliedToJob = false;
+        UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = users.findByUsername(userWithRoles.getUsername());
+        if (user.getInternProfile() != null) {
+            InternProfile internProfile = user.getInternProfile();
+            List<Job> appliedJobs = internProfile.getAppliedJobs();
+            for (Job job : appliedJobs) {
+                if (job.getId() == Long.parseLong(jobId)) {
+                    userHasAppliedToJob = true;
+                }
+            }
+            model.addAttribute("userHasApplied", userHasAppliedToJob);
+        }
         Long jobLongId = Long.parseLong(jobId);
         Job job = jobs.findOne(jobLongId);
         model.addAttribute("job", job);
