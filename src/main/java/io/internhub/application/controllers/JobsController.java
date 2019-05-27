@@ -90,7 +90,7 @@ public class JobsController {
             if(userProfile.getAppliedJobs().isEmpty()) {
                 String message = "Positions you have applied for will appear here";
                 model.addAttribute("message", message);
-                return ("interns/applied_index");
+                return ("applied-index");
             }
         }
         return("redirect:/interns/profile-register");
@@ -115,6 +115,25 @@ public class JobsController {
         Job job = jobs.findOne(jobLongId);
         model.addAttribute("job", job);
         return "jobs/post";
+    }
+
+    @GetMapping("jobs/{jobId}/applicants")
+    public String getJobApplicants (Model model, @PathVariable String jobId) {
+        boolean userOwnJob = false;
+        UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = users.findByUsername(userWithRoles.getUsername());
+        EmployerProfile employerProfile = user.getEmployerProfile();
+        List<Job> jobList = employerProfile.getJobs();
+        for (Job job : jobList) {
+            if (job.getId() == Long.parseLong(jobId)) {
+                userOwnJob = true;
+            }
+        }
+        Job job = jobs.findOne(Long.parseLong(jobId));
+        List<InternProfile> internProfiles = job.getInternProfiles();
+        model.addAttribute("internProfiles", internProfiles);
+        model.addAttribute("userOwnsJob", userOwnJob);
+        return "jobs/applicants";
     }
 
 }

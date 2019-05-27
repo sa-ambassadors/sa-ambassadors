@@ -121,7 +121,6 @@
 
             function saveEditedJob(event) {
                 event.preventDefault();
-                console.log("hello");
                 setVarsForPatchRequest();
                 fetch('/api/v1/' + username + '/employer/edit/' + jobId, {
                     method: 'PATCH',

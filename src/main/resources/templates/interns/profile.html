@@ -5,95 +5,89 @@
     </head>
 
     <body>
-        <h1>Create an Intern profile</h1>
 
-        <form th:action="@{/interns/profile}" method="POST" th:object="${internProfile}">
+        <form th:object="${internProfile}">
 
             <label for="first_name">First name:</label>
-            <input id="first_name" th:field="*{first_name}"/>
+            <input id="first_name" th:text="*{first_name}"/>
 
             <label for="last_name">Last name:</label>
-            <input id="last_name" th:field="*{last_name}"/>
+            <input id="last_name" th:text="*{last_name}"/>
 
             <label for="major">College major:</label>
-            <input id="major" th:field="*{major}"/>
+            <input id="major" th:text="*{major}"/>
 
             <label for="minor">minor:</label>
-            <input id="minor" th:field="*{minor}"/>
+            <input id="minor" th:text="*{minor}"/>
 
             <label for="field_1">Field 1:</label>
-            <input id="field_1" th:field="*{field_1}"/>
+            <input id="field_1" th:text="*{field_1}"/>
 
             <label for="field_2">Field 2:</label>
-            <input id="field_2" th:field="*{field_2}"/>
+            <input id="field_2" th:text="*{field_2}"/>
 
             <label for="field_3">Field 3:</label>
-            <input id="field_3" th:field="*{field_3}"/>
+            <input id="field_3" th:text="*{field_3}"/>
 
 
             <label for="transcript">Transcript:</label>
-            <input id="transcript" th:field="*{transcript_link}"/>
-            <input id="transcript_button" type="button" class="btn btn-block btn-primary" name="transcript" value="Upload">
-            <input id="transcript_file" name="transcript_file" type="file" style="visibility: hidden">
+            <input id="transcript" th:text="*{transcript_link}"/>
 
             <label for="essay">Essay:</label>
-            <input id="essay" th:field="*{essay}"/>
-            <input id="essay_button" type="button" class="btn btn-block btn-primary" name="essay" value="Upload">
-            <input id="essay_file" name="essay_file" type="file" style="visibility: hidden">
+            <input id="essay" th:text="*{essay_link}"/>
 
 
             <label for="sa_highschool">Attended high-school in San Antonio, TX?</label>
-            <input id="sa_highschool" th:field="*{sa_highschool}"/>
+            <input id="sa_highschool" th:text="*{sa_highschool}"/>
 
             <label for="sa_college">Attending college in San Antonio, TX?</label>
-            <input id="sa_college" th:field="*{sa_college}"/>
+            <input id="sa_college" th:text="*{sa_college}"/>
 
             <label for="first_to_college">Are you the first in your family to attend college?</label>
-            <input id="first_to_college" th:field="*{first_to_college}" />
+            <input id="first_to_college" th:text="*{first_to_college}" />
 
             <label for="sa_educational_program">Recipient of San Antonio Education Partnership (SAEP) Scholarship?</label>
-            <input id="sa_educational_program" th:field="*{sa_educational_program}"/>
+            <input id="sa_educational_program" th:text="*{sa_educational_program}"/>
 
             <label for="priority">Priority candidate?</label>
-            <input id="priority" th:field="*{priority}"/>
+            <input id="priority" th:text="*{priority}"/>
 
             <label for="complete">Application complete?</label>
-            <input id="complete" th:field="*{complete}"/>
+            <input id="complete" th:text="*{complete}"/>
 
             <label for="approved">Application approved?</label>
-            <input id="approved" th:field="*{approved}"/>
+            <input id="approved" th:text="*{approved}"/>
 
             <label for="user">User:</label>
-            <input id="user" th:field="*{user}"/>
+            <input id="user" th:text="*{user}"/>
 
             <label for="appliedjobs">Applied jobs:</label>
-            <input id="appliedjobs" th:field="*{appliedJobs}"/>
+            <input id="appliedjobs" th:text="*{appliedJobs}"/>
 
-            <input value="Submit Application" type="submit"/>
         </form>
 
-        <script>
-            document.getElementById("essay").addEventListener("click", function () {
-                var client = filestack.init('AP1R1ce7mRLGkZ0ZugAT8z');
-                client.picker({
-                    onFileUploadFinished: function(response){
-                        this.value ="https://cdn.filestackcontent.com/" + (response.handle);
-                        document.getElementById("essay").value = this.value
-                    }
-                }).open();
-            })
-        </script>
-        <script>
-            document.getElementById("transcript").addEventListener("click", function () {
-                var client = filestack.init('AP1R1ce7mRLGkZ0ZugAT8z');
-                client.picker({
-                    onFileUploadFinished: function(response){
-                        this.value ="https://cdn.filestackcontent.com/" + (response.handle);
-                        document.getElementById("transcript").value = this.value
+<!--        <script>-->
+<!--            document.getElementById("essay").addEventListener("click", function () {-->
+<!--                var client = filestack.init('AP1R1ce7mRLGkZ0ZugAT8z');-->
+<!--                client.picker({-->
+<!--                    onFileUploadFinished: function(response){-->
+<!--                        this.value ="https://cdn.filestackcontent.com/" + (response.handle);-->
+<!--                        document.getElementById("essay").value = this.value-->
+<!--                    }-->
+<!--                }).open();-->
+<!--            })-->
+<!--        </script>-->
+<!--        <script>-->
+<!--            document.getElementById("transcript").addEventListener("click", function () {-->
+<!--                var client = filestack.init('AP1R1ce7mRLGkZ0ZugAT8z');-->
+<!--                client.picker({-->
+<!--                    onFileUploadFinished: function(response){-->
+<!--                        this.value ="https://cdn.filestackcontent.com/" + (response.handle);-->
+<!--                        document.getElementById("transcript").value = this.value-->
 
-                    }
-                }).open();
-            })
-        </script>
+<!--                    }-->
+<!--                }).open();-->
+<!--            })-->
+<!--        </script>-->
     </body>
 </html>
