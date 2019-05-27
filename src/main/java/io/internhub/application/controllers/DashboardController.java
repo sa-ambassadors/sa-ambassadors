@@ -64,7 +64,7 @@ public class DashboardController {
        if(user.getInternProfile() != null) {
            InternProfile userProfile = user.getInternProfile();
            //total number of jobs intern has applied for
-           int appliedTotal = 0;
+           int appliedTotal = userProfile.getAppliedJobs().size();
            int totalJobs = 0;
            int totalRelevantJobs = 0;
            if (!userProfile.isComplete()) {

@@ -283,11 +283,13 @@
                 <label>Third Choice Field</label>
             </div>
 
-            <label for="transcript">Upload Transcripts:</label>
-            <input id="transcript" th:field="*{transcript_link}" />
+            <label for="transcript-field">Upload Transcripts:</label>
+            <input id="transcript-field" th:field="*{transcript_link}" />
+            <button id="transcript">Upload</button>
 
-            <label for="essay">Upload Essay:</label>
-            <input id="essay" th:field="*{essay_link}" />
+            <label for="essay-field">Upload Essay:</label>
+            <input id="essay-field" th:field="*{essay_link}" />
+            <button id="essay">Upload</button>
 
             <label for="sa_highschool">Did you attend high school in San Antonio?</label>
             <input id="sa_highschool" th:field="*{sa_highschool}" />
@@ -439,6 +441,32 @@
     })();
 
 
+</script>
+<script src="//static.filestackapi.com/filestack-js/2.x.x/filestack.min.js"></script>
+<script>
+    document.getElementById("essay").addEventListener("click", function (event) {
+        event.preventDefault();
+        var client = filestack.init('AP1R1ce7mRLGkZ0ZugAT8z');
+        client.picker({
+            onFileUploadFinished: function(response){
+                this.value ="https://cdn.filestackcontent.com/" + (response.handle);
+                document.getElementById("essay-field").value = this.value
+            }
+        }).open();
+    })
+</script>
+<script>
+    document.getElementById("transcript").addEventListener("click", function (event) {
+        event.preventDefault();
+        var client = filestack.init('AP1R1ce7mRLGkZ0ZugAT8z');
+        client.picker({
+            onFileUploadFinished: function(response){
+                this.value ="https://cdn.filestackcontent.com/" + (response.handle);
+                document.getElementById("transcript-field").value = this.value
+
+            }
+        }).open();
+    })
 </script>
 </body>
 </html>
