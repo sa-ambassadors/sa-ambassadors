@@ -76,7 +76,9 @@ public class InternController {
     public String postInternProfileForm(@ModelAttribute InternProfile internProfile){
         UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findByUsername(userWithRoles.getUsername());
+        user.setEnabled(true);
         user.setInternProfile(internProfile);
+        System.out.println(user.isEnabled());
         userDao.save(user);
         return "redirect:/dashboard";
     }
