@@ -5,7 +5,7 @@
 
 		<head>
 			<meta charset="UTF-8" />
-			<link rel="stylesheet" type="text/css" href="../css/head.css" />
+			<link rel="stylesheet" type="text/css" href="../css/main.css" />
             <link rel="icon" href="../../static/img/ih-favicon.png" type="image" />
 			<title th:text="'InternHub | ' + ${title}"></title>
 
@@ -22,6 +22,8 @@
 					<span sec:authorize="isAnonymous()"><a href="/" class="brand-logo">InternHub</a></span>
 					<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 					<ul class="right hide-on-med-and-down">
+
+						<!-- Search in nav -->
 						<li>
 							<div class="input-field">
 								<input id="search" type="search" required="required" />
@@ -35,7 +37,8 @@
 						<li><a href="/interns/register">Interns</a></li>
 						<li><a href="/employers/register">Employers</a></li>
 						</div>
-						<li><a href="/faq">FAQ</a></li>
+						<!--<li><a href="/faq">FAQ</a></li>-->
+						<li><a href="/about-us">About</a></li>
 					</ul>
 
 				<!-- Display current logged-in user -->
@@ -55,10 +58,11 @@
 				<li><a href="/login">Login</a></li>
 				<li><a href="/interns/register">Interns</a></li>
 				<li><a href="/employers/register">Employers</a></li>
-				<li><a href="/faq">FAQ</a></li>
+				<!--<li><a href="/faq">FAQ</a></li>-->
+				<li><a href="/about-us">About</a></li>
 			</ul>
 
 		</head>
 	</th:block>
-	<footer th:replace="fragments/footer" />
+    <footer th:replace="fragments/footer"></footer>
 </html>
