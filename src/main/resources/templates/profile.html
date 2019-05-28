@@ -21,7 +21,7 @@
                     <p id="emp-name-text" th:text="*{name}"></p>
                 </div>
                 <div class="col s6">
-                    <label for="supervisor-text">Supervisor</label>
+                    <label for="supervisor-text">Supervisor:</label>
                     <p id="supervisor-text" th:text="*{supervisor}"></p>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                     <p id="website-url-text" th:text="*{websiteUrl}"></p>
                 </div>
                 <div class="col s6">
-                    <label for="description-text">Location:</label>
+                    <label for="description-text">Company description:</label>
                     <p id="description-text" th:text="*{description}"></p>
                 </div>
             </div>
@@ -60,38 +60,38 @@
 
             <div class="row">
                 <div class="input-field col s6">
-                    <label for="emp-name">Name:</label>
-                    <input placeholder="placeholder" id="emp-name" type="text" th:field="*{name}" class="validate"/>
+                    <label for="emp-name" class="active">Employer name:</label>
+                    <input placeholder="Employer name" id="emp-name" type="text" th:field="*{name}" class="validate"/>
                 </div>
                 <div class="input-field col s6">
-                    <label for="supervisor">Supervisor:</label>
-                    <input id="supervisor" th:field="*{supervisor}" />
+                    <label for="supervisor" class="active">Supervisor e-mail:</label>
+                    <input id="supervisor" placeholder="Supervisor e-mail" type="text" th:field="*{supervisor}" class="validate" />
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <label for="industry">Industry:</label>
-                    <input id="industry" th:field="*{industry}" />
+                    <label for="industry" class="active">Industry:</label>
+                    <input placeholder="Industry" type="text" class="validate" id="industry" th:field="*{industry}" />
                 </div>
                 <div class="input-field col s6">
-                    <label for="location">Location:</label>
-                    <input id="location" th:field="*{location}" />
+                    <label for="location" class="active">Location:</label>
+                    <input placeholder="Location" type="text" class="validate" id="location" th:field="*{location}" />
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <label for="website-url">Website URL:</label>
-                    <input id="website-url" th:field="*{websiteUrl}" />
+                    <label for="website-url" class="active">Website URL:</label>
+                    <input placeholder="Website URL" type="text" class="validate" id="website-url" th:field="*{websiteUrl}" />
                 </div>
                 <div class="input-field col s6">
-                    <label for="description">Description:</label>
-                    <input id="description" th:field="*{description}" />
+                    <label for="description" class="active">Company description:</label>
+                    <input placeholder="Company description" id="description" type="text" class="validate" th:field="*{description}" />
                 </div>
             </div>
 
-            <button id="save-emp">Save</button>
+            <button class="waves-effect waves-light btn" id="save-emp">Save</button>
         </form>
 
 
@@ -104,22 +104,22 @@
         <form class="col s12" th:object="${internProfile}">
 
             <div class="row">
-                <div class="input-field col s6">
+                <div class="col s6">
                     <label for="first-name-text">First Name:</label>
                     <p id="first-name-text" th:text="*{first_name}" ></p>
                 </div>
-                <div class="input-field col s6">
+                <div class="col s6">
                     <label for="last-name-text">Last Name:</label>
                     <p id="last-name-text" th:text="*{last_name}"></p>
                 </div>
             </div>
 
             <div class="row">
-                <div class="input-field col s6">
+                <div class="col s6">
                     <label for="major">Major:</label>
                     <p id="major-text" th:text="*{major}"></p>
                 </div>
-                <div class="input-field col s6">
+                <div class="col s6">
                     <label for="minor">Minor:</label>
                     <p id="minor-text" th:text="*{minor}"></p>
                 </div>
@@ -137,22 +137,22 @@
 <!--                <p th:text="*{field_3}"></p>-->
 <!--            </div>-->
 
-            <label for="transcript">Upload Transcripts:</label>
+            <label for="transcript-text">Upload Transcripts:</label>
             <p id="transcript-text" th:text="*{transcript_link}"></p>
 
-            <label for="essay">Upload Essay:</label>
+            <label for="essay-text">Upload Essay:</label>
             <p id="essay-text" th:text="*{essay_link}"></p>
 
-            <label for="sa_highschool">Did you attend high school in San Antonio?</label>
+            <label for="sa_highschool-text">Did you attend high school in San Antonio?</label>
             <p id="sa_highschool-text" th:text="*{sa_highschool}"></p>
 
-            <label for="sa_college">Did you attend college in San Antonio?</label>
+            <label for="sa_college-text">Did you attend college in San Antonio?</label>
             <p id="sa_college-text" th:text="*{sa_highschool}"></p>
 
-            <label for="first_to_college">Are you the first in your family to attend college?</label>
+            <label for="first_to_college-text">Are you the first in your family to attend college?</label>
             <p id="first_to_college-text" th:text="*{first_to_college}"></p>
 
-            <button id="edit">Edit</button>
+            <button class="waves-effect waves-light btn" id="edit">Edit</button>
 
         </form>
 
@@ -165,23 +165,23 @@
 
             <div class="row">
                 <div class="input-field col s6">
-                    <label for="firstName">First Name:</label>
-                    <input id="firstName" th:field="*{first_name}" />
+                    <label for="firstName" class="active">First Name:</label>
+                    <input placeholder="First name" class="validate" type="text" id="firstName" th:field="*{first_name}" />
                 </div>
                 <div class="input-field col s6">
-                    <label for="lastName">Last Name:</label>
-                    <input id="lastName" th:field="*{last_name}" />
+                    <label for="lastName" class="active">Last Name:</label>
+                    <input placeholder="Last name" class="validate" type="text" id="lastName" th:field="*{last_name}" />
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <label for="major">Major:</label>
-                    <input id="major" th:field="*{major}" />
+                    <label for="major" class="active">Major:</label>
+                    <input placeholder="Major" class="validate" type="text" id="major" th:field="*{major}" />
                 </div>
                 <div class="input-field col s6">
-                    <label for="minor">Minor:</label>
-                    <input id="minor" th:field="*{minor}" />
+                    <label for="minor" class="active">Minor:</label>
+                    <input placeholder="Minor" class="validate" type="text" id="minor" th:field="*{minor}" />
                 </div>
             </div>
 
@@ -283,25 +283,25 @@
 <!--                <label>Third Choice Field</label>-->
 <!--            </div>-->
 
-            <label for="transcript-field">Upload Transcripts:</label>
-            <input id="transcript-field" th:field="*{transcript_link}" />
+            <label class="active" for="transcript-field">Upload Transcripts:</label>
+            <input type="hidden" id="transcript-field" th:field="*{transcript_link}" />
             <button id="transcript">Upload</button>
 
-            <label for="essay-field">Upload Essay:</label>
-            <input id="essay-field" th:field="*{essay_link}" />
+            <label class="active" for="essay-field">Upload Essay:</label>
+            <input type="hidden" id="essay-field" th:field="*{essay_link}" />
             <button id="essay">Upload</button>
 
-            <label for="sa_highschool">Did you attend high school in San Antonio?</label>
+            <label class="active" for="sa_highschool">Did you attend high school in San Antonio?</label>
             <input id="sa_highschool" th:field="*{sa_highschool}" />
 
-            <label for="sa_college">Did you attend college in San Antonio?</label>
+            <label class="active" for="sa_college">Did you attend college in San Antonio?</label>
             <input id="sa_college" th:field="*{sa_highschool}" />
 
-            <label for="first_to_college">Are you the first in your family to attend college?</label>
+            <label class="active" for="first_to_college">Are you the first in your family to attend college?</label>
             <input id="first_to_college" th:field="*{first_to_college}" />
 
-            <input value="Create your profile!" type="submit" />
-            <button id="save">Save</button>
+<!--            <input value="Create your profile!" type="submit" />-->
+            <button class="waves-effect waves-light btn" id="save">Save</button>
         </form>
 
 
