@@ -37,22 +37,22 @@ public class InternProfile {
     @Column
     private String essay_link;
 
-    @Column
+    @Column (columnDefinition = "TINYINT(1)")
     private boolean sa_highschool;
 
-    @Column
+    @Column (columnDefinition = "TINYINT(1)")
     private boolean sa_college;
 
-    @Column
+    @Column (columnDefinition = "TINYINT(1)")
     private boolean first_to_college;
 
-    @Column
+    @Column (columnDefinition = "TINYINT(1)")
     private boolean sa_educational_program;
 
     @Column
     private boolean isPriority;
 
-    @Column(nullable = false)
+    @Column
     private boolean isComplete;
 
     @Column
@@ -147,7 +147,7 @@ public class InternProfile {
     }
 
     public void setEssay_link(String essay) {
-        this.essay_link = essay_link;
+        this.essay_link = essay;
     }
 
     public boolean isSa_highschool() {
@@ -187,7 +187,7 @@ public class InternProfile {
     }
 
     public void setPriority(boolean priority) {
-        this.isPriority = isPriority;
+        this.isPriority = priority;
     }
 
     public boolean isComplete() {

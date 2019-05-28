@@ -59,42 +59,42 @@ public class JobsController {
 
     }
 
-    @GetMapping("interns/index")
-    public String showAllInternJobs(Model model){
-        UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = users.findByUsername(userWithRoles.getUsername());
-        InternProfile userProfile = user.getInternProfile();
-        if(userProfile.isApproved()){
-        List<Job> relevantJobs = jobs.findByIndustry(userProfile.getField_1(), userProfile.getField_2(), userProfile.getField_3());
-        if(relevantJobs != null) {
-            model.addAttribute("jobsList", relevantJobs);
-        }else{
-            Iterable<Job> allJobs = jobs.findAll();
-            boolean isRelevant = false;
-            model.addAttribute("isRelevant", isRelevant);
-            model.addAttribute("jobsList",((List<Job>) allJobs));
-        }
-        return("interns/index");}
-        else{
-            return("redirect:/interns/profile-register");
-        }
-
-    }
-
-    @GetMapping("interns/applied_index")
-    public String showAllAppliedJobs(Model model){
-        UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = users.findByUsername(userWithRoles.getUsername());
-        InternProfile userProfile = user.getInternProfile();
-        if(userProfile.isApproved()){
-            if(userProfile.getAppliedJobs().isEmpty()) {
-                String message = "Positions you have applied for will appear here";
-                model.addAttribute("message", message);
-                return ("applied-index");
-            }
-        }
-        return("redirect:/interns/profile-register");
-    }
+//    @GetMapping("interns/index")
+//    public String showAllInternJobs(Model model){
+//        UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = users.findByUsername(userWithRoles.getUsername());
+//        InternProfile userProfile = user.getInternProfile();
+//        if(userProfile.isApproved()){
+//        List<Job> relevantJobs = jobs.findByIndustry(userProfile.getField_1(), userProfile.getField_2(), userProfile.getField_3());
+//        if(relevantJobs != null) {
+//            model.addAttribute("jobsList", relevantJobs);
+//        }else{
+//            Iterable<Job> allJobs = jobs.findAll();
+//            boolean isRelevant = false;
+//            model.addAttribute("isRelevant", isRelevant);
+//            model.addAttribute("jobsList",((List<Job>) allJobs));
+//        }
+//        return("interns/index");}
+//        else{
+//            return("redirect:/interns/profile-register");
+//        }
+//
+//    }
+//
+//    @GetMapping("interns/applied_index")
+//    public String showAllAppliedJobs(Model model){
+//        UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = users.findByUsername(userWithRoles.getUsername());
+//        InternProfile userProfile = user.getInternProfile();
+//        if(userProfile.isApproved()){
+//            if(userProfile.getAppliedJobs().isEmpty()) {
+//                String message = "Positions you have applied for will appear here";
+//                model.addAttribute("message", message);
+//                return ("applied-index");
+//            }
+//        }
+//        return("redirect:/interns/profile-register");
+//    }
 
     @GetMapping("jobs/{jobId}")
     public String getJobPage (Model model, @PathVariable String jobId) {
