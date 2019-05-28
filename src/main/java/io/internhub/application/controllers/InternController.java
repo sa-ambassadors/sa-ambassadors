@@ -1,6 +1,7 @@
 package io.internhub.application.controllers;
 
 import io.internhub.application.models.InternProfile;
+import io.internhub.application.models.Job;
 import io.internhub.application.models.User;
 import io.internhub.application.models.UserWithRoles;
 import io.internhub.application.repositories.InternRepository;
@@ -12,9 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
+import java.util.List;
 
 
 @Controller
@@ -74,9 +76,28 @@ public class InternController {
     public String postInternProfileForm(@ModelAttribute InternProfile internProfile){
         UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findByUsername(userWithRoles.getUsername());
+        user.setEnabled(true);
         user.setInternProfile(internProfile);
+        System.out.println(user.isEnabled());
         userDao.save(user);
         return "redirect:/dashboard";
+    }
+
+    @GetMapping("/interns/applied-index")
+    public String getInternAppliedJobs(Model model) {
+        UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findByUsername(userWithRoles.getUsername());
+        InternProfile internProfile = user.getInternProfile();
+        List<Job> appliedJobs = internProfile.getAppliedJobs();
+        model.addAttribute("jobs", appliedJobs);
+        return "interns/applied-index";
+    }
+
+    @GetMapping("/interns/profile/{internId}")
+    public String getInternProfile(Model model, @PathVariable String internId) {
+        InternProfile internProfile = internDao.findOne(Long.parseLong(internId));
+        model.addAttribute("internProfile", internProfile);
+        return "interns/profile";
     }
 
 }

@@ -6,12 +6,155 @@
     <div class="container">
 
     <body>
+        <div id="show-form">
+        <span id="job-id" th:text="${job.getId()}"></span>
         <h5 th:text="${job.getTitle()}"></h5>
+        <div sec:authorize="hasRole('ROLE_INTERN')" id="job-apply-div" th:switch="${userHasApplied}">
+            <div th:case="false">
+            <button id="apply">Apply to job</button>
+            </div>
+            <div th:case="true">
+            <p>Your application has been submitted.</p>
+            </div>
+        </div>
+        <div sec:authorize="hasRole('ROLE_EMPLOYER')" id="edit-job-div">
+            <button id="edit-job">Edit</button>
+            <p>test</p>
+<!--            <div th:case="false">-->
+<!--                <button id="apply">Apply to job</button>-->
+<!--            </div>-->
+<!--            <div th:case="true">-->
+<!--                <p>Your application has been submitted.</p>-->
+<!--            </div>-->
+        </div>
         <span th:text="${job.getCompanyName()}"></span> <span th:text="${job.getLocation()}"></span>
         <span th:text="${job.getResponsibilities()}"></span>
         <p th:text="${job.getJobDescription()}"></p>
         <span th:text="${job.getBasicQualifications()}"></span><span th:text="${job.getIndustry()}"></span>
+        </div>
 
+        <div id="edit-form">
+        <div sec:authorize="hasRole('ROLE_EMPLOYER')">
+        <form class="col s12" th:action="@{/profile}" method="POST" th:object="${job}">
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <label for="name">Name:</label>
+                    <input id="name" th:field="*{companyName}" />
+                </div>
+                <div class="input-field col s6">
+                    <label for="location">Location:</label>
+                    <input id="location" th:field="*{location}" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <label for="responsibilities">Responsibilities:</label>
+                    <input id="responsibilities" th:field="*{responsibilities}" />
+                </div>
+                <div class="input-field col s6">
+                    <label for="description">Location:</label>
+                    <input id="description" th:field="*{jobDescription}" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <label for="qualifications">Qualifications:</label>
+                    <input id="qualifications" th:field="*{basicQualifications}" />
+                </div>
+                <div class="input-field col s6">
+                    <label for="industry">Industry:</label>
+                    <input id="industry" th:field="*{industry}" />
+                </div>
+            </div>
+
+            <button id="save-job">Save</button>
+        </form>
+        </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script>
+
+        (function() {
+
+            "use script";
+
+            let jobId = document.querySelector("#job-id").innerText;
+            let username = document.querySelector("#username").innerText;
+
+            //Employer patch request fields
+            let companyName = null;
+            let location = null;
+            let responsibilities = null;
+            let description = null;
+            let qualifications = null;
+            let industry = null;
+
+            $('#edit-form').hide();
+            $('#show-form').show();
+
+            if (document.querySelector("#apply") != null) {
+                document.querySelector("#apply").addEventListener('click', allowUserToApplyToJob);
+            }
+            if (document.querySelector("#save-job") != null) {
+                document.querySelector("#save-job").addEventListener('click', saveEditedJob);
+            }
+
+            $('#edit-job').click(function(event) {
+                event.preventDefault();
+                $('#show-form').hide();
+                $('#edit-form').show();
+            });
+
+            function allowUserToApplyToJob() {
+                fetch('/api/v1/' + username + /add/ + jobId).then(response => {
+                    response.json().then(data => {
+                        console.log(data);
+                    })
+                });
+                changeJobAppliedDiv();
+            }
+
+            function saveEditedJob(event) {
+                event.preventDefault();
+                setVarsForPatchRequest();
+                fetch('/api/v1/' + username + '/employer/edit/' + jobId, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        "companyName": companyName,
+                        "location": location,
+                        "responsibilities": responsibilities,
+                        "jobDescription": description,
+                        "basicQualifications": qualifications,
+                        "industry": industry
+                    })
+                });
+                $('#edit-form').hide();
+                $('#show-form').show();
+            }
+
+            function changeJobAppliedDiv() {
+                document.querySelector("#job-apply-div").innerHTML = "You application has been submitted."
+            }
+
+            function setVarsForPatchRequest() {
+                companyName = document.querySelector("#name").value;
+                location = document.querySelector("#location").value;
+                responsibilities = document.querySelector("#responsibilities").value;
+                description = document.querySelector("#description").value;
+                qualifications = document.querySelector("#qualifications").value;
+                industry = document.querySelector("#industry").value;
+
+            }
+
+        })();
+
+    </script>
     </body>
 
     </div>

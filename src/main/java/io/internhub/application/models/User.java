@@ -24,6 +24,7 @@ import java.util.List;
                 cascade =  CascadeType.ALL,
                 mappedBy = "user")
         private InternProfile internProfile;
+        @Column (columnDefinition = "TINYINT(1)")
         private boolean enabled;
         @OneToOne
         @JoinColumn(name = "role_id")
@@ -95,5 +96,12 @@ import java.util.List;
             this.role = role;
         }
 
+        public boolean isEnabled() {
+            return enabled;
+        }
+
+        public void setEnabled(boolean enabled) {
+            this.enabled = enabled;
+        }
 }
 
