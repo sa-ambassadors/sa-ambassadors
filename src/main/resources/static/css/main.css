@@ -157,18 +157,18 @@
 @media only screen and (min-width: 200px) {
 
     .cory-img {
-        background-image: url("/../img/Cory.jpg");
-        display: inline-block;
+        background-image: url("/static/img/Cory.jpg");
+        /*display: inline-block;*/
     }
 
     .cerissa-img {
-        background-image: url("/../img/Cerissa.jpg");
-        display: inline-block;
+        background-image: url("/static/img/Cerissa.jpg");
+        /*display: inline-block;*/
     }
 
     .mike-img {
-        background-image: url("/../img/Mike.jpg");
-        display: inline-block;
+        background-image: url("/static/img/Mike.jpg");
+        /*display: inline-block;*/
     }
 
 
