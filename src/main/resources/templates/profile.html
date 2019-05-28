@@ -16,40 +16,40 @@
         <form class="col s12" th:object="${employerProfile}">
 
             <div class="row">
-                <div class="input-field  col s6">
+                <div class="col s6">
                     <label for="emp-name-text">Name:</label>
-                    <p id="emp-name-text" th:text="*{name}" ></p>
+                    <p id="emp-name-text" th:text="*{name}"></p>
                 </div>
-                <div class="input-field col s6">
+                <div class="col s6">
                     <label for="supervisor-text">Supervisor</label>
                     <p id="supervisor-text" th:text="*{supervisor}"></p>
                 </div>
             </div>
 
             <div class="row">
-                <div class="input-field col s6">
+                <div class="col s6">
                     <label for="industry-text">Industry:</label>
                     <p id="industry-text" th:text="*{industry}"></p>
                 </div>
-                <div class="input-field col s6">
+                <div class="col s6">
                     <label for="location-text">Location:</label>
                     <p id="location-text" th:text="*{location}"></p>
                 </div>
             </div>
 
             <div class="row">
-                <div class="input-field col s6">
+                <div class="col s6">
                     <label for="website-url-text">Website URL:</label>
                     <p id="website-url-text" th:text="*{websiteUrl}"></p>
                 </div>
-                <div class="input-field col s6">
+                <div class="col s6">
                     <label for="description-text">Location:</label>
                     <p id="description-text" th:text="*{description}"></p>
                 </div>
             </div>
 
 
-            <button id="edit-emp">Edit</button>
+            <button class="waves-effect waves-light btn" id="edit-emp">Edit</button>
 
         </form>
 
@@ -61,7 +61,7 @@
             <div class="row">
                 <div class="input-field col s6">
                     <label for="emp-name">Name:</label>
-                    <input id="emp-name" th:field="*{name}" />
+                    <input placeholder="placeholder" id="emp-name" type="text" th:field="*{name}" class="validate"/>
                 </div>
                 <div class="input-field col s6">
                     <label for="supervisor">Supervisor:</label>
