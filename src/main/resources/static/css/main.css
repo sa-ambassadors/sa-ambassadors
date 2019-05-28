@@ -28,7 +28,11 @@
         padding: 50px;
     }
 
-
+    .social-media {
+        width: 40px;
+        height: 40px;
+        margin: 0 auto;
+    }
 
 
 /*--------------------- INTERN REGISTRATION -----------------------*/
@@ -98,11 +102,11 @@
 
 /*------------------------- FOOTERS ----------------------------*/
 
-/*.footer {*/
-/*flex: 1 0 auto;*/
-/*position: absolute;*/
+    .footer {
+        flex: auto;
+        /*position: absolute;*/
 
-/*}*/
+    }
 
 
 
@@ -153,15 +157,18 @@
 @media only screen and (min-width: 200px) {
 
     .cory-img {
-        background-image: url("/img/Cory.jpg");
+        background-image: url("/../img/Cory.jpg");
+        display: inline-block;
     }
 
     .cerissa-img {
-        background-image: url("/img/Cerissa.jpg");
+        background-image: url("/../img/Cerissa.jpg");
+        display: inline-block;
     }
 
     .mike-img {
-        background-image: url("/img/Mike.jpg");
+        background-image: url("/../img/Mike.jpg");
+        display: inline-block;
     }
 
 
