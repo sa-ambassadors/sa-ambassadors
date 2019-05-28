@@ -3,15 +3,19 @@ package io.internhub.application.controllers;
 import io.internhub.application.models.InternProfile;
 import io.internhub.application.models.Job;
 import io.internhub.application.models.User;
+import io.internhub.application.models.UserWithRoles;
 import io.internhub.application.repositories.InternRepository;
 import io.internhub.application.repositories.Jobs;
 import io.internhub.application.repositories.Roles;
 import io.internhub.application.repositories.Users;
+import io.internhub.application.services.UserDetailsLoader;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -21,15 +25,15 @@ public class AdminController {
     private Roles roles;
     private InternRepository internProfiles;
     private Jobs jobs;
+    private UserDetailsLoader userDetailsLoader;
 
-    public AdminController(Users users, PasswordEncoder passwordEncoder, Roles roles, InternRepository internProfiles, Jobs jobs){
+    public AdminController(Users users, PasswordEncoder passwordEncoder, Roles roles, InternRepository internProfiles, Jobs jobs, UserDetailsLoader userDetailsLoader){
         this.users = users;
         this.passwordEncoder = passwordEncoder;
         this.roles = roles;
         this.internProfiles = internProfiles;
         this.jobs = jobs;
-
-
+        this.userDetailsLoader = userDetailsLoader;
     }
 
     @GetMapping("admin/register")
@@ -38,7 +42,7 @@ public class AdminController {
         return "admin/register";
     }
 
-    @PostMapping
+    @PostMapping("admin/register")
     public String registerAdmin(@ModelAttribute User user){
         String password = user.getPassword();
         String hash = passwordEncoder.encode(password);
@@ -50,21 +54,28 @@ public class AdminController {
     }
 
     @GetMapping("admin/applicant-index")
-    public String applicantIndex(Model model)
-    {
-        Iterable<InternProfile> allProfiles = internProfiles.findAll();
-
-        model.addAttribute("allProfiles",allProfiles);
+    public String applicantIndex (Model model) {
+        Iterable<InternProfile> allInternProfiles = internProfiles.findAll();
+        model.addAttribute("allInternProfiles", allInternProfiles);
         return"admin/applicant-index";
     }
 
-    @GetMapping("admin/job-index")
-    public String jobIndex(Model model)
-    {
-        Iterable<Job> allJobs = jobs.findAll();
+    @GetMapping("admin/applicant/{profileId}")
+    public String getIndividualApplicantPage (Model model, @PathVariable String profileId) {
+        InternProfile internProfile = internProfiles.findOne(Long.parseLong(profileId));
+        model.addAttribute("internProfile", internProfile);
+        return "admin/approve-applicant";
+    }
 
-        model.addAttribute("allJobs",allJobs);
-        return"admin/job-index";
+    @PostMapping("admin/applicant/{profileId}")
+    public String postIndividualApplicantPage(Model model, @PathVariable String profileId) {
+        InternProfile internProfile = internProfiles.findOne(Long.parseLong(profileId));
+        UserWithRoles userWithRoles = userDetailsLoader.loadWithUserName(internProfile.getUser().getUsername());
+        userWithRoles.setEnabled(true);
+        User user = internProfile.getUser();
+        user.setEnabled(true);
+        users.save(user);
+        return "redirect:/admin/applicant-index";
     }
 }
 
