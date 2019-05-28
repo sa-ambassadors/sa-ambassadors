@@ -12,10 +12,12 @@ import java.util.List;
 public class UserWithRoles extends User implements UserDetails {
 
     private Role role;
+    private boolean enabled;
 
     public UserWithRoles(User user) {
         super(user);
         role = user.getRole();// Call the copy constructor defined in User
+        enabled = user.isEnabled();
     }
 
     @Override
@@ -24,6 +26,9 @@ public class UserWithRoles extends User implements UserDetails {
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         String role = grantedAuthorities.get(0).toString();
+        if (enabled) {
+            role = role + ", ROLE_ISAPPROVED";
+        }
         return AuthorityUtils.commaSeparatedStringToAuthorityList(role);
     }
 
@@ -45,5 +50,9 @@ public class UserWithRoles extends User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public void setEnabled (boolean isEnabled) {
+        enabled = isEnabled;
     }
 }

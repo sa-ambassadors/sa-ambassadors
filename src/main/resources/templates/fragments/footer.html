@@ -1,8 +1,9 @@
 <th:block th:fragment="footer">
 
 	<!-- Compiled and minified JavaScript for Materialize -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
-	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
 	<script>
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.sidenav');
@@ -13,6 +14,21 @@
             var elems = document.querySelectorAll('select');
             var instances = M.FormSelect.init(elems, {});
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.carousel');
+            var instances = M.Carousel.init(elems, {
+                fullWidth: true,
+	            dist: 0,
+	            duration: 1000
+            });
+            setInterval(function(){
+                document.getElementsByClassName("carousel")
+	        }, 2000);
+        });
+
+
+
 	</script>
 
 </th:block>

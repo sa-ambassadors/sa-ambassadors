@@ -1,10 +1,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="fragments/head :: head('All Jobs!')" />
 
 <body>
 <div class="container">
-	<div th:each="job: ${allJobs}">
+	<div th:each="job: ${jobs}">
 		<div>
 			<h4 th:text="${job.title}"></h4>
 			<hr />
@@ -16,4 +16,6 @@
 	</div>
 </div>
 </body>
+
+<footer th:replace="fragments/footer" />
 </html>

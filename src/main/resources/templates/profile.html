@@ -3,164 +3,481 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8" />
-    <title></title>
+    <title>Intern Profile</title>
+</head>
+
+<head th:replace="fragments/head :: head('Welcome!')" xmlns:th="http://www.w3.org/1999/xhtml">
+    <!--xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"-->
+
 </head>
 <body>
 <div sec:authorize="hasRole('ROLE_EMPLOYER')">
-    Employer name: <p th:text="*{employerProfile.name}"></p>
-    Employer description: <p th:text="*{employerProfile.description}"></p>
-    Employer location: <p th:text="*{employerProfile.location}"></p>
-</div>
-
-<div sec:authorize="hasRole('ROLE_INTERN')">
-    <h1>Create an account</h1>
-    <div class="row">
-        <form class="col s12" th:action="@{/interns/register-profile}" method="POST" th:object="${internProfile}">
+    <div class="row show-emp-profile">
+        <form class="col s12" th:object="${employerProfile}">
 
             <div class="row">
-                <div class="input-field col s6">
-                    <label for="firstName">First Name:</label>
-                    <input id="firstName" th:field="*{first_name}" />
+                <div class="col s6">
+                    <label for="emp-name-text">Name:</label>
+                    <p id="emp-name-text" th:text="*{name}"></p>
                 </div>
-                <div class="input-field col s6">
-                    <label for="lastName">Last Name:</label>
-                    <input id="lastName" th:field="*{last_name}" />
+                <div class="col s6">
+                    <label for="supervisor-text">Supervisor:</label>
+                    <p id="supervisor-text" th:text="*{supervisor}"></p>
                 </div>
             </div>
 
             <div class="row">
-                <div class="input-field col s6">
-                    <label for="major">Major:</label>
-                    <input id="major" th:field="*{major}" />
+                <div class="col s6">
+                    <label for="industry-text">Industry:</label>
+                    <p id="industry-text" th:text="*{industry}"></p>
                 </div>
-                <div class="input-field col s6">
-                    <label for="minor">Minor:</label>
-                    <input id="minor" th:field="*{minor}" />
+                <div class="col s6">
+                    <label for="location-text">Location:</label>
+                    <p id="location-text" th:text="*{location}"></p>
                 </div>
             </div>
 
-            <div class="input-field col s12">
-                <select th:field="*{field_1}">
-                    <option value="1">Business, Management &amp; Administration</option>
-                    <option value="2">Criminal Justice</option>
-                    <option value="3">Education &amp; Training</option>
-                    <option value="4">Engineering</option>
-                    <option value="5">Finance</option>
-                    <option value="6">Government &amp; Public Administration</option>
-                    <option value="7">Hospitality &amp; Tourism</option>
-                    <option value="8">Healthcare</option>
-                    <option value="9">Human Services</option>
-                    <option value="10">Information Technologies</option>
-                    <option value="11">Law, Public Safety, Corrections, &amp; Security</option>
-                    <option value="12">Manufacturing</option>
-                    <option value="13">Marketing</option>
-                    <option value="14">Public Relations</option>
-                    <option value="15">Science &amp; Research</option>
-                    <option value="16">Other</option>
-                    <label>Choose Primary Field</label>
-                </select>
+            <div class="row">
+                <div class="col s6">
+                    <label for="website-url-text">Website URL:</label>
+                    <p id="website-url-text" th:text="*{websiteUrl}"></p>
+                </div>
+                <div class="col s6">
+                    <label for="description-text">Company description:</label>
+                    <p id="description-text" th:text="*{description}"></p>
+                </div>
             </div>
 
-            <div class="input-field col s12">
-                <select th:field="*{field_2}">
-                    <option value="1">Business, Management, &amp; Administration
-                    </option>
-                    <option value="2">Criminal Justice
-                    </option>
-                    <option value="3">Education &amp; Training
-                    </option>
-                    <option value="4">Engineering
-                    </option>
-                    <option value="5">Finance
-                    </option>
-                    <option value="6">Government &amp; Public Administration
-                    </option>
-                    <option value="7">Hospitality &amp; Tourism
-                    </option>
-                    <option value="8">Healthcare
-                    </option>
-                    <option value="9">Human Services
-                    </option>
-                    <option value="10">Information Technologies
-                    </option>
-                    <option value="11">Law, Public Safety, Corrections, &amp; Security
-                    </option>
-                    <option value="12">Manufacturing
-                    </option>
-                    <option value="13">Marketing
-                    </option>
-                    <option value="14">Public Relations
-                    </option>
-                    <option value="15">Science &amp; Research
-                    </option>
-                    <option value="16">Other
-                    </option>
-                </select>
-                <label>Choose Secondary Field</label>
-            </div>
 
-            <div class="input-field col s12">
-                <select th:field="*{field_3}">
-                    <option value="1">Business, Management, &amp; Administration
-                    </option>
-                    <option value="2">Criminal Justice
-                    </option>
-                    <option value="3">Education &amp; Training
-                    </option>
-                    <option value="4">Engineering
-                    </option>
-                    <option value="5">Finance
-                    </option>
-                    <option value="6">Government &amp; Public Administration
-                    </option>
-                    <option value="7">Hospitality &amp; Tourism
-                    </option>
-                    <option value="8">Healthcare
-                    </option>
-                    <option value="9">Human Services
-                    </option>
-                    <option value="10">Information Technologies
-                    </option>
-                    <option value="11">Law, Public Safety, Corrections, &amp; Security
-                    </option>
-                    <option value="12">Manufacturing
-                    </option>
-                    <option value="13">Marketing
-                    </option>
-                    <option value="14">Public Relations
-                    </option>
-                    <option value="15">Science &amp; Research
-                    </option>
-                    <option value="16">Other
-                    </option>
-                </select>
-                <label>Third Choice Field</label>
-            </div>
+            <button class="waves-effect waves-light btn" id="edit-emp">Edit</button>
 
-            <label for="transcript">Upload Transcripts:</label>
-            <input id="transcript" th:field="*{transcript_link}" />
-
-            <label for="essay">Upload Essay:</label>
-            <input id="essay" th:field="*{essay_link}" />
-
-            <label for="sa_highschool">Did you attend high school in San Antonio?</label>
-            <input id="sa_highschool" th:field="*{sa_highschool}" />
-
-            <label for="sa_college">Did you attend college in San Antonio?</label>
-            <input id="sa_college" th:field="*{sa_highschool}" />
-
-            <label for="first_to_college">Are you the first in your family to attend college?</label>
-            <input id="first_to_college" th:field="*{first_to_college}" />
-
-            <input value="Create your profile!" type="submit" />
         </form>
 
-        <button id="save">Save</button>
+    </div>
+
+    <div class="row edit-emp-profile">
+        <form class="col s12" th:action="@{/profile}" method="POST" th:object="${employerProfile}">
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <label for="emp-name" class="active">Employer name:</label>
+                    <input placeholder="Employer name" id="emp-name" type="text" th:field="*{name}" class="validate"/>
+                </div>
+                <div class="input-field col s6">
+                    <label for="supervisor" class="active">Supervisor e-mail:</label>
+                    <input id="supervisor" placeholder="Supervisor e-mail" type="text" th:field="*{supervisor}" class="validate" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <label for="industry" class="active">Industry:</label>
+                    <input placeholder="Industry" type="text" class="validate" id="industry" th:field="*{industry}" />
+                </div>
+                <div class="input-field col s6">
+                    <label for="location" class="active">Location:</label>
+                    <input placeholder="Location" type="text" class="validate" id="location" th:field="*{location}" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <label for="website-url" class="active">Website URL:</label>
+                    <input placeholder="Website URL" type="text" class="validate" id="website-url" th:field="*{websiteUrl}" />
+                </div>
+                <div class="input-field col s6">
+                    <label for="description" class="active">Company description:</label>
+                    <input placeholder="Company description" id="description" type="text" class="validate" th:field="*{description}" />
+                </div>
+            </div>
+
+            <button class="waves-effect waves-light btn" id="save-emp">Save</button>
+        </form>
+
 
     </div>
 </div>
 
-Everyone should be able to see this text...
+<div sec:authorize="hasRole('ROLE_INTERN')">
 
+    <div class="row show-profile">
+        <form class="col s12" th:object="${internProfile}">
+
+            <div class="row">
+                <div class="col s6">
+                    <label for="first-name-text">First Name:</label>
+                    <p id="first-name-text" th:text="*{first_name}" ></p>
+                </div>
+                <div class="col s6">
+                    <label for="last-name-text">Last Name:</label>
+                    <p id="last-name-text" th:text="*{last_name}"></p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s6">
+                    <label for="major">Major:</label>
+                    <p id="major-text" th:text="*{major}"></p>
+                </div>
+                <div class="col s6">
+                    <label for="minor">Minor:</label>
+                    <p id="minor-text" th:text="*{minor}"></p>
+                </div>
+            </div>
+
+<!--            <div class="input-field col s12">-->
+<!--                <p th:text="*{field_1}"></p>-->
+<!--            </div>-->
+
+<!--            <div class="input-field col s12">-->
+<!--                <p th:text="*{field_2}"></p>-->
+<!--            </div>-->
+
+<!--            <div class="input-field col s12">-->
+<!--                <p th:text="*{field_3}"></p>-->
+<!--            </div>-->
+
+            <label for="transcript-text">Upload Transcripts:</label>
+            <p id="transcript-text" th:text="*{transcript_link}"></p>
+
+            <label for="essay-text">Upload Essay:</label>
+            <p id="essay-text" th:text="*{essay_link}"></p>
+
+            <label for="sa_highschool-text">Did you attend high school in San Antonio?</label>
+            <p id="sa_highschool-text" th:text="*{sa_highschool}"></p>
+
+            <label for="sa_college-text">Did you attend college in San Antonio?</label>
+            <p id="sa_college-text" th:text="*{sa_highschool}"></p>
+
+            <label for="first_to_college-text">Are you the first in your family to attend college?</label>
+            <p id="first_to_college-text" th:text="*{first_to_college}"></p>
+
+            <button class="waves-effect waves-light btn" id="edit">Edit</button>
+
+        </form>
+
+
+
+    </div>
+
+    <div class="row edit-profile">
+        <form class="col s12" th:action="@{/interns/register-profile}" method="POST" th:object="${internProfile}">
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <label for="firstName" class="active">First Name:</label>
+                    <input placeholder="First name" class="validate" type="text" id="firstName" th:field="*{first_name}" />
+                </div>
+                <div class="input-field col s6">
+                    <label for="lastName" class="active">Last Name:</label>
+                    <input placeholder="Last name" class="validate" type="text" id="lastName" th:field="*{last_name}" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <label for="major" class="active">Major:</label>
+                    <input placeholder="Major" class="validate" type="text" id="major" th:field="*{major}" />
+                </div>
+                <div class="input-field col s6">
+                    <label for="minor" class="active">Minor:</label>
+                    <input placeholder="Minor" class="validate" type="text" id="minor" th:field="*{minor}" />
+                </div>
+            </div>
+
+<!--            <div class="input-field col s12">-->
+<!--                <select th:field="*{field_1}">-->
+<!--                    <option value="1">Business, Management &amp; Administration</option>-->
+<!--                    <option value="2">Criminal Justice</option>-->
+<!--                    <option value="3">Education &amp; Training</option>-->
+<!--                    <option value="4">Engineering</option>-->
+<!--                    <option value="5">Finance</option>-->
+<!--                    <option value="6">Government &amp; Public Administration</option>-->
+<!--                    <option value="7">Hospitality &amp; Tourism</option>-->
+<!--                    <option value="8">Healthcare</option>-->
+<!--                    <option value="9">Human Services</option>-->
+<!--                    <option value="10">Information Technologies</option>-->
+<!--                    <option value="11">Law, Public Safety, Corrections, &amp; Security</option>-->
+<!--                    <option value="12">Manufacturing</option>-->
+<!--                    <option value="13">Marketing</option>-->
+<!--                    <option value="14">Public Relations</option>-->
+<!--                    <option value="15">Science &amp; Research</option>-->
+<!--                    <option value="16">Other</option>-->
+<!--                    <label>Choose Primary Field</label>-->
+<!--                </select>-->
+<!--            </div>-->
+
+<!--            <div class="input-field col s12">-->
+<!--                <select th:field="*{field_2}">-->
+<!--                    <option value="1">Business, Management, &amp; Administration-->
+<!--                    </option>-->
+<!--                    <option value="2">Criminal Justice-->
+<!--                    </option>-->
+<!--                    <option value="3">Education &amp; Training-->
+<!--                    </option>-->
+<!--                    <option value="4">Engineering-->
+<!--                    </option>-->
+<!--                    <option value="5">Finance-->
+<!--                    </option>-->
+<!--                    <option value="6">Government &amp; Public Administration-->
+<!--                    </option>-->
+<!--                    <option value="7">Hospitality &amp; Tourism-->
+<!--                    </option>-->
+<!--                    <option value="8">Healthcare-->
+<!--                    </option>-->
+<!--                    <option value="9">Human Services-->
+<!--                    </option>-->
+<!--                    <option value="10">Information Technologies-->
+<!--                    </option>-->
+<!--                    <option value="11">Law, Public Safety, Corrections, &amp; Security-->
+<!--                    </option>-->
+<!--                    <option value="12">Manufacturing-->
+<!--                    </option>-->
+<!--                    <option value="13">Marketing-->
+<!--                    </option>-->
+<!--                    <option value="14">Public Relations-->
+<!--                    </option>-->
+<!--                    <option value="15">Science &amp; Research-->
+<!--                    </option>-->
+<!--                    <option value="16">Other-->
+<!--                    </option>-->
+<!--                </select>-->
+<!--                <label>Choose Secondary Field</label>-->
+<!--            </div>-->
+
+<!--            <div class="input-field col s12">-->
+<!--                <select th:field="*{field_3}">-->
+<!--                    <option value="1">Business, Management, &amp; Administration-->
+<!--                    </option>-->
+<!--                    <option value="2">Criminal Justice-->
+<!--                    </option>-->
+<!--                    <option value="3">Education &amp; Training-->
+<!--                    </option>-->
+<!--                    <option value="4">Engineering-->
+<!--                    </option>-->
+<!--                    <option value="5">Finance-->
+<!--                    </option>-->
+<!--                    <option value="6">Government &amp; Public Administration-->
+<!--                    </option>-->
+<!--                    <option value="7">Hospitality &amp; Tourism-->
+<!--                    </option>-->
+<!--                    <option value="8">Healthcare-->
+<!--                    </option>-->
+<!--                    <option value="9">Human Services-->
+<!--                    </option>-->
+<!--                    <option value="10">Information Technologies-->
+<!--                    </option>-->
+<!--                    <option value="11">Law, Public Safety, Corrections, &amp; Security-->
+<!--                    </option>-->
+<!--                    <option value="12">Manufacturing-->
+<!--                    </option>-->
+<!--                    <option value="13">Marketing-->
+<!--                    </option>-->
+<!--                    <option value="14">Public Relations-->
+<!--                    </option>-->
+<!--                    <option value="15">Science &amp; Research-->
+<!--                    </option>-->
+<!--                    <option value="16">Other-->
+<!--                    </option>-->
+<!--                </select>-->
+<!--                <label>Third Choice Field</label>-->
+<!--            </div>-->
+
+            <label class="active" for="transcript-field">Upload Transcripts:</label>
+            <input type="hidden" id="transcript-field" th:field="*{transcript_link}" />
+            <button id="transcript">Upload</button>
+
+            <label class="active" for="essay-field">Upload Essay:</label>
+            <input type="hidden" id="essay-field" th:field="*{essay_link}" />
+            <button id="essay">Upload</button>
+
+            <label class="active" for="sa_highschool">Did you attend high school in San Antonio?</label>
+            <input id="sa_highschool" th:field="*{sa_highschool}" />
+
+            <label class="active" for="sa_college">Did you attend college in San Antonio?</label>
+            <input id="sa_college" th:field="*{sa_highschool}" />
+
+            <label class="active" for="first_to_college">Are you the first in your family to attend college?</label>
+            <input id="first_to_college" th:field="*{first_to_college}" />
+
+<!--            <input value="Create your profile!" type="submit" />-->
+            <button class="waves-effect waves-light btn" id="save">Save</button>
+        </form>
+
+
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script type="text/javascript" th:src="@{js/profile-script.js}"></script>
+<script>
+
+    (function() {
+
+        "use script";
+
+        $('.edit-profile').hide();
+        $('.edit-emp-profile').hide();
+
+
+        let username = document.querySelector("#username").innerHTML;
+        if (document.querySelector("#save") != null) {
+            document.querySelector("#save").addEventListener("click", saveInternProfile);
+        }
+        if (document.querySelector("#save-emp") != null) {
+            document.querySelector("#save-emp").addEventListener("click", saveEmployerProfile);
+        }
+
+        $('#edit').click(function(event) {
+            event.preventDefault();
+            $('.show-profile').hide();
+            $('.edit-profile').show();
+        });
+
+        $('#edit-emp').click(function(event) {
+            console.log("test");
+            event.preventDefault();
+            $('.show-emp-profile').hide();
+            $('.edit-emp-profile').show();
+        });
+
+        // $('#save').click(function(event) {
+        //     event.preventDefault();
+        //     $('.edit-profile').hide();
+        //     $('.show-profile').show();
+        //
+        // });
+
+        //Intern profile fields
+        let firstName = null;
+        let lastName = null;
+        let major = null;
+        let minor = null;
+        let field1 = 0;
+        let field2 = 0;
+        let field3 = 0;
+        let transcriptLink = null;
+        let essayLink = null;
+        let saHighSchool = false;
+        let firstToCollege = false;
+
+        //Employer profile fields
+        let empName = null;
+        let supervisor = null;
+        let email = null;
+        let industry = null;
+        let location = null;
+        let websiteURL = null;
+        let description = null;
+
+        function saveInternProfile(event) {
+            event.preventDefault();
+            console.log("hello");
+            setInternVars();
+            console.log(document.querySelector("#firstName").innerHTML);
+            fetch("/api/v1/" + username + "/intern/profile/edit", {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    "first_name": firstName,
+                    "last_name": lastName,
+                    "major": major,
+                    "minor": minor,
+                    "transcript_link": transcriptLink,
+                    "essay_link": essayLink,
+                    "sa_highschool": saHighSchool,
+                    "first_to_college": firstToCollege
+                })
+            });
+            $('.edit-profile').hide();
+            $('.show-profile').show();
+        }
+
+        function saveEmployerProfile(event) {
+            event.preventDefault();
+            setEmployerVars();
+            fetch("/api/v1/" + username + "/employer/profile/edit", {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    "name": empName,
+                    "supervisor": supervisor,
+                    "email": email,
+                    "industry": industry,
+                    "location": location,
+                    "websiteUrl": websiteURL,
+                    "description": description
+                })
+            })
+            $('.edit-emp-profile').hide();
+            $('.show-emp-profile').show();
+
+        }
+
+        function setInternVars() {
+            firstName = document.querySelector("#firstName").value;
+            lastName = document.querySelector("#lastName").value;
+            major = document.querySelector("#major").value;
+            minor = document.querySelector("#minor").value;
+            // console.log(document.querySelector("#field_1").value);
+            // field1 = document.querySelector("#field_1").value;
+            // field2 = document.querySelector("#field_2").value;
+            // field3 = document.querySelector("#field_3").value;
+
+            transcriptLink = document.querySelector("#transcript-field").value;
+            essayLink = document.querySelector("#essay-field").value;
+            console.log(document.querySelector("#sa_highschool").value);
+            if ((document.querySelector("#sa_highschool").value) === "false") {
+                saHighSchool = 0;
+            } else {
+                saHighSchool = 1;
+            }
+            if (document.querySelector("#first_to_college").value === "false") {
+                firstToCollege = 0;
+            } else {
+                firstToCollege = 1;
+            };
+        }
+
+        function setEmployerVars() {
+            empName = document.querySelector("#emp-name").value;
+            supervisor = document.querySelector("#supervisor").value;
+            location = document.querySelector("#location").value;
+            industry = document.querySelector("#industry").value;
+            websiteURL = document.querySelector("#website-url").value;
+            description = document.querySelector("#description").value;
+        }
+
+    })();
+
+
+</script>
+<script src="//static.filestackapi.com/filestack-js/2.x.x/filestack.min.js"></script>
+<script>
+    document.getElementById("essay").addEventListener("click", function (event) {
+        event.preventDefault();
+        var client = filestack.init('AP1R1ce7mRLGkZ0ZugAT8z');
+        client.picker({
+            onFileUploadFinished: function(response){
+                this.value ="https://cdn.filestackcontent.com/" + (response.handle);
+                document.getElementById("essay-field").value = this.value
+            }
+        }).open();
+    })
+</script>
+<script>
+    document.getElementById("transcript").addEventListener("click", function (event) {
+        event.preventDefault();
+        var client = filestack.init('AP1R1ce7mRLGkZ0ZugAT8z');
+        client.picker({
+            onFileUploadFinished: function(response){
+                this.value ="https://cdn.filestackcontent.com/" + (response.handle);
+                document.getElementById("transcript-field").value = this.value
+
+            }
+        }).open();
+    })
+</script>
 </body>
 </html>

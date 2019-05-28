@@ -5,9 +5,12 @@
 
 		<head>
 			<meta charset="UTF-8" />
-			<link rel="stylesheet" type="text/css" href="../css/head.css" />
-            <link rel="icon" href="../../static/img/ih-favicon.png" type="image" />
+			<link rel="stylesheet" type="text/css" href="/css/main.css" />
+
+       <link rel="shortcut icon" href="img/ih-favicon.png" type="image/x-icon" />
+
 			<title th:text="'InternHub | ' + ${title}"></title>
+
 
 			<!-- Compiled and minified CSS Materialize-->
 			<link rel="stylesheet"
@@ -21,6 +24,8 @@
 					<span sec:authorize="isAnonymous()"><a href="/" class="brand-logo">InternHub</a></span>
 					<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 					<ul class="right hide-on-med-and-down">
+
+						<!-- Search in nav -->
 						<li>
 							<div class="input-field">
 								<input id="search" type="search" required="required" />
@@ -30,21 +35,18 @@
 						</li>
 						<li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
 						<li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
-						<div sec:authorize="isAnonymous()">
-						<li><a href="/interns/register">Interns</a></li>
-						<li><a href="/employers/register">Employers</a></li>
-						</div>
-						<li><a href="/faq">FAQ</a></li>
+						<li sec:authorize="isAnonymous()"><a href="/interns/register">Interns</a></li>
+						<li sec:authorize="isAnonymous()"><a href="/employers/register">Employers</a></li>
+						<li><a href="/about">About</a></li>
 					</ul>
 
-					<!-- Display current logged-in user -->
-					<div class="navbar-user">
-						<div sec:authorize="isAuthenticated()">
-							<form th:action="@{/logout}" th:method="post"></form>
-							<span id ="username" th:text="${#authentication.principal.id}"></span>
-							Username: <span th:text="${#authentication.principal.username}"></span>
-						</div>
-					</div>
+				<!-- Display current logged-in user -->
+				<div sec:authorize="isAuthenticated()">
+					<form th:action="@{/logout}" th:method="post"></form>
+					User ID: <span th:text="${#authentication.principal.id}"></span>
+					Username: <span id="username" th:text="${#authentication.principal.username}"></span>
+                    test
+				</div>
 
 				</div>  <!--  /nav-wrapper -->
 			</nav>
@@ -54,10 +56,11 @@
 				<li><a href="/login">Login</a></li>
 				<li><a href="/interns/register">Interns</a></li>
 				<li><a href="/employers/register">Employers</a></li>
-				<li><a href="/faq">FAQ</a></li>
+				<!--<li><a href="/faq">FAQ</a></li>-->
+				<li><a href="/about">About</a></li>
 			</ul>
 
 		</head>
 	</th:block>
-	<footer th:replace="fragments/footer" />
+    <footer th:replace="fragments/footer"></footer>
 </html>

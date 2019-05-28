@@ -2,9 +2,11 @@
 <head th:replace="fragments/head :: head('View Jobs')"></head>
 
 <body>
-<div th:each="job: ${jobsList}">
+<div th:each="job: ${jobs}">
 	<h4 th:text="${job.getTitle()}" />
-	<p th:text="${job.getCompanyName()} - ${job.getLocation()}" />
+	<p th:text="${job.getCompanyName()}"></p>
+	<a th:href="@{'/jobs/' + ${job.getId()}}">View Full Post</a>
+	<hr />
 
 </div>
 

@@ -37,8 +37,11 @@ public class ApiController {
         if (foundJob == null) {
             ResponseEntity.badRequest().build();
         }
+        System.out.println(foundJob.getAboutUs());
+        System.out.println(foundUser.getUsername());
         InternProfile internProfile = foundUser.getInternProfile();
         foundJob.addToInternProfile(internProfile);
+        internProfile.addJobToAppliedList(foundJob);
         jobs.save(foundJob);
         return ResponseEntity.ok("Intern profile added to job");
     }

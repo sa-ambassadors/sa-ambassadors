@@ -5,95 +5,83 @@
     </head>
 
     <body>
-        <h1>Create an Intern profile</h1>
 
-        <form th:action="@{/interns/profile}" method="POST" th:object="${internProfile}">
-
-            <label for="first_name">First name:</label>
-            <input id="first_name" th:field="*{first_name}"/>
-
-            <label for="last_name">Last name:</label>
-            <input id="last_name" th:field="*{last_name}"/>
-
-            <label for="major">College major:</label>
-            <input id="major" th:field="*{major}"/>
-
-            <label for="minor">minor:</label>
-            <input id="minor" th:field="*{minor}"/>
-
-            <label for="field_1">Field 1:</label>
-            <input id="field_1" th:field="*{field_1}"/>
-
-            <label for="field_2">Field 2:</label>
-            <input id="field_2" th:field="*{field_2}"/>
-
-            <label for="field_3">Field 3:</label>
-            <input id="field_3" th:field="*{field_3}"/>
+        <form th:object="${internProfile}">
 
 
-            <label for="transcript">Transcript:</label>
-            <input id="transcript" th:field="*{transcript_link}"/>
-            <input id="transcript_button" type="button" class="btn btn-block btn-primary" name="transcript" value="Upload">
-            <input id="transcript_file" name="transcript_file" type="file" style="visibility: hidden">
+            <div class="row">
+                <div class="col s6">
+                    <label for="first-name-text">First Name:</label>
+                    <p id="first-name-text" th:text="*{first_name}" ></p>
+                </div>
+                <div class="col s6">
+                    <label for="last-name-text">Last Name:</label>
+                    <p id="last-name-text" th:text="*{last_name}"></p>
+                </div>
+            </div>
 
-            <label for="essay">Essay:</label>
-            <input id="essay" th:field="*{essay}"/>
-            <input id="essay_button" type="button" class="btn btn-block btn-primary" name="essay" value="Upload">
-            <input id="essay_file" name="essay_file" type="file" style="visibility: hidden">
+            <div class="row">
+                <div class="col s6">
+                    <label for="major-text">Major:</label>
+                    <p id="major-text" th:text="*{major}"></p>
+                </div>
+                <div class="col s6">
+                    <label for="minor-text">Minor:</label>
+                    <p id="minor-text" th:text="*{minor}"></p>
+                </div>
+            </div>
 
+            <!--            <div class="input-field col s12">-->
+            <!--                <p th:text="*{field_1}"></p>-->
+            <!--            </div>-->
 
-            <label for="sa_highschool">Attended high-school in San Antonio, TX?</label>
-            <input id="sa_highschool" th:field="*{sa_highschool}"/>
+            <!--            <div class="input-field col s12">-->
+            <!--                <p th:text="*{field_2}"></p>-->
+            <!--            </div>-->
 
-            <label for="sa_college">Attending college in San Antonio, TX?</label>
-            <input id="sa_college" th:field="*{sa_college}"/>
+            <!--            <div class="input-field col s12">-->
+            <!--                <p th:text="*{field_3}"></p>-->
+            <!--            </div>-->
 
-            <label for="first_to_college">Are you the first in your family to attend college?</label>
-            <input id="first_to_college" th:field="*{first_to_college}" />
+            <label for="transcript-text">Upload Transcripts:</label>
+            <p id="transcript-text" th:text="*{transcript_link}"></p>
 
-            <label for="sa_educational_program">Recipient of San Antonio Education Partnership (SAEP) Scholarship?</label>
-            <input id="sa_educational_program" th:field="*{sa_educational_program}"/>
+            <label for="essay-text">Upload Essay:</label>
+            <p id="essay-text" th:text="*{essay_link}"></p>
 
-            <label for="priority">Priority candidate?</label>
-            <input id="priority" th:field="*{priority}"/>
+            <label for="sa_highschool-text">Did you attend high school in San Antonio?</label>
+            <p id="sa_highschool-text" th:text="*{sa_highschool}"></p>
 
-            <label for="complete">Application complete?</label>
-            <input id="complete" th:field="*{complete}"/>
+            <label for="sa_college-text">Did you attend college in San Antonio?</label>
+            <p id="sa_college-text" th:text="*{sa_highschool}"></p>
 
-            <label for="approved">Application approved?</label>
-            <input id="approved" th:field="*{approved}"/>
+            <label for="first_to_college-text">Are you the first in your family to attend college?</label>
+            <p id="first_to_college-text" th:text="*{first_to_college}"></p>
 
-            <label for="user">User:</label>
-            <input id="user" th:field="*{user}"/>
-
-            <label for="appliedjobs">Applied jobs:</label>
-            <input id="appliedjobs" th:field="*{appliedJobs}"/>
-
-            <input value="Submit Application" type="submit"/>
         </form>
 
-        <script>
-            document.getElementById("essay").addEventListener("click", function () {
-                var client = filestack.init('AP1R1ce7mRLGkZ0ZugAT8z');
-                client.picker({
-                    onFileUploadFinished: function(response){
-                        this.value ="https://cdn.filestackcontent.com/" + (response.handle);
-                        document.getElementById("essay").value = this.value
-                    }
-                }).open();
-            })
-        </script>
-        <script>
-            document.getElementById("transcript").addEventListener("click", function () {
-                var client = filestack.init('AP1R1ce7mRLGkZ0ZugAT8z');
-                client.picker({
-                    onFileUploadFinished: function(response){
-                        this.value ="https://cdn.filestackcontent.com/" + (response.handle);
-                        document.getElementById("transcript").value = this.value
+<!--        <script>-->
+<!--            document.getElementById("essay").addEventListener("click", function () {-->
+<!--                var client = filestack.init('AP1R1ce7mRLGkZ0ZugAT8z');-->
+<!--                client.picker({-->
+<!--                    onFileUploadFinished: function(response){-->
+<!--                        this.value ="https://cdn.filestackcontent.com/" + (response.handle);-->
+<!--                        document.getElementById("essay").value = this.value-->
+<!--                    }-->
+<!--                }).open();-->
+<!--            })-->
+<!--        </script>-->
+<!--        <script>-->
+<!--            document.getElementById("transcript").addEventListener("click", function () {-->
+<!--                var client = filestack.init('AP1R1ce7mRLGkZ0ZugAT8z');-->
+<!--                client.picker({-->
+<!--                    onFileUploadFinished: function(response){-->
+<!--                        this.value ="https://cdn.filestackcontent.com/" + (response.handle);-->
+<!--                        document.getElementById("transcript").value = this.value-->
 
-                    }
-                }).open();
-            })
-        </script>
+<!--                    }-->
+<!--                }).open();-->
+<!--            })-->
+<!--        </script>-->
     </body>
 </html>

@@ -1,19 +1,15 @@
 package io.internhub.application.controllers;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
 @Controller
-public class IndexController {
+public class AboutController {
 
-
-        @GetMapping("/")
-        public String index() {
-            return "index";
+        @GetMapping(value = "/about")
+        public String about(){
+            return "pages/about";
+        }
     }
 
-
-
-}

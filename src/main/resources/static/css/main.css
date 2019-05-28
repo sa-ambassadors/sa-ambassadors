@@ -1,0 +1,177 @@
+
+
+
+
+
+/*---------------- BODY CSS and VARIABLE DECLARATION -----------*/
+
+    body {
+        margin: 0 auto;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+
+
+    }
+
+
+
+
+
+
+/*-------------------- INDEX (landing page)---------------------*/
+
+    .intern-message {
+        padding: 50px;
+    }
+
+    .employer-message {
+        padding: 50px;
+    }
+
+    .social-media {
+        width: 40px;
+        height: 40px;
+        margin: 0 auto;
+    }
+
+
+/*--------------------- INTERN REGISTRATION -----------------------*/
+
+
+
+
+
+/*------------------- EMPLOYER REGISTRATION  ---------------------*/
+
+
+
+
+/*------------------------ LOGIN PAGE ----------------------------*/
+
+
+
+
+
+/*---------------------- ADMIN DASHBOARD ------------------------*/
+
+
+
+
+
+
+/*--------------------- EMPLOYER DASHBOARD ----------------------*/
+
+
+
+
+
+
+/*--------------------- INTERN DASHBOARD -----------------------*/
+
+
+
+
+
+
+
+/*--------------------------- FORMS ----------------------------*/
+
+
+
+
+
+
+
+
+/*------------------------ HEADERS -----------------------------*/
+
+    .nav-wrapper {
+        @extend background-color: #00B0FF;
+        font-size: 14px;
+
+    }
+
+    .navbar-user {
+        margin-right: 100%;
+    }
+
+
+
+
+
+
+/*------------------------- FOOTERS ----------------------------*/
+
+    .footer {
+        flex: auto;
+        /*position: absolute;*/
+
+    }
+
+
+
+
+
+
+
+
+
+/*------------------------ ABOUT US ---------------------------*/
+
+
+    .the-team {
+        margin-top: 200px;
+        width: 100%;
+    }
+    .the-team h1 {
+        font-size: 45px;
+        top: -31px;
+    }
+    .everyone-wrapper {
+        padding-top: 1px;
+        /*color: -----;*/
+    }
+    .each-person-wrapper {
+        width: 100%;
+        margin: 80px auto;
+        padding: 30px 0 40px;
+    }
+
+    .each-person-img {
+        width: 20%;
+        margin: auto;
+        height: 20%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .each-person-desc {
+        width: 80%;
+        height: 150px;
+        margin: 0 auto;
+    }
+
+
+
+@media only screen and (min-width: 200px) {
+
+    .cory-img {
+        background-image: url("/../img/Cory.jpg");
+        display: inline-block;
+    }
+
+    .cerissa-img {
+        background-image: url("/../img/Cerissa.jpg");
+        display: inline-block;
+    }
+
+    .mike-img {
+        background-image: url("/../img/Mike.jpg");
+        display: inline-block;
+    }
+
+
+}
+
+
