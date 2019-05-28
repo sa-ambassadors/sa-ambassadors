@@ -34,16 +34,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-
             .csrf().disable()
-            .authorizeRequests()
+                .authorizeRequests()
+                .antMatchers("/js/**").permitAll()
             .antMatchers("/employers/add-job")
             .hasRole("EMPLOYER")
             .and()
-                .authorizeRequests()
-                .antMatchers("/admin/*")
-                .hasRole("ADMIN")
-                .and()
+//                .authorizeRequests()
+//                .antMatchers("/admin/*")
+//                .hasAnyRole("INTERN")
+//                .and()
                 .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/dashboard") // user's home page, it can be any URL

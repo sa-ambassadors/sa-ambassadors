@@ -11,6 +11,7 @@
 					<p>Company: <span th:text="${job.getCompanyName()}"></span></p>
 					<p>Description: <span th:text="${job.getJobDescription()}"></span></p>
 					<a th:href="@{'/jobs/' + ${job.getId()}}">View Full Post</a>
+					<a th:href="@{'/jobs/' + ${job.getId()} + '/applicants'}">View Job Applicants</a>
 					<hr />
 				</div>
 			</div>

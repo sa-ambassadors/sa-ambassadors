@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="fragments/head :: head('Job!')" />
+
+    <body>
+    <div id="show-form">
+        <div sec:authorize="hasRole('ROLE_EMPLOYER')" id="job-apply-div" th:switch="${userOwnsJob}">
+            <div th:case="false">
+                You cannot view applicants for this job.
+            </div>
+            <div th:case="true">
+                <div class="container">
+                    <div th:each="internProfile : ${internProfiles}">
+                        <div>
+                            <h4 th:text="${internProfile.first_name} + ${internProfile.last_name}"></h4>
+                            <hr />
+                            <a th:href="@{'/interns/profile/' + ${internProfile.id}}">View profile</a>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

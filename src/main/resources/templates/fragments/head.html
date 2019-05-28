@@ -9,6 +9,7 @@
             <link rel="icon" href="../../static/img/ih-favicon.png" type="image" />
 			<title th:text="'InternHub | ' + ${title}"></title>
 
+
 			<!-- Compiled and minified CSS Materialize-->
 			<link rel="stylesheet"
 				  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
@@ -40,14 +41,14 @@
 						<li><a href="/about-us">About</a></li>
 					</ul>
 
-					<!-- Display current logged-in user -->
-					<div class="navbar-user">
-						<div sec:authorize="isAuthenticated()">
-							<form th:action="@{/logout}" th:method="post"></form>
-							<span id ="username" th:text="${#authentication.principal.id}"></span>
-							Username: <span th:text="${#authentication.principal.username}"></span>
-						</div>
-					</div>
+				<!-- Display current logged-in user -->
+				<div sec:authorize="isAuthenticated()">
+					<form th:action="@{/logout}" th:method="post"></form>
+					User ID: <span th:text="${#authentication.principal.id}"></span>
+					Username: <span id="username" th:text="${#authentication.principal.username}"></span>
+                    test
+				</div>
+
 
 				</div>  <!--  /nav-wrapper -->
 			</nav>
