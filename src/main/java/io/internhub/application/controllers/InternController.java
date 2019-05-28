@@ -5,6 +5,7 @@ import io.internhub.application.models.Job;
 import io.internhub.application.models.User;
 import io.internhub.application.models.UserWithRoles;
 import io.internhub.application.repositories.InternRepository;
+import io.internhub.application.repositories.Jobs;
 import io.internhub.application.repositories.Roles;
 import io.internhub.application.repositories.Users;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -26,12 +29,14 @@ public class InternController {
     private final Users userDao;
     private PasswordEncoder passwordEncoder;
     private Roles roles;
+    private Jobs jobs;
 
-    public InternController(InternRepository internDao, Users userDao, PasswordEncoder passwordEncoder, Roles roles){
+    public InternController(InternRepository internDao, Users userDao, PasswordEncoder passwordEncoder, Roles roles, Jobs jobs){
         this.internDao = internDao;
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.roles = roles;
+        this.jobs = jobs;
 
     }
 
@@ -92,6 +97,19 @@ public class InternController {
         model.addAttribute("jobs", appliedJobs);
         return "interns/applied-index";
     }
+
+    @GetMapping("/interns/index")
+    public String getInternJobList(Model model) {
+        Iterable<Job> iterator = jobs.findAll();
+        Iterator<Job> jobIterator = iterator.iterator();
+        List<Job> allJobsList = new ArrayList<>();
+        while (jobIterator.hasNext()) {
+            allJobsList.add(jobIterator.next());
+        }
+        model.addAttribute("jobs", allJobsList);
+        return "interns/index";
+    }
+
 
     @GetMapping("/interns/profile/{internId}")
     public String getInternProfile(Model model, @PathVariable String internId) {

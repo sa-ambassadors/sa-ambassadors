@@ -13,7 +13,7 @@
 <body>
 <div sec:authorize="hasRole('ROLE_EMPLOYER')">
     <div class="row show-emp-profile">
-        <form class="col s12" th:action="@{/profile}" method="POST" th:object="${employerProfile}">
+        <form class="col s12" th:object="${employerProfile}">
 
             <div class="row">
                 <div class="input-field  col s6">
@@ -101,7 +101,7 @@
 <div sec:authorize="hasRole('ROLE_INTERN')">
 
     <div class="row show-profile">
-        <form class="col s12" th:action="@{/profile}" method="POST" th:object="${internProfile}">
+        <form class="col s12" th:object="${internProfile}">
 
             <div class="row">
                 <div class="input-field col s6">
@@ -310,6 +310,7 @@
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script type="text/javascript" th:src="@{js/profile-script.js}"></script>
 <script>
 
     (function() {
@@ -383,9 +384,6 @@
                     "last_name": lastName,
                     "major": major,
                     "minor": minor,
-                    "field_1": field1,
-                    "field_2": field2,
-                    "field_3": field3,
                     "transcript_link": transcriptLink,
                     "essay_link": essayLink,
                     "sa_highschool": saHighSchool,
@@ -422,14 +420,24 @@
             lastName = document.querySelector("#lastName").value;
             major = document.querySelector("#major").value;
             minor = document.querySelector("#minor").value;
-            console.log(document.querySelector("#field_1").value);
+            // console.log(document.querySelector("#field_1").value);
             // field1 = document.querySelector("#field_1").value;
             // field2 = document.querySelector("#field_2").value;
             // field3 = document.querySelector("#field_3").value;
-            // transcriptLink = document.querySelector("#transcript_link").value;
-            // essayLink = document.querySelector("#essay_link").value;
-            // saHighSchool = document.querySelector("#sa_highschool").value;
-            // firstToCollege = document.querySelector("#first_to_college").value;
+
+            transcriptLink = document.querySelector("#transcript-field").value;
+            essayLink = document.querySelector("#essay-field").value;
+            console.log(document.querySelector("#sa_highschool").value);
+            if ((document.querySelector("#sa_highschool").value) === "false") {
+                saHighSchool = 0;
+            } else {
+                saHighSchool = 1;
+            }
+            if (document.querySelector("#first_to_college").value === "false") {
+                firstToCollege = 0;
+            } else {
+                firstToCollege = 1;
+            };
         }
 
         function setEmployerVars() {
@@ -437,6 +445,8 @@
             supervisor = document.querySelector("#supervisor").value;
             location = document.querySelector("#location").value;
             industry = document.querySelector("#industry").value;
+            websiteURL = document.querySelector("#website-url").value;
+            description = document.querySelector("#description").value;
         }
 
     })();
