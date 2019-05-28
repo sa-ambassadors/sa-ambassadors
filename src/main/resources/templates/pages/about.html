@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+      <!--xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"-->
     <th:block th:fragment="head(title)">
 
         <!-- dynamic nav -->
     <head th:replace="fragments/head :: head('about')">
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="../../static/css/main.css" />
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/css/main.css" />
         <title>About</title>
 
         <!-- Compiled and minified CSS Materialize-->
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-
+    </head>
     <body>
         <a th:href="@{/about}"></a>
         <div class="about-us-wrapper">
@@ -38,19 +38,19 @@
                 <div class="everyone-wrapper">
 
                     <div class="each-person-wrapper">
-                        <h2>Cory Musick</h2>
+                        <h3>Cory Musick</h3>
                         <div class="each-person-img cory-img"></div>
                             <div class="each-person-description cory-description"></div>
                     </div>
 
                     <div class="each-person-wrapper">
-                        <h2>Cerissa Antill</h2>
+                        <h3>Cerissa Antill</h3>
                         <div class="each-person-img cerissa-img"></div>
                         <div class="each-person-description cerissa-description"></div>
                     </div>
 
                     <div class="each-person-wrapper">
-                        <h2>Mike Flores</h2>
+                        <h3>Mike Flores</h3>
                         <div class="each-person-img mike-img"></div>
                         <div class="each-person-description mike-description"></div>
                     </div>

@@ -1,5 +1,5 @@
 
-@media only screen and (min-width: 200px) {
+
 
 
 
@@ -98,11 +98,11 @@
 
 /*------------------------- FOOTERS ----------------------------*/
 
-    .footer {
-        flex: 1 0 auto;
-        position: absolute;
+/*.footer {*/
+/*flex: 1 0 auto;*/
+/*position: absolute;*/
 
-    }
+/*}*/
 
 
 
@@ -114,9 +114,6 @@
 
 /*------------------------ ABOUT US ---------------------------*/
 
-    .each-person-img {
-        height: 500px;
-    }
 
     .the-team {
         margin-top: 200px;
@@ -137,9 +134,9 @@
     }
 
     .each-person-img {
-        width: 90%;
-        margin: 40px auto;
-        height: 300px;
+        width: 20%;
+        margin: auto;
+        height: 20%;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -151,18 +148,23 @@
         margin: 0 auto;
     }
 
+
+
+@media only screen and (min-width: 200px) {
+
     .cory-img {
-        background-image: url("../resources/static/img/Cory.jpg");
+        background-image: url("/img/Cory.jpg");
     }
+
     .cerissa-img {
-        background-image: url("../resources/static/img/Cerissa.jpg");
+        background-image: url("/img/Cerissa.jpg");
     }
+
     .mike-img {
-        background-image: url("../resources/static/img/Mike.jpg");
+        background-image: url("/img/Mike.jpg");
     }
-
-
-
 
 
 }
+
+
