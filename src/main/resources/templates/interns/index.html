@@ -1,15 +1,14 @@
 <html xmlns:th="http://www.thymeleaf.org" >
-<head th:replace="fragments/head :: head('View Jobs')"></head>
+	<head th:replace="fragments/head :: head('View Jobs')"></head>
 
-<body>
-<div th:each="job: ${jobs}">
-	<h4 th:text="${job.getTitle()}" />
-	<p th:text="${job.getCompanyName()}"></p>
-	<a th:href="@{'/jobs/' + ${job.getId()}}">View Full Post</a>
-	<hr />
+	<body>
+		<div th:each="job: ${jobs}">
+			<h4 th:text="${job.getTitle()}" />
+			<p th:text="${job.getCompanyName()}"></p>
+			<a th:href="@{'/jobs/' + ${job.getId()}}">View Full Post</a>
+			<hr />
 
-</div>
-
-</body>
-<footer th:replace="fragments/footer"></footer>
+		</div>
+	<footer th:replace="fragments/footer"></footer>
+	</body>
 </html>
