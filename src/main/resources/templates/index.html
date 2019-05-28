@@ -1,6 +1,6 @@
   <head th:replace="fragments/head :: head('Welcome!')" xmlns:th="http://www.w3.org/1999/xhtml">
         <!--xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"-->
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" />
   </head>
 
   <body>
@@ -11,8 +11,7 @@
 
         <div class="col s6 intern-message">
           <h2>Interns</h2>
-          <p>
-            InternHub can connect you with pre-professional exposure where you can gain the required experience to
+          <p>InternHub can connect you with pre-professional exposure where you can gain the required experience to
             get hired in a career field of your interest.
             Internships are available in a wide variety of fields from both the private
             and not-for-profit sectors of the job market. By completing an internship, students will develop the
@@ -22,8 +21,7 @@
         </div>
         <div class="col s6 employer-message">
           <h2>Employers</h2>
-          <p>
-            Join InternHub and have access to the best college interns San Antonio has to offer. Post an internship for free
+          <p>Join InternHub and have access to the best college interns San Antonio has to offer. Post an internship for free
             on our marketplace.
           </p>
           <a th:href="@{employers/register}">Employers Register here</a>
@@ -62,7 +60,6 @@
         </div>
       </div>
     </footer>
-
   </body>
 
   <footer th:replace="fragments/footer"/>
