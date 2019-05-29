@@ -86,7 +86,7 @@
           <a th:href="@{employers/register}">Employers Register here</a>
         </div>
       <div class="divider"></div>
-      <a th:href="@{admin/register}">admin</a>
+
     </div>
     </div>
     <!-- Footer -->
@@ -94,8 +94,16 @@
       <div class="container">
         <div class="row">
           <div class="col l6 s12">
-            <h5 class="white-text">Footer Content</h5>
-            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+            <h5 class="white-text">InternHub.io</h5>
+            <ul>
+              <li>
+                <a class="white-text" href="/about">About</a>
+              </li>
+              <li>
+                <a class="white-text" th:href="@{admin/register}">Admin</a>
+              </li>
+            </ul>
+
           </div>
           <div class="col l4 offset-l2 s12">
             <h5 class="white-text">Find Us!</h5>
