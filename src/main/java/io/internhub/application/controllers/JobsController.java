@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -99,6 +100,7 @@ public class JobsController {
     @GetMapping("jobs/{jobId}")
     public String getJobPage (Model model, @PathVariable String jobId) {
         boolean userHasAppliedToJob = false;
+        boolean userOwnsJob = false;
         UserWithRoles userWithRoles = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = users.findByUsername(userWithRoles.getUsername());
         if (user.getInternProfile() != null) {
@@ -110,6 +112,16 @@ public class JobsController {
                 }
             }
             model.addAttribute("userHasApplied", userHasAppliedToJob);
+        }
+        if (user.getEmployerProfile() != null) {
+            EmployerProfile employerProfile = user.getEmployerProfile();
+            List<Job> ownedJobs = employerProfile.getJobs();
+            for (Job job : ownedJobs) {
+                if (job.getId() == Long.parseLong(jobId)) {
+                    userOwnsJob = true;
+                }
+            }
+            model.addAttribute("userOwnsJob", userOwnsJob);
         }
         Long jobLongId = Long.parseLong(jobId);
         Job job = jobs.findOne(jobLongId);
@@ -134,6 +146,21 @@ public class JobsController {
         model.addAttribute("internProfiles", internProfiles);
         model.addAttribute("userOwnsJob", userOwnJob);
         return "jobs/applicants";
+    }
+
+    @GetMapping("jobs/search/{query}")
+    public String getSearchedJobs (Model model, @PathVariable String query) {
+        List<Job> searchedJobs = new ArrayList<>();
+        Iterable<Job> allJobs = jobs.findAll();
+        List<Job> allJobsList = ((List<Job>) allJobs);
+        for (Job job : allJobsList) {
+            System.out.println(job.getTitle());
+            if (job.getTitle().contains(query)) {
+                searchedJobs.add(job);
+            }
+        }
+        model.addAttribute("searchedJobs", searchedJobs);
+        return "jobs/searched-jobs";
     }
 
 }

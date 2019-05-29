@@ -6,32 +6,69 @@
     <div class="container">
 
     <body>
+        <span hidden="hidden" id="job-id" th:text="${job.getId()}"></span>
+        <h3 th:text="${job.getTitle()}"></h3>
         <div id="show-form">
-        <span id="job-id" th:text="${job.getId()}"></span>
-        <h5 th:text="${job.getTitle()}"></h5>
         <div sec:authorize="hasRole('ROLE_INTERN')" id="job-apply-div" th:switch="${userHasApplied}">
             <div th:case="false">
-            <button id="apply">Apply to job</button>
+            <button id="apply" class="waves-effect waves-light btn">Apply to job</button>
             </div>
             <div th:case="true">
             <p>Your application has been submitted.</p>
             </div>
         </div>
-        <div sec:authorize="hasRole('ROLE_EMPLOYER')" id="edit-job-div">
-            <button id="edit-job">Edit</button>
-            <p>test</p>
-<!--            <div th:case="false">-->
-<!--                <button id="apply">Apply to job</button>-->
-<!--            </div>-->
-<!--            <div th:case="true">-->
-<!--                <p>Your application has been submitted.</p>-->
-<!--            </div>-->
+        <div sec:authorize="hasRole('ROLE_EMPLOYER')" id="edit-job-div" th:switch="${userOwnsJob}">
+            <div th:case="false">
+            </div>
+            <div th:case="true">
+                <button id="edit-job" class="waves-effect waves-light btn">Edit</button>
+            </div>
         </div>
-        <span th:text="${job.getCompanyName()}"></span> <span th:text="${job.getLocation()}"></span>
-        <span th:text="${job.getResponsibilities()}"></span>
-        <p th:text="${job.getJobDescription()}"></p>
-        <span th:text="${job.getBasicQualifications()}"></span><span th:text="${job.getIndustry()}"></span>
+
+        <div class="row">
+            <div class="col s6">
+                <label for="company-name-text">Company Name:</label>
+                <p id="company-name-text" th:text="${job.getCompanyName()}"></p>
+            </div>
+            <div class="col s6">
+                <label for="location-text">Location:</label>
+                <p id="location-text" th:text="${job.getLocation()}"></p>
+            </div>
         </div>
+
+        <div class="row">
+            <div class="col s6">
+                <label for="industry-text">Industry:</label>
+                <p id="industry-text" th:text="${job.getIndustry()}"></p>
+            </div>
+            <div class="col s6">
+                <label for="about-us-text">About Us:</label>
+                <p id="about-us-text" th:text="${job.getAboutUs()}"></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <label for="qualifications-text">Basic Qualifications:</label>
+                <p id="qualifications-text" th:text="${job.getBasicQualifications()}"></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <label for="responsibilities-text">Job Responsibilities:</label>
+                <p id="responsibilities-text" th:text="${job.getResponsibilities()}"></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <label for="description-text">Job Description:</label>
+                <p id="description-text" th:text="${job.getJobDescription()}"></p>
+            </div>
+        </div>
+        </div>
+
 
         <div id="edit-form">
         <div sec:authorize="hasRole('ROLE_EMPLOYER')">
@@ -39,34 +76,44 @@
 
             <div class="row">
                 <div class="input-field col s6">
-                    <label for="name">Name:</label>
-                    <input id="name" th:field="*{companyName}" />
+                    <label for="company-name" class="active">Name:</label>
+                    <input id="company-name" type="text" placeholder="Company name" th:field="*{companyName}" />
                 </div>
                 <div class="input-field col s6">
-                    <label for="location">Location:</label>
-                    <input id="location" th:field="*{location}" />
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="input-field col s6">
-                    <label for="responsibilities">Responsibilities:</label>
-                    <input id="responsibilities" th:field="*{responsibilities}" />
-                </div>
-                <div class="input-field col s6">
-                    <label for="description">Location:</label>
-                    <input id="description" th:field="*{jobDescription}" />
+                    <label for="location" class="active">Supervisor:</label>
+                    <input id="location" type="text" placeholder="Location" th:field="*{location}" />
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <label for="qualifications">Qualifications:</label>
-                    <input id="qualifications" th:field="*{basicQualifications}" />
+                    <label for="industry" class="active">Industry:</label>
+                    <input id="industry" type="text" placeholder="Industry" th:field="*{industry}" />
                 </div>
                 <div class="input-field col s6">
-                    <label for="industry">Industry:</label>
-                    <input id="industry" th:field="*{industry}" />
+                    <label for="about-us" class="active">About us</label>
+                    <input id="about-us" type="text" placeholder="About us" th:field="*{aboutUs}" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="qualifications" class="active">Qualifications:</label>
+                    <textarea placeholder="Qualifications" type="text" class="materialize-textarea" id="qualifications" th:field="*{basicQualifications}" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="responsibilities" class="active">Responsibilities:</label>
+                    <textarea placeholder="Job Responsibilities" type="text" class="materialize-textarea" id="responsibilities" th:field="*{responsibilities}" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="description" class="active">Company description:</label>
+                    <textarea placeholder="Job description" type="text" class="materialize-textarea" id="description" th:field="*{jobDescription}" />
                 </div>
             </div>
 
@@ -92,7 +139,8 @@
             let responsibilities = null;
             let description = null;
             let qualifications = null;
-            let industry = null;
+            let industry = 0;
+            let aboutUs = null;
 
             $('#edit-form').hide();
             $('#show-form').show();
@@ -131,25 +179,39 @@
                         "responsibilities": responsibilities,
                         "jobDescription": description,
                         "basicQualifications": qualifications,
-                        "industry": industry
+                        "industry": industry,
+                        "aboutUs": aboutUs
                     })
-                });
+                }).then((response) => response.json())
+                    .then((data) => {
+                        setJobFields(data);
+                    });
                 $('#edit-form').hide();
                 $('#show-form').show();
             }
 
+            function setJobFields(data) {
+                document.querySelector("#company-name-text").innerText = data.companyName;
+                document.querySelector("#location-text").innerText = data.location;
+                document.querySelector("#responsibilities-text").innerText = data.responsibilities;
+                document.querySelector("#industry-text").innerText = data.industry;
+                document.querySelector("#location-text").innerText = data.location;
+                document.querySelector("#qualifications-text").innerText = data.basicQualifications;
+                document.querySelector("#description-text").innerText = data.jobDescription;
+            }
+
             function changeJobAppliedDiv() {
-                document.querySelector("#job-apply-div").innerHTML = "You application has been submitted."
+                document.querySelector("#job-apply-div").innerHTML = "Your application has been submitted."
             }
 
             function setVarsForPatchRequest() {
-                companyName = document.querySelector("#name").value;
+                companyName = document.querySelector("#company-name").value;
                 location = document.querySelector("#location").value;
                 responsibilities = document.querySelector("#responsibilities").value;
                 description = document.querySelector("#description").value;
                 qualifications = document.querySelector("#qualifications").value;
                 industry = document.querySelector("#industry").value;
-
+                aboutUs = document.querySelector("#about-us").value;
             }
 
         })();
