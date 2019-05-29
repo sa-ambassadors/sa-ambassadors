@@ -21,7 +21,7 @@
                     <p id="emp-name-text" th:text="*{name}"></p>
                 </div>
                 <div class="col s6">
-                    <label for="supervisor-text">Supervisor</label>
+                    <label for="supervisor-text">Supervisor:</label>
                     <p id="supervisor-text" th:text="*{supervisor}"></p>
                 </div>
             </div>
@@ -43,7 +43,14 @@
                     <p id="website-url-text" th:text="*{websiteUrl}"></p>
                 </div>
                 <div class="col s6">
-                    <label for="description-text">Location:</label>
+                    <label for="email-text">Company email:</label>
+                    <p id="email-text" th:text="*{email}"></p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12">
+                    <label for="description-text">Company description:</label>
                     <p id="description-text" th:text="*{description}"></p>
                 </div>
             </div>
@@ -60,38 +67,45 @@
 
             <div class="row">
                 <div class="input-field col s6">
-                    <label for="emp-name">Name:</label>
-                    <input placeholder="placeholder" id="emp-name" type="text" th:field="*{name}" class="validate"/>
+                    <label for="emp-name" class="active">Employer name:</label>
+                    <input placeholder="Employer name" id="emp-name" type="text" th:field="*{name}" class="validate"/>
                 </div>
                 <div class="input-field col s6">
-                    <label for="supervisor">Supervisor:</label>
-                    <input id="supervisor" th:field="*{supervisor}" />
+                    <label for="supervisor" class="active">Supervisor:</label>
+                    <input id="supervisor" placeholder="Supervisor" type="text" th:field="*{supervisor}" class="validate" />
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <label for="industry">Industry:</label>
-                    <input id="industry" th:field="*{industry}" />
+                    <label for="industry" class="active">Industry:</label>
+                    <input placeholder="Industry" type="text" class="validate" id="industry" th:field="*{industry}" />
                 </div>
                 <div class="input-field col s6">
-                    <label for="location">Location:</label>
-                    <input id="location" th:field="*{location}" />
+                    <label for="location" class="active">Location:</label>
+                    <input placeholder="Location" type="text" class="validate" id="location" th:field="*{location}" />
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <label for="website-url">Website URL:</label>
-                    <input id="website-url" th:field="*{websiteUrl}" />
+                    <label for="website-url" class="active">Website URL:</label>
+                    <input placeholder="Website URL" type="text" class="validate" id="website-url" th:field="*{websiteUrl}" />
                 </div>
                 <div class="input-field col s6">
-                    <label for="description">Description:</label>
-                    <input id="description" th:field="*{description}" />
+                    <label for="email" class="active">Contact e-mail:</label>
+                    <input placeholder="Contact e-mail" id="email" type="text" class="validate" th:field="*{email}" />
                 </div>
             </div>
 
-            <button id="save-emp">Save</button>
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="description" class="active">Company description:</label>
+                    <textarea placeholder="Company description" type="text" class="materialize-textarea" id="description" th:field="*{description}" />
+                </div>
+            </div>
+
+            <button class="waves-effect waves-light btn" id="save-emp">Save</button>
         </form>
 
 
@@ -100,26 +114,28 @@
 
 <div sec:authorize="hasRole('ROLE_INTERN')">
 
+    <h1>Create/Edit Profile</h1>
+
     <div class="row show-profile">
         <form class="col s12" th:object="${internProfile}">
 
             <div class="row">
-                <div class="input-field col s6">
+                <div class="col s6">
                     <label for="first-name-text">First Name:</label>
                     <p id="first-name-text" th:text="*{first_name}" ></p>
                 </div>
-                <div class="input-field col s6">
+                <div class="col s6">
                     <label for="last-name-text">Last Name:</label>
                     <p id="last-name-text" th:text="*{last_name}"></p>
                 </div>
             </div>
 
             <div class="row">
-                <div class="input-field col s6">
+                <div class="col s6">
                     <label for="major">Major:</label>
                     <p id="major-text" th:text="*{major}"></p>
                 </div>
-                <div class="input-field col s6">
+                <div class="col s6">
                     <label for="minor">Minor:</label>
                     <p id="minor-text" th:text="*{minor}"></p>
                 </div>
@@ -137,22 +153,54 @@
 <!--                <p th:text="*{field_3}"></p>-->
 <!--            </div>-->
 
-            <label for="transcript">Upload Transcripts:</label>
-            <p id="transcript-text" th:text="*{transcript_link}"></p>
+            <label for="transcript-text">Upload Transcripts:</label>
+            <p id="transcript-text" th:text="*{transcript_link}" type="hidden"></p>
 
-            <label for="essay">Upload Essay:</label>
-            <p id="essay-text" th:text="*{essay_link}"></p>
+            <label for="essay-text">Upload Essay:</label>
+            <p id="essay-text" th:text="*{essay_link}" type="hidden"></p>
 
-            <label for="sa_highschool">Did you attend high school in San Antonio?</label>
-            <p id="sa_highschool-text" th:text="*{sa_highschool}"></p>
+            <label for="sa_highschool-text">Did you attend high school in San Antonio?</label>
+<!--            <p id="sa_highschool-text" th:text="*{sa_highschool}"></p>-->
 
-            <label for="sa_college">Did you attend college in San Antonio?</label>
-            <p id="sa_college-text" th:text="*{sa_highschool}"></p>
+            <td th:switch="*{sa_highschool}">
+                <p id="sa_highschool-text" th:case="true" th:text="Yes"/>
+                <p id="sa_highschool-text" th:case="false" th:text="No"/>
+            </td>
 
-            <label for="first_to_college">Are you the first in your family to attend college?</label>
-            <p id="first_to_college-text" th:text="*{first_to_college}"></p>
 
-            <button id="edit">Edit</button>
+            <label for="sa_college-text">Did you attend college in San Antonio?</label>
+<!--            <p id="sa_college-text" th:text="*{sa_college}"></p>-->
+
+            <td th:switch="*{sa_college}">
+                <p id="sa_college-text" th:case="true" th:text="Yes"/>
+                <p id="sa_college-text" th:case="false" th:text="No"/>
+            </td>
+
+            <label for="first_to_college-text">Are you the first in your family to attend college?</label>
+<!--            <p id="first_to_college-text" th:text="*{first_to_college}"></p>-->
+
+            <td th:switch="*{first_to_college}">
+                <p id="first_to_college-text" th:case="true" th:text="Yes"/>
+                <p id="first_to_college-text" th:case="false" th:text="No"/>
+            </td>
+
+            <label for="sa_educational_program-text">Did you attend a San Antonio educational program?</label>
+<!--            <p id="sa_educational_program-text" th:text="*{sa_educational_program}"></p>-->
+
+            <td th:switch="*{sa_educational_program}">
+                <p id="sa_educational_program-text" th:case="true" th:text="Yes"/>
+                <p id="sa_educational_program-text" th:case="false" th:text="No"/>
+            </td>
+
+            <label for="isComplete-text">Is your application complete?</label>
+<!--            <p id="isComplete-text" th:text="*{complete}"></p>-->
+
+            <td th:switch="*{complete}">
+                <p id="isComplete-text" th:case="true" th:text="Yes"/>
+                <p id="isComplete-text" th:case="false" th:text="No"/>
+            </td>
+
+            <button class="waves-effect waves-light btn" id="edit">Edit</button>
 
         </form>
 
@@ -165,23 +213,23 @@
 
             <div class="row">
                 <div class="input-field col s6">
-                    <label for="firstName">First Name:</label>
-                    <input id="firstName" th:field="*{first_name}" />
+                    <label for="firstName" class="active">First Name:</label>
+                    <input placeholder="First name" class="validate" type="text" id="firstName" th:field="*{first_name}" />
                 </div>
                 <div class="input-field col s6">
-                    <label for="lastName">Last Name:</label>
-                    <input id="lastName" th:field="*{last_name}" />
+                    <label for="lastName" class="active">Last Name:</label>
+                    <input placeholder="Last name" class="validate" type="text" id="lastName" th:field="*{last_name}" />
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <label for="major">Major:</label>
-                    <input id="major" th:field="*{major}" />
+                    <label for="major" class="active">Major:</label>
+                    <input placeholder="Major" class="validate" type="text" id="major" th:field="*{major}" />
                 </div>
                 <div class="input-field col s6">
-                    <label for="minor">Minor:</label>
-                    <input id="minor" th:field="*{minor}" />
+                    <label for="minor" class="active">Minor:</label>
+                    <input placeholder="Minor" class="validate" type="text" id="minor" th:field="*{minor}" />
                 </div>
             </div>
 
@@ -283,26 +331,80 @@
 <!--                <label>Third Choice Field</label>-->
 <!--            </div>-->
 
-            <label for="transcript-field">Upload Transcripts:</label>
-            <input id="transcript-field" th:field="*{transcript_link}" />
+            <label class="active" for="transcript-field">Upload Transcripts:</label>
+            <input type="hidden" id="transcript-field" th:field="*{transcript_link}" />
             <button id="transcript">Upload</button>
 
-            <label for="essay-field">Upload Essay:</label>
-            <input id="essay-field" th:field="*{essay_link}" />
+            <label class="active" for="essay-field">Upload Essay:</label>
+            <input type="hidden" id="essay-field" th:field="*{essay_link}" />
             <button id="essay">Upload</button>
 
-            <label for="sa_highschool">Did you attend high school in San Antonio?</label>
-            <input id="sa_highschool" th:field="*{sa_highschool}" />
+<!--            <div class="input-field col s12">-->
+<!--&lt;!&ndash;            <input id="sa_highschool" th:field="*{sa_highschool}" />&ndash;&gt;-->
+<!--            <select id="sa_highschool">-->
+<!--                <option value="" disabled="disabled" selected="selected">Choose your option</option>-->
+<!--                <option value="yes">Yes</option>-->
+<!--                <option value="no">No</option>-->
+<!--            </select>-->
+<!--            <label>Was your high school a San Antonio high school?</label>-->
+<!--            </div>-->
 
-            <label for="sa_college">Did you attend college in San Antonio?</label>
-            <input id="sa_college" th:field="*{sa_highschool}" />
+            <div class="input-field col s12">
+                <select th:field="*{sa_highschool}">
+                    <option value="true">Yes
+                    </option>
+                    <option value="false">No
+                    </option>
+                </select>
+                <label>Did you attend a San Antonio high school?</label>
+            </div>
 
-            <label for="first_to_college">Are you the first in your family to attend college?</label>
-            <input id="first_to_college" th:field="*{first_to_college}" />
 
-            <input value="Create your profile!" type="submit" />
-            <button id="save">Save</button>
+            <div class="input-field col s12">
+                <select th:field="*{sa_college}">
+                    <option value="true">Yes
+                    </option>
+                    <option value="false">No
+                    </option>
+                </select>
+                <label>Did you attend a San Antonio college or university?</label>
+            </div>
+
+
+            <div class="input-field col s12">
+                <select th:field="*{first_to_college}">
+                    <option value="true">Yes
+                    </option>
+                    <option value="false">No
+                    </option>
+                </select>
+                <label>Are you the first in your family to attend college?</label>
+            </div>
+
+            <div class="input-field col s12">
+                <select th:field="*{sa_educational_program}">
+                    <option value="true">Yes
+                    </option>
+                    <option value="false">No
+                    </option>
+                </select>
+                <label>Did you attend a San Antonio educational program?</label>
+            </div>
+
+            <div class="input-field col s12">
+                <select th:field="*{complete}">
+                    <option value="true">Yes
+                    </option>
+                    <option value="false">No
+                    </option>
+                </select>
+                <label>Is your application complete? Incomplete applications may be rejected.</label>
+            </div>
+
+<!--            <input value="Create your profile!" type="submit" />-->
         </form>
+
+        <button class="waves-effect waves-light btn" id="save">Save</button>
 
 
     </div>
@@ -310,7 +412,7 @@
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script type="text/javascript" th:src="@{js/profile-script.js}"></script>
+
 <script>
 
     (function() {
@@ -320,8 +422,20 @@
         $('.edit-profile').hide();
         $('.edit-emp-profile').hide();
 
+        if (document.querySelector("#transcript-text") != null) {
+            if (document.querySelector("#transcript-text").innerText != "") {
+                document.querySelector("#transcript-text").innerText = "Transcript uploaded";
+            }
+        }
+
+        if (document.querySelector("#essay-text") != null) {
+            if (document.querySelector("#essay-text").innerText != "") {
+                document.querySelector("#essay-text").innerText = "Transcript uploaded";
+            }
+        }
 
         let username = document.querySelector("#username").innerHTML;
+
         if (document.querySelector("#save") != null) {
             document.querySelector("#save").addEventListener("click", saveInternProfile);
         }
@@ -354,13 +468,16 @@
         let lastName = null;
         let major = null;
         let minor = null;
-        let field1 = 0;
-        let field2 = 0;
-        let field3 = 0;
+        // let field1 = 0;
+        // let field2 = 0;
+        // let field3 = 0;
         let transcriptLink = null;
         let essayLink = null;
         let saHighSchool = false;
         let firstToCollege = false;
+        let saCollege = false;
+        let saEducationalProgram = false;
+        let isComplete = false;
 
         //Employer profile fields
         let empName = null;
@@ -373,7 +490,6 @@
 
         function saveInternProfile(event) {
             event.preventDefault();
-            console.log("hello");
             setInternVars();
             console.log(document.querySelector("#firstName").innerHTML);
             fetch("/api/v1/" + username + "/intern/profile/edit", {
@@ -387,12 +503,18 @@
                     "transcript_link": transcriptLink,
                     "essay_link": essayLink,
                     "sa_highschool": saHighSchool,
-                    "first_to_college": firstToCollege
+                    "first_to_college": firstToCollege,
+                    "sa_educational_program": saEducationalProgram,
+                    "sa_college": saCollege,
+                    "complete": isComplete
                 })
-            });
+            }).then((response) => response.json())
+                .then((data) => {
+                    setInternFormFields(data);
+                });
             $('.edit-profile').hide();
             $('.show-profile').show();
-        }
+        };
 
         function saveEmployerProfile(event) {
             event.preventDefault();
@@ -409,10 +531,64 @@
                     "websiteUrl": websiteURL,
                     "description": description
                 })
-            })
+            }).then((response) => response.json())
+                .then((data) => {
+                    setEmployerFormFields(data);
+                });
             $('.edit-emp-profile').hide();
             $('.show-emp-profile').show();
 
+        }
+
+        function setInternFormFields(data) {
+            console.log(data);
+            console.log(data.sa_highschool);
+            document.querySelector("#first-name-text").innerText = data.first_name;
+            document.querySelector("#last-name-text").innerText = data.last_name;
+            document.querySelector("#major-text").innerText = data.major;
+            document.querySelector("#minor-text").innerText = data.minor;
+            if (data.transcript_link != null) {
+                document.querySelector("#transcript-text").innerText = "Transcript uploaded."
+            }
+            if (data.essay_link != null) {
+                document.querySelector("#essay-text").innerText = "Essay uploaded."
+            }
+            if (data.sa_highschool == true) {
+                document.querySelector("#sa_highschool-text").innerText = "Yes"
+            } else {
+                document.querySelector("#sa_highschool-text").innerText = "No"
+            }
+            if (data.first_to_college == true) {
+                document.querySelector("#first_to_college-text").innerText = "Yes"
+            } else {
+                document.querySelector("#first_to_college-text").innerText = "No"
+            }
+            if (data.sa_educational_program == true) {
+                document.querySelector("#sa_educational_program-text").innerText = "Yes"
+            } else {
+                document.querySelector("#sa_educational_program-text").innerText = "No"
+            }
+            if (data.sa_college == true) {
+                document.querySelector("#sa_college-text").innerText = "Yes"
+            } else {
+                document.querySelector("#sa_college-text").innerText = "No"
+            }
+            if (data.complete == true) {
+                document.querySelector("#isComplete-text").innerText = "Yes"
+            } else {
+                document.querySelector("#isComplete-text").innerText = "No"
+            }
+
+        }
+
+        function setEmployerFormFields(data) {
+            document.querySelector("#emp-name-text").innerText = data.name;
+            document.querySelector("#supervisor-text").innerText = data.supervisor;
+            document.querySelector("#email-text").innerText = data.email;
+            document.querySelector("#industry-text").innerText = data.industry;
+            document.querySelector("#location-text").innerText = data.location;
+            document.querySelector("#website-url-text").innerText = data.websiteUrl;
+            document.querySelector("#description-text").innerText = data.description;
         }
 
         function setInternVars() {
@@ -420,10 +596,7 @@
             lastName = document.querySelector("#lastName").value;
             major = document.querySelector("#major").value;
             minor = document.querySelector("#minor").value;
-            // console.log(document.querySelector("#field_1").value);
-            // field1 = document.querySelector("#field_1").value;
-            // field2 = document.querySelector("#field_2").value;
-            // field3 = document.querySelector("#field_3").value;
+
 
             transcriptLink = document.querySelector("#transcript-field").value;
             essayLink = document.querySelector("#essay-field").value;
@@ -437,6 +610,21 @@
                 firstToCollege = 0;
             } else {
                 firstToCollege = 1;
+            };
+            if (document.querySelector("#sa_educational_program").value === "false") {
+                saEducationalProgram = 0;
+            } else {
+                saEducationalProgram = 1;
+            };
+            if (document.querySelector("#sa_college").value === "false") {
+                saCollege = 0;
+            } else {
+                saCollege = 1;
+            };
+            if (document.querySelector("#complete").value === "false") {
+                isComplete = 0;
+            } else {
+                isComplete = 1;
             };
         }
 
@@ -461,7 +649,8 @@
         client.picker({
             onFileUploadFinished: function(response){
                 this.value ="https://cdn.filestackcontent.com/" + (response.handle);
-                document.getElementById("essay-field").value = this.value
+                document.getElementById("essay-field").value = this.value;
+                document.getElementById("essay-test").value = "Essay uploaded."
             }
         }).open();
     })
@@ -473,11 +662,13 @@
         client.picker({
             onFileUploadFinished: function(response){
                 this.value ="https://cdn.filestackcontent.com/" + (response.handle);
-                document.getElementById("transcript-field").value = this.value
+                document.getElementById("transcript-field").value = this.value;
+                document.getElementById("transcript-text").value = "Transcript uploaded."
 
             }
         }).open();
     })
 </script>
 </body>
+<footer th:replace="fragments/footer" />
 </html>

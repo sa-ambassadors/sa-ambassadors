@@ -1,4 +1,6 @@
 package io.internhub.application.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,8 +54,8 @@ public class InternProfile {
     @Column
     private boolean isPriority;
 
-    @Column
-    private boolean isComplete;
+    @Column (columnDefinition = "TINYINT(1)")
+    private boolean complete;
 
     @Column
     private boolean isApproved;
@@ -61,10 +63,12 @@ public class InternProfile {
     @Column
     private boolean isHired;
 
+    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "applied_jobs", joinColumns = @JoinColumn(name = "intern_id"),
             inverseJoinColumns = @JoinColumn(name = "job_id"))
@@ -190,13 +194,6 @@ public class InternProfile {
         this.isPriority = priority;
     }
 
-    public boolean isComplete() {
-        return isComplete;
-    }
-
-    public void setComplete(boolean complete) {
-        isComplete = complete;
-    }
 
     public boolean isApproved() {
         return isApproved;
@@ -232,5 +229,13 @@ public class InternProfile {
 
     public void setHired(boolean hired) {
         isHired = hired;
+    }
+
+    public boolean isComplete() {
+        return complete;
+    }
+
+    public void setComplete(boolean complete) {
+        this.complete = complete;
     }
 }

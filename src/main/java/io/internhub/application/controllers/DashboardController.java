@@ -81,8 +81,10 @@ public class DashboardController {
 
                List<Job> appliedList = userProfile.getAppliedJobs();
                appliedTotal = appliedList.size();
-               List<Job> relevantJobs = jobs.findByIndustry(userProfile.getField_1(), userProfile.getField_2(), userProfile.getField_3());
-               totalRelevantJobs = relevantJobs.size();
+//               List<Job> relevantJobs = jobs.findByIndustry(userProfile.getField_1(), userProfile.getField_2(), userProfile.getField_3());
+//               totalRelevantJobs = relevantJobs.size();
+               Iterable<Job> allJobs = jobs.findAll();
+               totalJobs = ((List<Job>) allJobs).size();
            }
 
 

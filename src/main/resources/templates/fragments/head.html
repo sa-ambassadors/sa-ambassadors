@@ -35,22 +35,20 @@
 						</li>
 						<li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
 						<li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
-						<div sec:authorize="isAnonymous()">
-						<li><a href="/interns/register">Interns</a></li>
-						<li><a href="/employers/register">Employers</a></li>
-						</div>
-						<!--<li><a href="/faq">FAQ</a></li>-->
+						<li sec:authorize="isAnonymous()"><a href="/interns/register">Interns</a></li>
+						<li sec:authorize="isAnonymous()"><a href="/employers/register">Employers</a></li>
 						<li><a href="/about">About</a></li>
 					</ul>
 
 				<!-- Display current logged-in user -->
-				<div sec:authorize="isAuthenticated()">
-					<form th:action="@{/logout}" th:method="post"></form>
-					User ID: <span th:text="${#authentication.principal.id}"></span>
-					Username: <span id="username" th:text="${#authentication.principal.username}"></span>
-                    test
+				<div class="current-user-id">
+					<div sec:authorize="isAuthenticated()">
+						<form th:action="@{/logout}" th:method="post"></form>
+						User ID: <span th:text="${#authentication.principal.id}"></span>
+						Username: <span id="username" th:text="${#authentication.principal.username}"></span>
+						test
+					</div>
 				</div>
-
 				</div>  <!--  /nav-wrapper -->
 			</nav>
 

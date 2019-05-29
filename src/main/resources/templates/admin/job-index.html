@@ -1,21 +1,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head th:replace="fragments/head :: head('All Jobs!')" />
+	<head th:replace="fragments/head :: head('All Jobs!')" />
 
-<body>
-<div class="container">
-	<div th:each="job: ${allJobs}">
-		<div>
-			<h4 th:text="${job.title}"></h4>
-			<hr />
-			<p>Company: <span th:text="${job.getCompanyName()}"></span></p>
-			<p>Description: <span th:text="${job.getJobDescription()}"></span></p>
-			<a th:href="@{'/jobs/' + ${job.getId()}}">View Full Post</a>
-			<hr />
+	<body>
+		<div class="container">
+			<div th:each="job: ${allJobs}">
+				<div>
+					<h4 th:text="${job.title}"></h4>
+					<hr />
+					<p>Company: <span th:text="${job.getCompanyName()}"></span></p>
+					<p>Description: <span th:text="${job.getJobDescription()}"></span></p>
+					<a th:href="@{'/jobs/' + ${job.getId()}}">View Full Post</a>
+					<hr />
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-</body>
-
-<footer th:replace="fragments/footer" />
+	<footer th:replace="fragments/footer"></footer>
+	</body>
 </html>

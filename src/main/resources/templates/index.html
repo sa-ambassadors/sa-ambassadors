@@ -1,5 +1,4 @@
   <head th:replace="fragments/head :: head('Welcome!')" xmlns:th="http://www.w3.org/1999/xhtml">
-        <!--xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"-->
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
   </head>
@@ -7,9 +6,43 @@
   <body>
     <div class="container">
       <!-- Page Content goes here  -->
-      <div class="divider"></div>
+      <div class="slider">
+        <ul class="slides">
+          <li>
+            <img src="/img/index_graduate.jpeg" />
+          </li>
+          <li>
+            <img src="/img/index_handshake.jpg" />
+          </li>
+          <li>
+            <img src="/img/index_fist_bump.jpeg" />
+          </li>
+        </ul>
+      </div>
       <div class="row">
-
+        <div class="col s4">
+          <div class="circle-container">
+            <div class="circle-text">
+              Intern
+            </div>
+          </div>
+        </div>
+          <div class="col s4">
+            <div class="circle-container">
+              <div class="circle-text">
+                Employer
+              </div>
+            </div>
+          </div>
+        <div class="col s4">
+          <div class="circle-container">
+            <div class="circle-text">
+              About
+            </div>
+          </div>
+        </div>
+        </div>
+      <div class="row">
         <div class="col s6 intern-message">
           <h2>Interns</h2>
           <p>InternHub can connect you with pre-professional exposure where you can gain the required experience to
@@ -46,9 +79,10 @@
           <div class="col l4 offset-l2 s12">
             <h5 class="white-text">Find Us!</h5>
             <ul>
-              <li><img class="social-media" src="/../img/facebook.png" alt="Facebook-logo"/><a class="grey-text text-lighten-3"></a></li>
-              <li><img class="social-media" src="/../img/instagram.png" alt="Instagram-logo"/><a class="grey-text text-lighten-3"></a></li>
-              <li><img class="social-media" src="/../img/twitter.png" alt="Twitter-logo"/><a class="grey-text text-lighten-3"></a></li>
+              <li><img class="social-media" src="/../img/facebook.png" alt="Facebook-logo"/><a class="grey-text text-lighten-3"></a>
+              <img class="social-media" src="/../img/instagram.png" alt="Instagram-logo"/><a class="grey-text text-lighten-3"></a>
+              <img class="social-media" src="/../img/twitter.png" alt="Twitter-logo"/><a class="grey-text text-lighten-3"></a>
+              </li>
               <!--<li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>-->
             </ul>
           </div>
@@ -58,13 +92,14 @@
       <div class="footer-copyright grey darken-4">
         <div class="container">
           © 2019 Copyright, InternHub
-          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+          <!--<a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
         </div>
       </div>
     </footer>
+
+    <footer th:replace="fragments/footer"></footer>
   </body>
 
-  <footer th:replace="fragments/footer"/>
 
 
 

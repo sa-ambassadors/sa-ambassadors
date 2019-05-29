@@ -1,13 +1,7 @@
 package io.internhub.application.controllers;
 
-import io.internhub.application.models.InternProfile;
-import io.internhub.application.models.Job;
-import io.internhub.application.models.User;
-import io.internhub.application.models.UserWithRoles;
-import io.internhub.application.repositories.InternRepository;
-import io.internhub.application.repositories.Jobs;
-import io.internhub.application.repositories.Roles;
-import io.internhub.application.repositories.Users;
+import io.internhub.application.models.*;
+import io.internhub.application.repositories.*;
 import io.internhub.application.services.UserDetailsLoader;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,14 +20,16 @@ public class AdminController {
     private InternRepository internProfiles;
     private Jobs jobs;
     private UserDetailsLoader userDetailsLoader;
+    private EmployerProfiles employerProfiles;
 
-    public AdminController(Users users, PasswordEncoder passwordEncoder, Roles roles, InternRepository internProfiles, Jobs jobs, UserDetailsLoader userDetailsLoader){
+    public AdminController(Users users, PasswordEncoder passwordEncoder, Roles roles, InternRepository internProfiles, Jobs jobs, UserDetailsLoader userDetailsLoader, EmployerProfiles employerProfiles){
         this.users = users;
         this.passwordEncoder = passwordEncoder;
         this.roles = roles;
         this.internProfiles = internProfiles;
         this.jobs = jobs;
         this.userDetailsLoader = userDetailsLoader;
+        this.employerProfiles = employerProfiles;
     }
 
     @GetMapping("admin/register")
@@ -73,6 +69,24 @@ public class AdminController {
         UserWithRoles userWithRoles = userDetailsLoader.loadWithUserName(internProfile.getUser().getUsername());
         userWithRoles.setEnabled(true);
         User user = internProfile.getUser();
+        user.setEnabled(true);
+        users.save(user);
+        return "redirect:/admin/applicant-index";
+    }
+
+    @GetMapping("admin/employer/{employerId}")
+    public String getIndividualEmployerPage (Model model, @PathVariable String employerId) {
+        EmployerProfile employerProfile = employerProfiles.findOne(Long.parseLong(employerId));
+        model.addAttribute("internProfile", employerProfile);
+        return "admin/approve-employer";
+    }
+
+    @PostMapping("admin/employer/{employerId}")
+    public String postIndividualEmployerPage(Model model, @PathVariable String employerId) {
+        EmployerProfile employerProfile = employerProfiles.findOne(Long.parseLong(employerId));
+        UserWithRoles userWithRoles = userDetailsLoader.loadWithUserName(employerProfile.getUser().getUsername());
+        userWithRoles.setEnabled(true);
+        User user = employerProfile.getUser();
         user.setEnabled(true);
         users.save(user);
         return "redirect:/admin/applicant-index";
