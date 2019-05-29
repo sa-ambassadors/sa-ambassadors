@@ -153,8 +153,9 @@ public class ApiController {
     }
 
     @PatchMapping("{user}/employer/edit/{job}")
-    public ResponseEntity<?> editEmployerJobPost(@PathVariable String user, @PathVariable String job, @RequestBody Job updatedJob) {
+    public ResponseEntity<Job> editEmployerJobPost(@PathVariable String user, @PathVariable String job, @RequestBody Job updatedJob) {
         User foundUser = users.findByUsername(user);
+        Job fakeJob = new Job();
         boolean userOwnsJob = false;
         if (foundUser == null) {
             ResponseEntity.badRequest().build();
@@ -185,9 +186,9 @@ public class ApiController {
             }
 
             jobs.save(foundJob);
-            return ResponseEntity.ok("Job edited");
+            return ResponseEntity.ok(foundJob);
         }
-        return ResponseEntity.ok("Job does not belong to user");
+        return ResponseEntity.ok(fakeJob);
     }
 }
 

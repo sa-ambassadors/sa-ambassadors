@@ -1,5 +1,7 @@
 package io.internhub.application.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +39,12 @@ public class Job {
     @Column(nullable = false)
     private String aboutUs;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "employer_id")
     private EmployerProfile employerProfile;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "appliedJobs")
     List<InternProfile> internProfiles = new ArrayList<>();
 
