@@ -1,5 +1,4 @@
   <head th:replace="fragments/head :: head('Welcome!')" xmlns:th="http://www.w3.org/1999/xhtml">
-        <!--xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"-->
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
   </head>
@@ -7,14 +6,42 @@
   <body>
     <div class="container">
       <!-- Page Content goes here  -->
-      <div class="divider"></div>
-
-      <div class="carousel carousel-slider center">
-        <a class="carousel-item" href="#one!"> <img src="/img/index_graduate.jpeg" /></a>
-        <a class="carousel-item" href="#two!"><img src="/img/index_handshake.jpg" /></a>
-        <a class="carousel-item" href="#three!"><img src="/img/index_fist_bump.jpeg" /></a>
+      <div class="slider">
+        <ul class="slides">
+          <li>
+            <img src="/img/index_graduate.jpeg" />
+          </li>
+          <li>
+            <img src="/img/index_handshake.jpg" />
+          </li>
+          <li>
+            <img src="/img/index_fist_bump.jpeg" />
+          </li>
+        </ul>
       </div>
-
+      <div class="row">
+        <div class="col s4">
+          <div class="circle-container">
+            <div class="circle-text">
+              Intern
+            </div>
+          </div>
+        </div>
+          <div class="col s4">
+            <div class="circle-container">
+              <div class="circle-text">
+                Employer
+              </div>
+            </div>
+          </div>
+        <div class="col s4">
+          <div class="circle-container">
+            <div class="circle-text">
+              About
+            </div>
+          </div>
+        </div>
+        </div>
       <div class="row">
         <div class="col s6 intern-message">
           <h2>Interns</h2>
