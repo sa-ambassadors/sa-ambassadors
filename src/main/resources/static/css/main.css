@@ -70,10 +70,6 @@
         margin: 0 auto;
     }
 
-    .current-user-id {
-
-
-    }
 
 
 
@@ -101,8 +97,14 @@
 /*------------------------ DASHBOARDS ----------------------------*/
 
 
+.sidebar{
+    height: calc(100vh - 64px);
+    background-color: #345777;
+}
 
-
+.container-row{
+    margin:0 0 0 0;
+}
 
 
 
@@ -133,6 +135,9 @@
         margin-right: 100%;
     }
 
+    .brand-logo{
+        padding-left: 30px !important;
+    }
 
 
 

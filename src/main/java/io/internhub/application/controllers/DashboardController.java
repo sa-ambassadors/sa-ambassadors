@@ -67,13 +67,15 @@ public class DashboardController {
            int appliedTotal = userProfile.getAppliedJobs().size();
            int totalJobs = 0;
            int totalRelevantJobs = 0;
+           boolean isComplete;
+           Iterable<Job> allJobs;
            if (!userProfile.isComplete()) {
-               boolean isComplete = false;
+                isComplete = false;
                String message = "You must complete your profile before applying for positions";
                if (jobs.findAll() == null) {
                    return "There are no current job postings";
                } else {
-                   Iterable<Job> allJobs = jobs.findAll();
+                   allJobs = jobs.findAll();
                    totalJobs = ((List<Job>) allJobs).size();
                }
 
@@ -83,17 +85,20 @@ public class DashboardController {
                appliedTotal = appliedList.size();
 //               List<Job> relevantJobs = jobs.findByIndustry(userProfile.getField_1(), userProfile.getField_2(), userProfile.getField_3());
 //               totalRelevantJobs = relevantJobs.size();
-               Iterable<Job> allJobs = jobs.findAll();
+               allJobs = jobs.findAll();
                totalJobs = ((List<Job>) allJobs).size();
+               isComplete = true;
            }
 
-
+           model.addAttribute("allJobs", allJobs);
+           model.addAttribute("isComplete", isComplete);
            model.addAttribute("userProfile", userProfile);
            model.addAttribute("totalRelevantJobs", totalRelevantJobs);
            model.addAttribute("appliedTotal", appliedTotal);
            model.addAttribute("totalJobs", totalJobs);
 
        }
+
 
 //       ADMIN DASHBOARD
         if(user.getRole().getId() == 5){
@@ -126,8 +131,6 @@ public class DashboardController {
             Iterable<Job> allJobs = jobs.findAll();
             totalJobs = ((List<Job>) allJobs).size();
 
-            totalInternCount = 10;
-            approvedInternCount = 5;
             model.addAttribute("totalInternCount",totalInternCount);
             model.addAttribute("approvedInternCount",approvedInternCount);
             model.addAttribute("hiredCount",hiredCount);

@@ -5,61 +5,41 @@
 
 		<head>
 			<meta charset="UTF-8" />
-			<link rel="stylesheet" type="text/css" href="/css/main.css" />
-
-       <link rel="shortcut icon" href="img/ih-favicon.png" type="image/x-icon" />
-
-			<title th:text="'InternHub | ' + ${title}"></title>
-
-
 			<!-- Compiled and minified CSS Materialize-->
 			<link rel="stylesheet"
-				  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+			      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+			<!--CUSTOM CSSS-->
+			<link rel="stylesheet" type="text/css" href="/css/main.css" />
+			<!--ICON-->
+            <link rel="shortcut icon" href="img/ih-favicon.png" type="image/x-icon" />
 
+			<title th:text="'InternHub | ' + ${title}"></title>
 			<!-- Nav bar -->
 			<nav>
 				<div class="nav-wrapper blue">
-					<a href="#" class="brand-logo">InternHub</a>
-					<span sec:authorize="isAuthenticated()"><a href="/dashboard" class="brand-logo">InternHub</a></span>
+					<span sec:authorize="isAuthenticated()">
+							<a href="/dashboard" class="brand-logo">InternHub</a>
+					</span>
 					<span sec:authorize="isAnonymous()"><a href="/" class="brand-logo">InternHub</a></span>
-					<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-					<ul class="right hide-on-med-and-down">
-
 						<!-- Search in nav -->
-						<li>
-							<div class="input-field">
-								<input id="search" type="search" required="required" />
-								<label class="label-icon" for="search"><i class="material-icons">search</i></label>
-								<i class="material-icons">x</i>
-							</div>
+					<ul class="right">
+						<li sec:authorize="isAuthenticated()">
+							User ID: <span th:text="${#authentication.principal.id}"></span>
 						</li>
-						<li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
-						<li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
+						<li sec:authorize="isAuthenticated()">
+							Username: <span id="username" th:text="${#authentication.principal.username}"></span>
+						</li>
 						<li sec:authorize="isAnonymous()"><a href="/interns/register">Interns</a></li>
 						<li sec:authorize="isAnonymous()"><a href="/employers/register">Employers</a></li>
 						<li><a href="/about">About</a></li>
+						<li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
+						<li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
 					</ul>
 
 				<!-- Display current logged-in user -->
-				<div class="current-user-id">
-					<div sec:authorize="isAuthenticated()">
-						<form th:action="@{/logout}" th:method="post"></form>
-						User ID: <span th:text="${#authentication.principal.id}"></span>
-						Username: <span id="username" th:text="${#authentication.principal.username}"></span>
-						test
-					</div>
-				</div>
+
 				</div>  <!--  /nav-wrapper -->
 			</nav>
-
-			<!-- Collapsible side nav -->
-			<ul class="sidenav" id="mobile-demo">
-				<li><a href="/login">Login</a></li>
-				<li><a href="/interns/register">Interns</a></li>
-				<li><a href="/employers/register">Employers</a></li>
-				<!--<li><a href="/faq">FAQ</a></li>-->
-				<li><a href="/about">About</a></li>
-			</ul>
 
 		</head>
 	</th:block>
