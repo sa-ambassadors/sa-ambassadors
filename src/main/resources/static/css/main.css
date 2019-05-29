@@ -35,22 +35,22 @@
         line-height: 0;
         font-size: larger;
 }
-    .circle-blue{
+    .circle-blue {
         background-color: #345777;
     }
 
-    .circle-yellow{
+    .circle-yellow {
         background-color: #F5CB09;
     }
 
-    .circle-orange{
+    .circle-orange {
         background-color: #F7882F;
     }
 
-    .button-label{
+    .button-label {
         margin: 0 auto;
 }
-    .slider-cap{
+    .slider-cap {
         position:absolute;
         z-index:10;
         width: 100%;
@@ -60,7 +60,7 @@
         color: white;
     }
 
-    .index-img{
+    .index-img {
         padding-top: 30px;
     }
 
@@ -97,17 +97,14 @@
 /*------------------------ DASHBOARDS ----------------------------*/
 
 
-.sidebar{
+.sidebar {
     height: calc(100vh - 64px);
     background-color: #345777;
 }
 
-.container-row{
+.container-row {
     margin:0 0 0 0;
 }
-
-
-
 
 
 
@@ -135,7 +132,7 @@
         margin-right: 100%;
     }
 
-    .brand-logo{
+    .brand-logo {
         padding-left: 30px !important;
     }
 
@@ -162,14 +159,29 @@
 /*------------------------ ABOUT US ---------------------------*/
 
 
+    /*.the-project {*/
+        /*font-size: medium;*/
+    /*}*/
+
+    /*.the-team {*/
+        /*font-size: medium;*/
+    /*}*/
+
+    .what-is {
+        font-size: 45px;
+        top: -31px;
+    }
+
     .description {
         margin-left: 20%;
         margin-right: 20%;
+        margin-top: 30%;
     }
 
     .the-team {
-        margin-top: 200px;
-        width: 100%;
+        margin-top: 15%;
+        margin-bottom: 15%;
+        margin-right: 5%;
     }
 
     .the-team h1 {
@@ -182,8 +194,7 @@
         /*color: -----;*/
     }
     .each-person-wrapper {
-        width: 100%;
-        margin: 80px auto;
+        margin: 40px auto;
         padding: 30px 0 40px;
     }
 
@@ -202,6 +213,7 @@
         margin: 0 auto;
     }
 
+    /* personal social links */
     a.links {
         font-size: 2em;
     }
