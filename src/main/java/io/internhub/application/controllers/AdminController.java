@@ -74,10 +74,17 @@ public class AdminController {
         return "redirect:/admin/applicant-index";
     }
 
+    @GetMapping("admin/employer-index")
+    public String employerIndex (Model model) {
+        Iterable<EmployerProfile> allEmployerProfiles = employerProfiles.findAll();
+        model.addAttribute("allEmployerProfiles", allEmployerProfiles);
+        return"admin/employer-index";
+    }
+
     @GetMapping("admin/employer/{employerId}")
     public String getIndividualEmployerPage (Model model, @PathVariable String employerId) {
         EmployerProfile employerProfile = employerProfiles.findOne(Long.parseLong(employerId));
-        model.addAttribute("internProfile", employerProfile);
+        model.addAttribute("employerProfile", employerProfile);
         return "admin/approve-employer";
     }
 
@@ -89,7 +96,7 @@ public class AdminController {
         User user = employerProfile.getUser();
         user.setEnabled(true);
         users.save(user);
-        return "redirect:/admin/applicant-index";
+        return "redirect:/admin/employer-index";
     }
 }
 
