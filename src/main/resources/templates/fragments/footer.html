@@ -16,16 +16,13 @@
         });
 
         document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.carousel');
-            var instances = M.Carousel.init(elems, {
-                fullWidth: true,
-	            dist: 0,
-	            duration: 1000
-            });
-            setInterval(function(){
-                document.getElementsByClassName("carousel")
-	        }, 2000);
+            var elems = document.querySelectorAll('.slider');
+            var instances = M.Slider.init(elems,{}
+            );
         });
+
+
+
 
 
 
