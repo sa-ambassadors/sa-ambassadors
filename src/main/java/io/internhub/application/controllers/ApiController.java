@@ -47,7 +47,7 @@ public class ApiController {
     }
 
     @PatchMapping("/{user}/employer/profile/edit")
-    public ResponseEntity<?> updateEmployerProfileWithEditedData(@PathVariable String user, @RequestBody EmployerProfile updatingEmployerProfile) {
+    public ResponseEntity<EmployerProfile> updateEmployerProfileWithEditedData(@PathVariable String user, @RequestBody EmployerProfile updatingEmployerProfile) {
         User foundUser = users.findByUsername(user);
         if (foundUser == null) {
             ResponseEntity.badRequest().build();
@@ -75,11 +75,11 @@ public class ApiController {
             foundEmployerProfile.setWebsiteUrl(updatingEmployerProfile.getWebsiteUrl());
         }
         employerProfiles.save(foundEmployerProfile);
-        return ResponseEntity.ok("Employer profile saved.");
+        return ResponseEntity.ok(foundEmployerProfile);
     }
 
     @PatchMapping("{user}/intern/profile/edit")
-    public ResponseEntity<?> updateInternProfileWithEditedData(@PathVariable String user, @RequestBody InternProfile updatingInternProfile) {
+    public ResponseEntity<InternProfile> updateInternProfileWithEditedData(@PathVariable String user, @RequestBody InternProfile updatingInternProfile) {
         User foundUser = users.findByUsername(user);
         if (foundUser == null) {
             ResponseEntity.badRequest().build();
@@ -124,8 +124,11 @@ public class ApiController {
         if (updatingInternProfile.isSa_college() != internProfile.isSa_college()) {
             internProfile.setSa_college(updatingInternProfile.isSa_college());
         }
+        if (updatingInternProfile.isComplete() != internProfile.isComplete()) {
+            internProfile.setComplete(updatingInternProfile.isComplete());
+        }
         internRepository.save(internProfile);
-        return ResponseEntity.ok("Intern profile saved.");
+        return ResponseEntity.ok(internProfile);
     }
 
     @DeleteMapping("{user}/employer/delete/{job}")
@@ -150,8 +153,9 @@ public class ApiController {
     }
 
     @PatchMapping("{user}/employer/edit/{job}")
-    public ResponseEntity<?> editEmployerJobPost(@PathVariable String user, @PathVariable String job, @RequestBody Job updatedJob) {
+    public ResponseEntity<Job> editEmployerJobPost(@PathVariable String user, @PathVariable String job, @RequestBody Job updatedJob) {
         User foundUser = users.findByUsername(user);
+        Job fakeJob = new Job();
         boolean userOwnsJob = false;
         if (foundUser == null) {
             ResponseEntity.badRequest().build();
@@ -182,9 +186,9 @@ public class ApiController {
             }
 
             jobs.save(foundJob);
-            return ResponseEntity.ok("Job edited");
+            return ResponseEntity.ok(foundJob);
         }
-        return ResponseEntity.ok("Job does not belong to user");
+        return ResponseEntity.ok(fakeJob);
     }
 }
 

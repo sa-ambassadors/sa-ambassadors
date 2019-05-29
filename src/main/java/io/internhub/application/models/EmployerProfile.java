@@ -1,5 +1,7 @@
 package io.internhub.application.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +29,11 @@ public class EmployerProfile {
     private String description;
     @Column
     private boolean isApproved;
+    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "employerProfile")
     private List<Job> jobs = new ArrayList<>();
 

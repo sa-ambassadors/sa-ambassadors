@@ -1,156 +1,157 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head">
-	<meta charset="UTF-8" />
-	<title>Sign up</title>
-</head>
-<body>
-<h1>Create an account</h1>
-<div class="row">
-	<form class="col s12" th:action="@{/interns/register-profile}" method="POST" th:object="${internProfile}">
+	<head th:replace="fragments/head">
+		<meta charset="UTF-8" />
+		<title>Sign up</title>
+	</head>
 
-		<div class="row">
-			<div class="input-field col s6">
-				<label for="firstName">First Name:</label>
-				<input id="firstName" th:field="*{first_name}" />
+	<body>
+		<h1>Create an account</h1>
+			<div class="row">
+				<form class="col s12" th:action="@{/interns/register-profile}" method="POST" th:object="${internProfile}">
+
+					<div class="row">
+						<div class="input-field col s6">
+							<label for="firstName">First Name:</label>
+							<input id="firstName" th:field="*{first_name}" />
+						</div>
+						<div class="input-field col s6">
+							<label for="lastName">Last Name:</label>
+							<input id="lastName" th:field="*{last_name}" />
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="input-field col s6">
+							<label for="major">Major:</label>
+							<input id="major" th:field="*{major}" />
+						</div>
+						<div class="input-field col s6">
+							<label for="minor">Minor:</label>
+							<input id="minor" th:field="*{minor}" />
+						</div>
+					</div>
+
+					<div class="input-field col s12">
+						<select th:field="*{field_1}">
+							<option value="1">Business, Management &amp; Administration</option>
+							<option value="2">Criminal Justice</option>
+							<option value="3">Education &amp; Training</option>
+							<option value="4">Engineering</option>
+							<option value="5">Finance</option>
+							<option value="6">Government &amp; Public Administration</option>
+							<option value="7">Hospitality &amp; Tourism</option>
+							<option value="8">Healthcare</option>
+							<option value="9">Human Services</option>
+							<option value="10">Information Technologies</option>
+							<option value="11">Law, Public Safety, Corrections, &amp; Security</option>
+							<option value="12">Manufacturing</option>
+							<option value="13">Marketing</option>
+							<option value="14">Public Relations</option>
+							<option value="15">Science &amp; Research</option>
+							<option value="16">Other</option>
+							<label>Choose Primary Field</label>
+						</select>
+					</div>
+
+					<div class="input-field col s12">
+						<select th:field="*{field_2}">
+							<option value="1">Business, Management, &amp; Administration
+							</option>
+							<option value="2">Criminal Justice
+							</option>
+							<option value="3">Education &amp; Training
+							</option>
+							<option value="4">Engineering
+							</option>
+							<option value="5">Finance
+							</option>
+							<option value="6">Government &amp; Public Administration
+							</option>
+							<option value="7">Hospitality &amp; Tourism
+							</option>
+							<option value="8">Healthcare
+							</option>
+							<option value="9">Human Services
+							</option>
+							<option value="10">Information Technologies
+							</option>
+							<option value="11">Law, Public Safety, Corrections, &amp; Security
+							</option>
+							<option value="12">Manufacturing
+							</option>
+							<option value="13">Marketing
+							</option>
+							<option value="14">Public Relations
+							</option>
+							<option value="15">Science &amp; Research
+							</option>
+							<option value="16">Other
+							</option>
+						</select>
+						<label>Choose Secondary Field</label>
+					</div>
+
+					<div class="input-field col s12">
+						<select th:field="*{field_3}">
+							<option value="1">Business, Management, &amp; Administration
+							</option>
+							<option value="2">Criminal Justice
+							</option>
+							<option value="3">Education &amp; Training
+							</option>
+							<option value="4">Engineering
+							</option>
+							<option value="5">Finance
+							</option>
+							<option value="6">Government &amp; Public Administration
+							</option>
+							<option value="7">Hospitality &amp; Tourism
+							</option>
+							<option value="8">Healthcare
+							</option>
+							<option value="9">Human Services
+							</option>
+							<option value="10">Information Technologies
+							</option>
+							<option value="11">Law, Public Safety, Corrections, &amp; Security
+							</option>
+							<option value="12">Manufacturing
+							</option>
+							<option value="13">Marketing
+							</option>
+							<option value="14">Public Relations
+							</option>
+							<option value="15">Science &amp; Research
+							</option>
+							<option value="16">Other
+							</option>
+						</select>
+						<label>Third Choice Field</label>
+					</div>
+
+					<label for="transcript">Upload Transcripts:</label>
+					<input id="transcript" th:field="*{transcript_link}" />
+
+					<label for="essay">Upload Essay:</label>
+					<input id="essay" th:field="*{essay_link}" />
+
+					<label for="sa_highschool">Did you attend high school in San Antonio?</label>
+					<input id="sa_highschool" th:field="*{sa_highschool}" />
+
+					<label for="sa_college">Did you attend college in San Antonio?</label>
+					<input id="sa_college" th:field="*{sa_highschool}" />
+
+					<label for="first_to_college">Are you the first in your family to attend college?</label>
+					<input id="first_to_college" th:field="*{first_to_college}" />
+
+					<input value="Create your profile!" type="submit" />
+				</form>
+
+				<button id="save">Save</button>
 			</div>
-			<div class="input-field col s6">
-				<label for="lastName">Last Name:</label>
-				<input id="lastName" th:field="*{last_name}" />
-			</div>
-		</div>
 
-		<div class="row">
-			<div class="input-field col s6">
-				<label for="major">Major:</label>
-				<input id="major" th:field="*{major}" />
-			</div>
-			<div class="input-field col s6">
-				<label for="minor">Minor:</label>
-				<input id="minor" th:field="*{minor}" />
-			</div>
-		</div>
-
-		<div class="input-field col s12">
-			<select th:field="*{field_1}">
-				<option value="1">Business, Management &amp; Administration</option>
-				<option value="2">Criminal Justice</option>
-				<option value="3">Education &amp; Training</option>
-				<option value="4">Engineering</option>
-				<option value="5">Finance</option>
-				<option value="6">Government &amp; Public Administration</option>
-				<option value="7">Hospitality &amp; Tourism</option>
-				<option value="8">Healthcare</option>
-				<option value="9">Human Services</option>
-				<option value="10">Information Technologies</option>
-				<option value="11">Law, Public Safety, Corrections, &amp; Security</option>
-				<option value="12">Manufacturing</option>
-				<option value="13">Marketing</option>
-				<option value="14">Public Relations</option>
-				<option value="15">Science &amp; Research</option>
-				<option value="16">Other</option>
-				<label>Choose Primary Field</label>
-			</select>
-		</div>
-
-		<div class="input-field col s12">
-			<select th:field="*{field_2}">
-				<option value="1">Business, Management, &amp; Administration
-				</option>
-				<option value="2">Criminal Justice
-				</option>
-				<option value="3">Education &amp; Training
-				</option>
-				<option value="4">Engineering
-				</option>
-				<option value="5">Finance
-				</option>
-				<option value="6">Government &amp; Public Administration
-				</option>
-				<option value="7">Hospitality &amp; Tourism
-				</option>
-				<option value="8">Healthcare
-				</option>
-				<option value="9">Human Services
-				</option>
-				<option value="10">Information Technologies
-				</option>
-				<option value="11">Law, Public Safety, Corrections, &amp; Security
-				</option>
-				<option value="12">Manufacturing
-				</option>
-				<option value="13">Marketing
-				</option>
-				<option value="14">Public Relations
-				</option>
-				<option value="15">Science &amp; Research
-				</option>
-				<option value="16">Other
-				</option>
-			</select>
-			<label>Choose Secondary Field</label>
-		</div>
-
-		<div class="input-field col s12">
-			<select th:field="*{field_3}">
-				<option value="1">Business, Management, &amp; Administration
-				</option>
-				<option value="2">Criminal Justice
-				</option>
-				<option value="3">Education &amp; Training
-				</option>
-				<option value="4">Engineering
-				</option>
-				<option value="5">Finance
-				</option>
-				<option value="6">Government &amp; Public Administration
-				</option>
-				<option value="7">Hospitality &amp; Tourism
-				</option>
-				<option value="8">Healthcare
-				</option>
-				<option value="9">Human Services
-				</option>
-				<option value="10">Information Technologies
-				</option>
-				<option value="11">Law, Public Safety, Corrections, &amp; Security
-				</option>
-				<option value="12">Manufacturing
-				</option>
-				<option value="13">Marketing
-				</option>
-				<option value="14">Public Relations
-				</option>
-				<option value="15">Science &amp; Research
-				</option>
-				<option value="16">Other
-				</option>
-			</select>
-			<label>Third Choice Field</label>
-		</div>
-
-		<label for="transcript">Upload Transcripts:</label>
-		<input id="transcript" th:field="*{transcript_link}" />
-
-		<label for="essay">Upload Essay:</label>
-		<input id="essay" th:field="*{essay_link}" />
-
-		<label for="sa_highschool">Did you attend high school in San Antonio?</label>
-		<input id="sa_highschool" th:field="*{sa_highschool}" />
-
-		<label for="sa_college">Did you attend college in San Antonio?</label>
-		<input id="sa_college" th:field="*{sa_highschool}" />
-
-		<label for="first_to_college">Are you the first in your family to attend college?</label>
-		<input id="first_to_college" th:field="*{first_to_college}" />
-
-		<input value="Create your profile!" type="submit" />
-	</form>
-
-	<button id="save">Save</button>
-
-</div>
-<script type="text/javascript" th:src="@{/profile-script.js}"></script>
-</body>
-<footer th:replace="fragments/footer" />
+		<script type="text/javascript" th:src="@{/profile-script.js}"></script>
+		<footer th:replace="fragments/footer"></footer>
+	</body>
 </html>

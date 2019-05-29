@@ -3,19 +3,23 @@
       <!--xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"-->
     <th:block th:fragment="head(title)">
 
-        <!-- dynamic nav -->
-    <head th:replace="fragments/head :: head('about')">
         <meta charset="UTF-8" />
-        <link rel="stylesheet" href="/css/main.css" />
+        <link rel="stylesheet" href="/../css/main.css" />
         <title>About</title>
 
+        <!-- dynamic nav -->
+    <head th:replace="fragments/head :: head('about')">
         <!-- Compiled and minified CSS Materialize-->
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+        <!-- Bootstrap -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     </head>
+
     <body>
         <a th:href="@{/about}"></a>
-        <div class="about-us-wrapper">
+        <div class="row" align="center">
+        <div class="about-us-wrapper col col-lg-4">
             <div class="about-us-header">
                 <h1>InternHub</h1>
                 <div class="the-project">The Project</div>
@@ -23,6 +27,7 @@
             </div>
 
             <div class="description">
+                <div class="row" align="center">
                 <h4>What is InternHub?</h4>
                 <p>InternHub is a modern talent-matching tool designed to make recruiting better.
                     It seeks to automate the San Antonio Ambassadors intern selection process, aggregating applicant responses
@@ -33,36 +38,60 @@
                 </p>
             </div>
 
+
+         <div class="container">
+             <div class="row" align="center">
             <div class="message-wrapper the-team" id="the-team">
                 <h1>The Team</h1>
                 <div class="everyone-wrapper">
-
-                    <div class="each-person-wrapper">
+            </div>
+             </div>
+                    <div class="col col-lg-4 each-person-wrapper">
                         <h3>Cory Musick</h3>
-                        <div class="each-person-img cory-img"></div>
-                            <div class="each-person-description cory-description"></div>
+                        <p>
+                            <img width="300"  src="/img/Cory.jpg"/>
+                        </p>
+
+                        <!--<div class="each-person-img cory-img"></div>-->
+                        <div class="each-person-description cory-description"></div>
+                        <p><a class="links" target="_blank" href="https://alumni.codeup.com/uploads/660-1558454208.pdf">Resume</a></p>
+                        <p><a class="links" target="_blank" href="https://www.linkedin.com/in/corymusick/">LinkedIn</a></p>
+                        <p><a class="links" target="_blank" href="https://github.com/corymusick">GitHub</a></p>
+                    </div>
                     </div>
 
-                    <div class="each-person-wrapper">
+                    <div class="col col-lg-4 each-person-wrapper">
                         <h3>Cerissa Antill</h3>
-                        <div class="each-person-img cerissa-img"></div>
+                        <p>
+                            <img width="300" src="/img/Cerissa.jpg"/>
+                        </p>
+                        <!--<div class="each-person-img cerissa-img"></div>-->
                         <div class="each-person-description cerissa-description"></div>
+                        <p><a class="links" target="_blank" href="https://alumni.codeup.com/uploads/666-1558456552.pdf">Resume</a></p>
+                        <p><a class="links" target="_blank" href="https://www.linkedin.com/in/cerissa-antill/">LinkedIn</a></p>
+                        <p><a class="links" target="_blank" href="https://github.com/cerissaantill">GitHub</a></p>
                     </div>
 
-                    <div class="each-person-wrapper">
+                    <div class="col col-lg-4 each-person-wrapper">
                         <h3>Mike Flores</h3>
-                        <div class="each-person-img mike-img"></div>
+                        <p>
+                            <img width="300" src="/img/Mike.jpg"/>
+                        </p>
+                        <!--<div class="each-person-img mike-img"></div>-->
                         <div class="each-person-description mike-description"></div>
+                        <p><a class="links" target="_blank" href="https://alumni.codeup.com/uploads/656-1558451141.pdf">Resume</a></p>
+                        <p><a class="links" target="_blank" href="https://www.linkedin.com/in/michaelflores/">LinkedIn</a></p>
+                        <p><a class="links" target="_blank" href="https://github.com/michaelflores3717/">GitHub</a></p>
                     </div>
                 </div>
             </div>
+        </div>
 
+        </div>
 
 
         </div> <!-- /about-us-wrapper -->
+        <footer th:replace="fragments/footer"></footer>
     </body>
-
-
-    <footer th:replace="fragments/footer"></footer>
     </th:block>
 </html>

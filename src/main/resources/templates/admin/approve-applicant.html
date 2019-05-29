@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-<head th:replace="fragments/head :: head('Dashboard')" />
+    <head th:replace="fragments/head :: head('Dashboard')" />
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <title></title>
-</head>
-<body>
-<form class="col s12" th:action="@{'/admin/applicant/' + ${internProfile.getId()}}" method="POST" th:object="${internProfile}">
+    <body>
+        <form class="col s12" th:action="@{'/admin/applicant/' + ${internProfile.getId()}}" method="POST" th:object="${internProfile}">
 
-    <div class="row">
-        <div class="input-field col s6">
-            <label for="first-name">First Name:</label>
-            <p id="first-name" th:text="*{first_name}" />
-        </div>
-        <div class="input-field col s6">
-            <label for="last-name">Last Name:</label>
-            <p id="last-name" th:text="*{last_name}" />
-        </div>
-    </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <label for="first-name">First Name:</label>
+                    <p id="first-name" th:text="*{first_name}" />
+                </div>
+                <div class="input-field col s6">
+                    <label for="last-name">Last Name:</label>
+                    <p id="last-name" th:text="*{last_name}" />
+                </div>
+            </div>
 
-    <button id="approve-app">Approve application</button>
-</form>
-
-</body>
+            <button id="approve-app">Approve application</button>
+        </form>
+    <footer th:replace="fragments/footer"></footer>
+    </body>
 </html>

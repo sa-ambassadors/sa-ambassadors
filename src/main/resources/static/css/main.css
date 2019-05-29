@@ -37,15 +37,30 @@
 
 
 
+    .social-media {
+        width: 40px;
+        height: 40px;
+        margin: 0 auto;
+    }
+
+    .current-user-id {
 
 
-/*--------------------- INTERN REGISTRATION -----------------------*/
+    }
 
 
 
 
 
-/*------------------- EMPLOYER REGISTRATION  ---------------------*/
+
+
+/*--------------------- REGISTRATION PAGES -----------------------*/
+
+
+
+
+
+
 
 
 
@@ -56,21 +71,13 @@
 
 
 
-/*---------------------- ADMIN DASHBOARD ------------------------*/
+/*------------------------ DASHBOARDS ----------------------------*/
 
 
 
 
 
 
-/*--------------------- EMPLOYER DASHBOARD ----------------------*/
-
-
-
-
-
-
-/*--------------------- INTERN DASHBOARD -----------------------*/
 
 
 
@@ -106,11 +113,11 @@
 
 /*------------------------- FOOTERS ----------------------------*/
 
-/*.footer {*/
-/*flex: 1 0 auto;*/
-/*position: absolute;*/
+    .footer {
+        flex: auto;
+        /*position: absolute;*/
 
-/*}*/
+    }
 
 
 
@@ -157,20 +164,36 @@
     }
 
 
+    a.links {
+        font-size: 2em;
+    }
+
+
+
 
 @media only screen and (min-width: 200px) {
 
-    .cory-img {
-        background-image: url("/img/Cory.jpg");
-    }
 
-    .cerissa-img {
-        background-image: url("/img/Cerissa.jpg");
-    }
 
-    .mike-img {
-        background-image: url("/img/Mike.jpg");
-    }
+
+
+
+
+
+    /*.cory-img {*/
+        /*background-image: url("/static/img/Cory.jpg");*/
+        /*!*display: inline-block;*!*/
+    /*}*/
+
+    /*.cerissa-img {*/
+        /*background-image: url("/static/img/Cerissa.jpg");*/
+        /*!*display: inline-block;*!*/
+    /*}*/
+
+    /*.mike-img {*/
+        /*background-image: url("/static/img/Mike.jpg");*/
+        /*!*display: inline-block;*!*/
+    /*}*/
 
 
 }
