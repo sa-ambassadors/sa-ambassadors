@@ -34,14 +34,23 @@
         margin: 0 auto;
     }
 
+    .current-user-id {
 
-/*--------------------- INTERN REGISTRATION -----------------------*/
-
-
-
+    }
 
 
-/*------------------- EMPLOYER REGISTRATION  ---------------------*/
+
+
+
+
+
+/*--------------------- REGISTRATION PAGES -----------------------*/
+
+
+
+
+
+
 
 
 
@@ -52,21 +61,13 @@
 
 
 
-/*---------------------- ADMIN DASHBOARD ------------------------*/
+/*------------------------ DASHBOARDS ----------------------------*/
 
 
 
 
 
 
-/*--------------------- EMPLOYER DASHBOARD ----------------------*/
-
-
-
-
-
-
-/*--------------------- INTERN DASHBOARD -----------------------*/
 
 
 
@@ -153,23 +154,36 @@
     }
 
 
+    a.links {
+        font-size: 2em;
+    }
+
+
+
 
 @media only screen and (min-width: 200px) {
 
-    .cory-img {
-        background-image: url("/static/img/Cory.jpg");
-        /*display: inline-block;*/
-    }
 
-    .cerissa-img {
-        background-image: url("/static/img/Cerissa.jpg");
-        /*display: inline-block;*/
-    }
 
-    .mike-img {
-        background-image: url("/static/img/Mike.jpg");
-        /*display: inline-block;*/
-    }
+
+
+
+
+
+    /*.cory-img {*/
+        /*background-image: url("/static/img/Cory.jpg");*/
+        /*!*display: inline-block;*!*/
+    /*}*/
+
+    /*.cerissa-img {*/
+        /*background-image: url("/static/img/Cerissa.jpg");*/
+        /*!*display: inline-block;*!*/
+    /*}*/
+
+    /*.mike-img {*/
+        /*background-image: url("/static/img/Mike.jpg");*/
+        /*!*display: inline-block;*!*/
+    /*}*/
 
 
 }
