@@ -9,7 +9,7 @@ public class AboutController {
 
         @GetMapping(value = "/about")
         public String about(){
-            return "pages/about";
+            return "/pages/about";
         }
     }
 

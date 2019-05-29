@@ -17,11 +17,12 @@
         padding: 50px;
     }
 
-    .circle-container{
-        height: 110px;
-        width: 110px;
-        margin: 0 auto;
+    .circle-container {
+        height: 175px;
+        width: 175px;
+        margin: 10px auto;
     }
+
     .circle-text {
         position: relative;
         display: inline-block;
@@ -29,13 +30,39 @@
         height: 0;
         padding: 50% 0;
         border-radius: 50%;
-        background: #38a9e4;
         color: white;
         text-align: center;
         line-height: 0;
+        font-size: larger;
 }
+    .circle-blue{
+        background-color: #345777;
+    }
 
+    .circle-yellow{
+        background-color: #F5CB09;
+    }
 
+    .circle-orange{
+        background-color: #F7882F;
+    }
+
+    .button-label{
+        margin: 0 auto;
+}
+    .slider-cap{
+        position:absolute;
+        z-index:10;
+        width: 100%;
+        text-align: center;
+        top:125px;
+        background-color: rgba(0, 0, 0, .5);
+        color: white;
+    }
+
+    .index-img{
+        padding-top: 30px;
+    }
 
     .social-media {
         width: 40px;
