@@ -55,7 +55,7 @@ public class InternProfile {
     private boolean isPriority;
 
     @Column (columnDefinition = "TINYINT(1)")
-    private boolean complete;
+    private boolean complete = false;
 
     @Column
     private boolean isApproved;

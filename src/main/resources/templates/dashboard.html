@@ -31,6 +31,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                         <p><a href="/employers/add-job">Add A Posting</a></p>
                     </div>
                 </div>
+            </div>
 
               
             <!--SECOND CARD SHOWS TOTAL APPLICANTS-->
@@ -47,37 +48,37 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                 </div>
             </div>
 
-            <div class="col s12 m4 l3">
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title">Open Positions</span>
-                        <h1 th:text="${totalApps}"></h1>
-                    </div>
-                    <div class="card-action">
-                        <p><a href="/employers/index">View Applications by Job</a></p>
-                        <p><a href="/employers/add-job">View All Applicants</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l3">
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title">Filled Positions</span>
-                        <h1 th:text="${totalApps}"></h1>
-                    </div>
-                    <div class="card-action">
-                       <p> <a href="/employers/index">View Applications by Job</a></p>
-                        <p><a href="/employers/add-job">View All Applicants</a></p>
-                    </div>
-                </div>
-            </div>
+<!--            <div class="col s12 m4 l3">-->
+<!--                <div class="card">-->
+<!--                    <div class="card-content">-->
+<!--                        <span class="card-title">Open Positions</span>-->
+<!--                        <h1 th:text="${totalApps}"></h1>-->
+<!--                    </div>-->
+<!--                    <div class="card-action">-->
+<!--                        <p><a href="/employers/index">View Applications by Job</a></p>-->
+<!--                        <p><a href="/employers/add-job">View All Applicants</a></p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col s12 m4 l3">-->
+<!--                <div class="card">-->
+<!--                    <div class="card-content">-->
+<!--                        <span class="card-title">Filled Positions</span>-->
+<!--                        <h1 th:text="${totalApps}"></h1>-->
+<!--                    </div>-->
+<!--                    <div class="card-action">-->
+<!--                       <p> <a href="/employers/index">View Applications by Job</a></p>-->
+<!--                        <p><a href="/employers/add-job">View All Applicants</a></p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
             <!--ROW ENDS-->
         </div>
         </div>
 
         <!--EMPLOYER DIV ENDS-->
 
-    </div>
+
     <!--ROW ENDS-->
 
 <!--EMPLOYER SECTION ENDS-->
@@ -157,34 +158,35 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                 </div>
 
                 <!--THIRD CARD SHOWS TOTAL JOBS-->
-                <div class="col s12 m4 l3">
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title">Total Job Postings</span>
-                        <h1 th:text="${totalJobs}"></h1>
-                    </div>
-                    <div class="card-action">
-                        <p><a href="/admin/job-index">Review Job Postings</a></p>
+<!--                <div class="col s12 m4 l3">-->
+<!--                <div class="card">-->
+<!--                    <div class="card-content">-->
+<!--                        <span class="card-title">Total Job Postings</span>-->
+<!--                        <h1 th:text="${totalJobs}"></h1>-->
+<!--                    </div>-->
+<!--                    <div class="card-action">-->
+<!--                        <p><a href="/admin/job-index">Review Job Postings</a></p>-->
 
-                    </div>
-                </div>
-            </div>
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
 
                 <!--FOURTH CARD SHOWS PLACEMENT STATS-->
-                <div class="col s12 m4 l3">
-                    <div class="card">
-                        <div class="card-content">
-                            <span class="card-title">Hired</span>
-                            <h1> <span th:text="${approvedInternCount}" />/<span th:text="${hiredCount}" /></h1>
-                        </div>
-                        <div class="card-action">
-                            <p> <a href="/admin/applicant-index/">View Hired Interns</a></p>
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="col s12 m4 l3">-->
+<!--                    <div class="card">-->
+<!--                        <div class="card-content">-->
+<!--                            <span class="card-title">Hired</span>-->
+<!--                            <h1> <span th:text="${approvedInternCount}" />/<span th:text="${hiredCount}" /></h1>-->
+<!--                        </div>-->
+<!--                        <div class="card-action">-->
+<!--                            <p> <a href="/admin/applicant-index/">View Hired Interns</a></p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
                 <!--ROW ENDS-->
             </div>
         </div>
+
         <footer th:replace="fragments/footer"></footer>
     </body>
 </html>

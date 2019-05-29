@@ -8,16 +8,16 @@
 </head>
 
 <body>
-<form class="col s12" th:action="@{'/admin/employer/' + ${emp.getId()}}" method="POST" th:object="${employerProfile}">
+<form class="col s12" th:action="@{'/admin/employer/' + ${employerProfile.getId()}}" method="POST" th:object="${employerProfile}">
 
     <div class="row">
         <div class="input-field col s6">
-            <label for="first-name">First Name:</label>
-            <p id="first-name" th:text="*{first_name}" />
+            <label for="first-name">Name:</label>
+            <p id="first-name" th:text="*{name}" />
         </div>
         <div class="input-field col s6">
             <label for="last-name">Last Name:</label>
-            <p id="last-name" th:text="*{last_name}" />
+            <p id="last-name" th:text="*{description}" />
         </div>
     </div>
 
