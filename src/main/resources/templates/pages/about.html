@@ -3,12 +3,12 @@
       <!--xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"-->
     <th:block th:fragment="head(title)">
 
+        <!-- dynamic nav -->
+        <head th:replace="fragments/head :: head('about')">
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="/../css/main.css" />
         <title>About</title>
 
-        <!-- dynamic nav -->
-    <head th:replace="fragments/head :: head('about')">
         <!-- Compiled and minified CSS Materialize-->
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
@@ -49,7 +49,7 @@
                     <div class="col col-lg-4 each-person-wrapper">
                         <h3>Cory Musick</h3>
                         <p>
-                            <img width="300"  src="/img/Cory.jpg"/>
+                            <img width="300" alt="cory-profile" src="/img/Cory.jpg" />
                         </p>
 
                         <!--<div class="each-person-img cory-img"></div>-->
@@ -63,7 +63,7 @@
                     <div class="col col-lg-4 each-person-wrapper">
                         <h3>Cerissa Antill</h3>
                         <p>
-                            <img width="300" src="/img/Cerissa.jpg"/>
+                            <img width="300" alt="cerissa-profile" src="/img/Cerissa.jpg" />
                         </p>
                         <!--<div class="each-person-img cerissa-img"></div>-->
                         <div class="each-person-description cerissa-description"></div>
@@ -75,7 +75,7 @@
                     <div class="col col-lg-4 each-person-wrapper">
                         <h3>Mike Flores</h3>
                         <p>
-                            <img width="300" src="/img/Mike.jpg"/>
+                            <img width="300" alt="mike-profile" src="/img/Mike.jpg" />
                         </p>
                         <!--<div class="each-person-img mike-img"></div>-->
                         <div class="each-person-description mike-description"></div>
