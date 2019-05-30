@@ -33,6 +33,7 @@
             fetch("api/v1/user/" + usernameField.value).then(response => {
                 response.json().then(data => {
                     declareUsernameAsValidIfDoesNotExistInDB(data);
+                    console.log(data);
                 })
             })
         }
@@ -41,6 +42,7 @@
             fetch("api/v1/email/" + emailField.value).then(response => {
                 response.json().then(data => {
                     declareEmailAsValidIfDoesNotExistInDB(data);
+                    console.log(data);
                 })
             })
         }
@@ -106,10 +108,6 @@
         }
 
         function allowUserToSubmitIfAllChecksAreMet() {
-            console.log("passwords match" + passwordsMatch);
-            console.log("password is valid" + passwordIsValid);
-            console.log("user is valid" + usernameIsValid);
-            console.log("email is valid" + emailIsValid);
             if (usernameIsValid && emailIsValid && passwordIsValid && passwordsMatch) {
                 document.querySelector("#submit").disabled = false;
             } else document.querySelector("#submit").disabled = true;
