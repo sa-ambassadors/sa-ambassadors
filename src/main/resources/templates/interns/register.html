@@ -1,4 +1,3 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml">
 	<head th:replace="fragments/head :: head('Sign-Up')" />
 
 	<head>
@@ -7,9 +6,9 @@
 	</head>
 
 	<body>
-
-		<div class="container">
-			<h1>Intern Registration</h1>
+	<div class="container content">
+		<div class="center-align">
+			<h3>Intern Registration</h3>
 			<form th:action="@{/interns/register}" method="POST" th:object="${user}">
 				<label for="username">Username</label>
 				<input id="username" th:field="*{username}" />
@@ -32,9 +31,9 @@
 				</div>
 
 			</form>
+
 		</div>
 
 		<footer th:replace="fragments/footer"></footer>
 		<script type="text/javascript" th:src="@{/js/register-script.js}"></script>
 	</body>
-</html>

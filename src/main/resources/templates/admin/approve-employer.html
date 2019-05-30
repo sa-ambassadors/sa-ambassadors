@@ -8,21 +8,24 @@
 </head>
 
 <body>
-<form class="col s12" th:action="@{'/admin/employer/' + ${employerProfile.getId()}}" method="POST" th:object="${employerProfile}">
+<div class="container content">
+    <form class="col s12" th:action="@{'/admin/employer/' + ${employerProfile.getId()}}" method="POST" th:object="${employerProfile}">
 
-    <div class="row">
-        <div class="input-field col s6">
-            <label for="first-name">Name:</label>
-            <p id="first-name" th:text="*{name}" />
+        <div class="row">
+            <div class="input-field col s6">
+                <label for="first-name">Name:</label>
+                <p id="first-name" th:text="*{name}" />
+            </div>
+            <div class="input-field col s6">
+                <label for="last-name">Last Name:</label>
+                <p id="last-name" th:text="*{description}" />
+            </div>
         </div>
-        <div class="input-field col s6">
-            <label for="last-name">Last Name:</label>
-            <p id="last-name" th:text="*{description}" />
-        </div>
-    </div>
 
-    <button class="waves-effect waves-light light-blue btn" id="approve-app">Approve application</button>
-</form>
+        <button class="waves-effect waves-light light-blue btn" id="approve-app">Approve application</button>
+    </form>
+</div>
+
 <footer th:replace="fragments/footer"></footer>
 </body>
 </html>

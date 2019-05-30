@@ -1,25 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-      <!--xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"-->
-    <th:block th:fragment="head(title)">
 
-        <!-- dynamic nav -->
-        <head th:replace="fragments/head :: head('about')">
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" href="/../css/main.css" />
-        <title>About</title>
-
-        <!-- Compiled and minified CSS Materialize-->
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-           <!-- Materialize icons -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-        </head>
-
+        <head th:replace="fragments/head :: head('about')" />
     <body>
-        <a th:href="@{/about}"></a>
+
+      <div class="container content">
+      <a th:href="@{/about}"></a>
         <div class="row" align="center">
         <div class="about-us-wrapper">
 
@@ -83,5 +67,4 @@
         </div> <!-- closing a random div -->
 
     </body>
-    </th:block>
-</html>
+
