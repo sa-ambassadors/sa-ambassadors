@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-<head>
-    <meta charset="UTF-8" />
-    <title>Intern Profile</title>
-</head>
 
-<head th:replace="fragments/head :: head('Welcome!')" xmlns:th="http://www.w3.org/1999/xhtml">
-</head>
+<head th:replace="fragments/head :: head('Welcome!')" xmlns:th="http://www.w3.org/1999/xhtml" />
+
 
 <body>
 <div class="container content">
@@ -289,7 +282,7 @@
 								<option value="false">No
 								</option>
 							</select>
-							<label>Ready to send for approval? Incomplete applications may be rejected.</label>
+							<label>Submit for approval? Incomplete applications may be rejected.</label>
 						</div>
 					</div>
 
@@ -557,5 +550,3 @@
 </div>
 <footer th:replace="fragments/footer" />
 </body>
-
-</html>
