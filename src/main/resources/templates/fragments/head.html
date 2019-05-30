@@ -29,11 +29,11 @@
 						<li sec:authorize="isAuthenticated()" style="display:none">
 							Username: <span id="username" th:text="${#authentication.principal.username}"></span>
 						</li>
-						<li sec:authorize="isAnonymous()"><a href="/interns/register">Interns</a></li>
-						<li sec:authorize="isAnonymous()"><a href="/employers/register">Employers</a></li>
-						<li><a href="/about">About</a></li>
-						<li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
-						<li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
+						<li sec:authorize="isAnonymous()"><a class="nav-links" href="/interns/register">Interns</a></li>
+						<li sec:authorize="isAnonymous()"><a class="nav-links" href="/employers/register">Employers</a></li>
+						<li><a class="nav-links" href="/about">About</a></li>
+						<li sec:authorize="isAuthenticated()"><a class="nav-links" href="/logout">Logout</a></li>
+						<li sec:authorize="isAnonymous()"><a class="nav-links login-nav" href="/login">Login</a></li>
 					</ul>
 
 				<!-- Display current logged-in user -->

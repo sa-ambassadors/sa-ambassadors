@@ -6,9 +6,9 @@
         margin: 0 auto;
         padding: 0;
         font-family: 'Roboto', sans-serif;
-
-
     }
+
+
 /*-------------------- INDEX (landing page)---------------------*/
 
     .intern-message {
@@ -35,7 +35,7 @@
         color: white;
         text-align: center;
         line-height: 0;
-        font-size: large;
+        font-size: 1em;
 }
     .circle-blue {
         background-color: #345777;
@@ -86,9 +86,6 @@
 /*------------------------ DASHBOARDS ----------------------------*/
 
 
-
-
-
 .sidebar {
     height: calc(100vh - 64px);
     background-color: #345777;
@@ -133,7 +130,7 @@
 
 
 
-/*------------------------ HEADERS -----------------------------*/
+/*------------------------ HEADERS / NAV BAR -----------------------------*/
 
     .nav-wrapper {
         @extend background-color: #00B0FF;
@@ -146,10 +143,19 @@
     }
 
     .brand-logo {
-        padding-left: 30px !important;
+        padding-left: 40px !important;
+        /*font-size: 30px;*/
+
     }
 
+    .nav-links {
+        font-size: 18px;
+        padding-right: 30px;
+    }
 
+    .login-nav {
+        padding-right: 45px;
+    }
 
 
 
