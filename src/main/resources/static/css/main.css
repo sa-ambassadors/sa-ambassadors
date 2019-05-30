@@ -1,3 +1,5 @@
+
+
 /*---------------- BODY CSS and VARIABLE DECLARATION -----------*/
 
     body {
@@ -33,7 +35,7 @@
         color: white;
         text-align: center;
         line-height: 0;
-        font-size: larger;
+        font-size: large;
 }
     .circle-blue {
         background-color: #345777;
@@ -73,13 +75,7 @@
 
 
 
-
-
-
-
 /*--------------------- REGISTRATION PAGES -----------------------*/
-
-
 
 
 
@@ -87,9 +83,10 @@
 
 
 
-
-
 /*------------------------ DASHBOARDS ----------------------------*/
+
+
+
 
 
 .sidebar {
@@ -119,6 +116,9 @@
     outline:none;
 } /*Background and text color when a tab is active*/
 
+
+/*------------------------- FORMS ------------------------------*/
+
 .tabs .tab a.active {
     background-color:#e1f5fe;
     color:#0288d1;
@@ -126,10 +126,6 @@
 .tabs .indicator {
     background-color:#01579b;
 } /*Color of underline*/
-
-
-/*--------------------------- FORMS ----------------------------*/
-
 
 
 
@@ -164,8 +160,6 @@
         /*position: absolute;*/
 
     }
-
-
 
 
 
@@ -214,8 +208,9 @@
     }
     .everyone-wrapper {
         padding-top: 1px;
-        /*color: -----;*/
+        /*align-content: center;*/
     }
+
     .each-person-wrapper {
         margin: 10px auto;
         padding: 10px 0 10px;
