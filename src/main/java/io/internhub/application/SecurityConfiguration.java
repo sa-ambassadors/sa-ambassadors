@@ -50,7 +50,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/dashboard") // user's home page, it can be any URL
                 .permitAll()
                 .and()
-                .exceptionHandling().accessDeniedPage("/errors/403")// Anyone can go to the login page
+                .exceptionHandling().accessDeniedPage("/403")// Anyone can go to the login page
         ;
     }
 }
