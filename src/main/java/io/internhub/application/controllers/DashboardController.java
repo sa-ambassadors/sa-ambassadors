@@ -84,6 +84,7 @@ public class DashboardController {
            int totalRelevantJobs = 0;
            boolean isComplete;
            Iterable<Job> allJobs;
+           List<Job> appliedList = null;
            if (!userProfile.isComplete()) {
                 isComplete = false;
                String message = "You must complete your profile before applying for positions";
@@ -96,15 +97,14 @@ public class DashboardController {
 
            } else {
 
-               List<Job> appliedList = userProfile.getAppliedJobs();
+               appliedList = userProfile.getAppliedJobs();
                appliedTotal = appliedList.size();
-//               List<Job> relevantJobs = jobs.findByIndustry(userProfile.getField_1(), userProfile.getField_2(), userProfile.getField_3());
-//               totalRelevantJobs = relevantJobs.size();
                allJobs = jobs.findAll();
                totalJobs = ((List<Job>) allJobs).size();
                isComplete = true;
            }
 
+           model.addAttribute("appliedJobs", appliedList);
            model.addAttribute("allJobs", allJobs);
            model.addAttribute("isComplete", isComplete);
            model.addAttribute("userProfile", userProfile);
@@ -125,12 +125,17 @@ public class DashboardController {
             int approvedEmployerCount = 0;
             int totalJobs;
 
+            List<EmployerProfile> pendingEmployers = new ArrayList<>();
+            List<InternProfile> pendingInterns = new ArrayList<>();
+
             Iterable<InternProfile> allInternProfiles = interns.findAll();
             for (InternProfile intern: allInternProfiles
                  ) {
                 totalInternCount += 1;
                 if(intern.isApproved()){
                     approvedInternCount += 1;
+                }else{
+                    pendingInterns.add(intern);
                 }
                 if(intern.isHired()){
                     hiredCount += 1;
@@ -141,11 +146,15 @@ public class DashboardController {
                 totalEmployerCount += 1;
                 if(employer.isApproved()){
                     approvedEmployerCount += 1;
+                }else{
+                    pendingEmployers.add(employer);
                 }
             }
             Iterable<Job> allJobs = jobs.findAll();
             totalJobs = ((List<Job>) allJobs).size();
 
+            model.addAttribute("pendingInterns",pendingInterns);
+            model.addAttribute("pendingEmployers",pendingEmployers);
             model.addAttribute("totalInternCount",totalInternCount);
             model.addAttribute("approvedInternCount",approvedInternCount);
             model.addAttribute("hiredCount",hiredCount);
