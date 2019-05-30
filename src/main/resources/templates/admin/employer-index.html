@@ -9,20 +9,23 @@
 </head>
 
 <body>
-<div th:each="employer: ${allEmployerProfiles}">
-    <div class="row">
+<div class="container content">
+    <div th:each="employer: ${allEmployerProfiles}">
+        <div class="row">
 
-        <div class="col l3">
-            <h5><span th:text="${employer.getName()}" /></h5>
+            <div class="col l3">
+                <h5><span th:text="${employer.getName()}" /></h5>
                 <span th:text="${employer.getDescription()}" />
-            <hr />
-        </div>
-        <button class="waves-effect waves-light light-blue btn"
-               th:href="@{'/admin/employer/' + ${employer.getId()}}">View
-            Full Profile</button>
+                <hr />
+            </div>
+            <button class="waves-effect waves-light light-blue btn"
+                    th:href="@{'/admin/employer/' + ${employer.getId()}}">View
+                Full Profile</button>
 
+        </div>
     </div>
 </div>
+
 <footer th:replace="fragments/footer"></footer>
 
 </body>

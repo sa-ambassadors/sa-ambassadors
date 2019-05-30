@@ -4,25 +4,17 @@
 <th:block th:fragment="head(title)">
 
     <!-- dynamic nav -->
-    <head th:replace="fragments/head :: head('about')">
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" href="/../css/main.css" />
-        <title>About</title>
-
-        <!-- Compiled and minified CSS Materialize-->
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-        <!-- Materialize icons -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    </head>
+    <head th:replace="fragments/head :: head('Error')" />
 
     <body>
-    <h1>UH OH!</h1>
-    <p>It looks like you haven't submitted your profile or it's still under review. Complete your profile at <a href="/profile"> your profile page</a></p>
-    or contact the administrator at admin@internhub.io.
-    <!--<footer th:replace="fragments/footer"></footer>-->
+    <div class="container content">
+        <h1>UH OH!</h1>
+        <p>It looks like you haven't submitted your profile or it's still under review. Complete your profile at <a href="/profile"> your profile page</a>
+        or contact the administrator at admin@internhub.io.</p>
+    </div>
+
+
+    <footer th:replace="fragments/footer"></footer>
     </body>
 </th:block>
 </html>

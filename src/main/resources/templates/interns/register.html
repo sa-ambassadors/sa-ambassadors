@@ -1,27 +1,39 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml">
 	<head th:replace="fragments/head :: head('Sign-Up')" />
 
-	<body>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+	</head>
 
-		<div class="container">
-			<h1>Intern Registration</h1>
+	<body>
+	<div class="container content">
+		<div class="center-align">
+			<h3>Intern Registration</h3>
 			<form th:action="@{/interns/register}" method="POST" th:object="${user}">
 				<label for="username">Username</label>
 				<input id="username" th:field="*{username}" />
+				<div id="user-warning"></div>
 
 				<label for="email">Email</label>
 				<input id="email" th:field="*{email}" />
+				<div id="email-warning"></div>
 
 				<label for="password">Password</label>
 				<input id="password" type="password" th:field="*{password}" />
+				<div id="password-warning"></div>
+
+				<label for="password-checker">Re-enter password</label>
+				<input id="password-checker" type="password" />
+				<div id="password-checker-warning"></div>
 
 				<div class="center-align">
-					<button class="waves-effect waves-light light-blue btn" type="submit">Create Account</button>
+					<button id="submit" class="waves-effect waves-light light-blue btn" type="submit">Create Account</button>
 				</div>
 
 			</form>
+
 		</div>
 
 		<footer th:replace="fragments/footer"></footer>
+		<script type="text/javascript" th:src="@{/js/register-script.js}"></script>
 	</body>
-</html>

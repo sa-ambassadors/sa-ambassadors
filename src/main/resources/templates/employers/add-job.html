@@ -2,7 +2,7 @@
     <head th:replace="fragments/head :: head('Welcome!')" />
     <body>
 
-        <div class="container">
+        <div class="container content">
             <h3 class="center-align">Create a job listing</h3>
         <div class="row">
             <form  class="col s12" th:action="@{/employers/add-job}" method="POST" th:object="${job}">

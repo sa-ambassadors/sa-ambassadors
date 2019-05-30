@@ -1,18 +1,18 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+
     <head th:replace="fragments/head :: head('Sign-Up')" >
     </head>
     <body>
-        <div class="container">
-            <h1>Employer Registration</h1>
+
+    <div class="container content">
+        <div class="center-align">
+            <h3>Employer Registration</h3>
+        </div>
             <form th:action="@{/employers/register}" method="POST" th:object="${user}">
                 <label for="username">Username</label>
                 <input id="username" th:field="*{username}" />
 
-
                 <label for="email">Email</label>
                 <input id="email" th:field="*{email}" />
-
 
                 <label for="password">Password</label>
                 <input id="password" type="password" th:field="*{password}" />
@@ -26,6 +26,6 @@
             </form>
         </div>
 
+
     <footer th:replace="fragments/footer"></footer>
     </body>
-</html>
