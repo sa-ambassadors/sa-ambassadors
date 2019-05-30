@@ -2,21 +2,35 @@
 	<head th:replace="fragments/head :: head('Sign-Up')" />
 
 	<body>
+
 		<div class="container">
 			<h1>Intern Registration</h1>
 			<form th:action="@{/interns/register}" method="POST" th:object="${user}">
 				<label for="username">Username</label>
 				<input id="username" th:field="*{username}" />
 
+
+
+
 				<label for="email">Email</label>
 				<input id="email" th:field="*{email}" />
 
-				<label for="password">Password</label>
-				<input id="password" type="password" th:field="*{password}" />
+<!--<<<<<<< HEAD-->
+				<!--<label for="password">Password</label>-->
+				<!--<input id="password" type="password" th:field="*{password}" />-->
 
-				<input value="Sign me up!" type="submit" />
-			</form>
-		</div>
+				<!--<input value="Sign me up!" type="submit" />-->
+			<!--</form>-->
+		<!--</div>-->
+
+			<label for="password">Password</label>
+			<input id="password" type="password" th:field="*{password}" />
+			<div class="center-align">
+				<button class="waves-effect waves-light light-blue btn" type="submit">Create Account</button>
+			</div>
+		</form>
+	</div>
+
 		<footer th:replace="fragments/footer"></footer>
 	</body>
 </html>

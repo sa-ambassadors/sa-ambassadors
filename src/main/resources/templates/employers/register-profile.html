@@ -2,7 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:replace="fragments/head :: head('Sign-Up')" />
     <body>
-        <h1>Company Info</h1>
+    <div class="container">
+        <div class="center-align">
+            <h3>Company Info</h3>
+        </div>
         <form th:action="@{/employers/profile}" method="POST" th:object="${employer}">
 
             <label for="name">Company name:</label>
@@ -22,9 +25,13 @@
 
             <label for="description">Company description:</label>
             <input id="description" th:field="*{description}" />
-
-            <input value="Create company profile!" type="submit" />
+<div class="center-align">
+    <button class="waves-effect waves-light light-blue btn" type="submit">Create Profile
+    </button>
+</div>
         </form>
+    </div>
+
     <footer th:replace="fragments/footer"></footer>
     </body>
 </html>

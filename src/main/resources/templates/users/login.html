@@ -2,21 +2,29 @@
 	<head th:replace="fragments/head :: head('Login')" />
 	<body>
 	<div class="container">
-		<h1>Log In</h1>
-		<div th:if="${param.error}">
-			Invalid Username and Password.
-		</div>
-		<div th:if="${param.logout}">
-			You have been logged out.
-		</div>
+			<div class="center-align">
+				<h3>Log In</h3>
 
-		<form th:action="@{/login}" method="post">
-			<label for="username">Username</label>
-			<input id="username" name="username" type="text" />
-			<label for="password">Password</label>
-			<input id="password" name="password" type="password" />
-			<input type="submit" value="Log In" />
-		</form>
+			<div th:if="${param.error}">
+				Invalid Username and Password.
+			</div>
+			<div th:if="${param.logout}">
+				You have been logged out.
+			</div>
+			</div>
+		<div class="row">
+			<div class="col s6 offset-s3">
+				<form th:action="@{/login}" method="post">
+					<label for="username">Username</label>
+					<input id="username" name="username" type="text" />
+					<label for="password">Password</label>
+					<input id="password" name="password" type="password" />
+					<div class="center-align">
+						<button class="waves-effect waves-light light-blue btn" type="submit">Log In</button>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
 		<footer th:replace="fragments/footer"></footer>
 	</body>

@@ -16,7 +16,8 @@
 					<h5> <span th:text="${intern.getFirst_name()}" /> <span th:text="${intern.getLast_name()}" /> </h5>
 					<hr />
 				</div>
-				<a th:href="@{'/admin/applicant/' + ${intern.getId()}}">View Full Profile</a>
+				<button class="waves-effect waves-light light-blue btn"
+				   th:href="@{'/admin/applicant/' + ${intern.getId()}}">View Full Profile</button>
 
 			</div>
 		</div>

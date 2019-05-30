@@ -1,26 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="fragments/head :: head('Login')" >
-        <meta charset="UTF-8" />
-        <title>Sign up</title>
+    <head th:replace="fragments/head :: head('Sign-Up')" >
     </head>
-
     <body>
+
         <div class="container">
             <h1>Employer Registration</h1>
             <form th:action="@{/employers/register}" method="POST" th:object="${user}">
                 <label for="username">Username</label>
                 <input id="username" th:field="*{username}" />
 
+
                 <label for="email">Email</label>
                 <input id="email" th:field="*{email}" />
+
 
                 <label for="password">Password</label>
                 <input id="password" type="password" th:field="*{password}" />
 
-                <input value="Create user!" type="submit" />
-            </form>
-        </div>
+                <!--<input value="Create user!" type="submit" />-->
+            <!--</form>-->
+        <!--</div>-->
+
+            <label for="password">Password</label>
+            <input id="password" type="password" th:field="*{password}" />
+            <div class="center-align">
+                <button class="waves-effect waves-light light-blue btn" type="submit">Create Account</button>
+            </div>
+        </form>
+    </div>
+
+
+>>>>>>> bb1cefae410f3af36bd6358d351d701b071e57d6
     <footer th:replace="fragments/footer"></footer>
     </body>
 </html>
