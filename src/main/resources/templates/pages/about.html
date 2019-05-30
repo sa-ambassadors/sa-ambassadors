@@ -1,64 +1,70 @@
 
         <head th:replace="fragments/head :: head('about')" />
     <body>
+
       <div class="container content">
-          <a th:href="@{/about}"></a>
-          <div class="row" align="center">
-              <div class="about-us-wrapper col col-lg-4">
+      <a th:href="@{/about}"></a>
+        <div class="row" align="center">
+        <div class="about-us-wrapper">
 
-                  <div class="description">
-                      <div class="row" align="text-left">
-                          <h4 class="what-is-internhub">What is InternHub?</h4>
-                          <p>InternHub is a modern talent-matching tool designed to make recruiting better.
-                              It seeks to automate the San Antonio Ambassadors intern selection process, aggregating applicant responses
-                              and allowing administrators to efficiently match candidates to employers based on skills and experience.
-                              This technology improves the accuracy, cost, and speed of the hiring process for everyone involved.
+            <div class="description">
+                <div class="row" align="text-left">
+                <h4 class="col what-is-internhub">What is InternHub?</h4>
+                    <p>InternHub is a modern talent-matching tool designed to make recruiting better.
+                        It seeks to automate the San Antonio Ambassadors intern selection process, aggregating applicant responses
+                        and allowing administrators to efficiently match candidates to employers based on skills and experience.
+                        This technology improves the accuracy, cost, and speed of the hiring process for everyone involved.
 
-                              Our project incorporates Spring Boot with Spring Security, Thymeleaf, Hibernate, a MySQL database, the Filestack API, and a custom-built API .
-                          </p>
-                      </div>
-                  </div>
-                  <div class="container">
-                      <div class="row" align="center">
-                          <div class="message-wrapper the-team" id="the-team">
-                              <h1>The Team</h1>
+                        Our project incorporates Spring Boot with Spring Security, Thymeleaf, Hibernate, a MySQL database, the Filestack API, and a custom-built API .
+                    </p>
+                </div>
+            </div>
+        </div> <!-- /about-us-wrapper -->
 
-                              <div class="everyone-wrapper" align="center">
-                                  <div class="col col-med-4 each-person-wrapper the-team">
-                                      <h3>Cory Musick</h3>
-                                      <p><img width="250" height="250" alt="cory-profile" src="/img/Cory.jpg" /></p>
-                                      <div class="each-person-description cory-description"></div>
-                                      <p><a class="links" target="_blank" href="https://alumni.codeup.com/uploads/660-1558454208.pdf">Resume</a></p>
-                                      <p><a class="links" target="_blank" href="https://www.linkedin.com/in/corymusick/">LinkedIn</a></p>
-                                      <p><a class="links" target="_blank" href="https://github.com/corymusick">GitHub</a></p>
-                                  </div>
+           <!--<i class="large material-icons">expand_more</i>-->
 
 
-                                  <div class="col col-med-4 each-person-wrapper the-team">
-                                      <h3>Cerissa Antill</h3>
-                                      <p><img width="250" height="250" alt="cerissa-profile" src="/img/Cerissa.jpg" /></p>
-                                      <div class="each-person-description cerissa-description"></div>
-                                      <p><a class="links" target="_blank" href="https://alumni.codeup.com/uploads/666-1558456552.pdf">Resume</a></p>
-                                      <p><a class="links" target="_blank" href="https://www.linkedin.com/in/cerissa-antill/">LinkedIn</a></p>
-                                      <p><a class="links" target="_blank" href="https://github.com/cerissaantill">GitHub</a></p>
-                                  </div>
+            <div class="container">
+             <div class="row" align="center">
+                <div class="message-wrapper the-team" id="the-team">
+                <h1>The Team</h1>
 
-                                  <div class="col col-med-4 each-person-wrapper the-team">
-                                      <h3>Mike Flores</h3>
-                                      <p><img width="250" height="250" alt="mike-profile" src="/img/Mike.jpg" /></p>
-                                      <div class="each-person-description mike-description"></div>
-                                      <p><a class="links" target="_blank" href="https://alumni.codeup.com/uploads/656-1558451141.pdf">Resume</a></p>
-                                      <p><a class="links" target="_blank" href="https://www.linkedin.com/in/michaelflores/">LinkedIn</a></p>
-                                      <p><a class="links" target="_blank" href="https://github.com/michaelflores3717/">GitHub</a></p>
-                                  </div>
+                <div class="everyone-wrapper" align="center">
+                    <div class="col col-lg-4 each-person-wrapper the-team">
+                        <h3>Cory Musick</h3>
+                        <p><img width="250" height="250" alt="cory-profile" src="/img/Cory.jpg" /></p>
+                        <div class="each-person-description cory-description"></div>
+                        <p><a class="links" target="_blank" href="https://alumni.codeup.com/uploads/660-1558454208.pdf">Resume</a></p>
+                        <p><a class="links" target="_blank" href="https://www.linkedin.com/in/corymusick/">LinkedIn</a></p>
+                        <p><a class="links" target="_blank" href="https://github.com/corymusick">GitHub</a></p>
+                    </div>
 
-                              </div> <!-- /everyone wrapper  -->
-                          </div> <!-- /message wrapper the-team -->
-                      </div> <!-- /row  -->
-                  </div>  <!-- container -->
-              </div> <!-- /about-us-wrapper -->
-          </div> <!-- closing a random div -->
 
-      </div>
-       <footer th:replace="fragments/footer"></footer>
+                    <div class="col col-lg-4 each-person-wrapper the-team">
+                        <h3>Cerissa Antill</h3>
+                        <p><img width="250" height="250" alt="cerissa-profile" src="/img/Cerissa.jpg" /></p>
+                        <div class="each-person-description cerissa-description"></div>
+                        <p><a class="links" target="_blank" href="https://alumni.codeup.com/uploads/666-1558456552.pdf">Resume</a></p>
+                        <p><a class="links" target="_blank" href="https://www.linkedin.com/in/cerissa-antill/">LinkedIn</a></p>
+                        <p><a class="links" target="_blank" href="https://github.com/cerissaantill">GitHub</a></p>
+                    </div>
+
+
+                    <div class="col col-lg-4 each-person-wrapper the-team">
+                        <h3>Mike Flores</h3>
+                        <p><img width="250" height="250" alt="mike-profile" src="/img/Mike.jpg" /></p>
+                        <div class="each-person-description mike-description"></div>
+                        <p><a class="links" target="_blank" href="https://alumni.codeup.com/uploads/656-1558451141.pdf">Resume</a></p>
+                        <p><a class="links" target="_blank" href="https://www.linkedin.com/in/michaelflores/">LinkedIn</a></p>
+                        <p><a class="links" target="_blank" href="https://github.com/michaelflores3717/">GitHub</a></p>
+                    </div>
+
+                    </div> <!-- /everyone wrapper  -->
+                </div> <!-- /message wrapper the-team -->
+                </div> <!-- /row  -->
+            </div>  <!-- container -->
+
+        </div> <!-- closing a random div -->
+
     </body>
+
