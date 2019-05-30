@@ -13,35 +13,60 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
         <div sec:authorize="hasRole('ROLE_EMPLOYER')">
         <div class="row">
             <!--FIRST CARD SHOWS NUMBER OF JOBS-->
-            <div class="col s12 m4 l3">
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title">Total Job Postings</span>
-                        <h1 th:text="${numOfJobs}"></h1>
-                    </div>
-                    <div class="card-action">
-                        <p><a href="/employers/index">View My Postings</a></p>
-                        <p><a href="/employers/add-job">Add A Posting</a></p>
-                    </div>
-                </div>
+            <div class="col s12 m4 offset-m2">
+                <h1 class="dashboard_num" th:text="${numOfJobs}"></h1>
+                <span>Total Job Postings</span>
+                <p><a href="/employers/index">View My Postings</a></p>
+                <p><a href="/employers/add-job">Add A Posting</a></p>
             </div>
 
 
             <!--SECOND CARD SHOWS TOTAL APPLICANTS-->
-            <div class="col s12 m4 l3">
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title">Total Applicants</span>
-                        <h1 th:text="${totalApps}"></h1>
-                    </div>
-                    <div class="card-action">
-                        <p><a href="/employers/index">View Applications by Job</a></p>
-                        <p><a href="/employers/add-job">View All Applicants</a></p>
-                    </div>
+            <div class="col s12 m4">
+                <div class="center-align">
+                    <h1 class="dashboard_num" th:text="${totalApps}"></h1>
+                    <span>Total Applicants</span>
+                    <p><a href="/employers/index">View Applications by Job</a></p>
+                    <p><a href="/employers/add-job">View All Applicants</a></p>
                 </div>
             </div>
-
         </div>
+            <div class="row">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s3 offset-s3"><a href="#applicantsByJob">Applicants by Job</a></li>
+                        <li class="tab col s3"><a href="#allApplicants">All Applicants</a></li>
+
+                    </ul>
+                </div>
+                <div id="applicantsByJob" class="col s12">
+                    <div class="container">
+                        <div th:each="job: ${jobs}">
+                            <div>
+                                <h4 th:text="${job.title}"></h4>
+                                <hr />
+                                <a th:href="@{'/jobs/' + ${job.getId()} +'/applicants'}">View Applicants</a>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="allApplicants" class="col s12">
+                    <div class="container">
+                        <div th:each="intern: ${internProfiles}">
+                            <div>
+                                <h4 th:text="${intern.first_name} + ' ' + ${intern.last_name}"></h4>
+                                <hr />
+                                <a th:href="@{'/interns/profile/' + ${intern.getId()}}">View Profile</a>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
         <!--EMPLOYER DIV ENDS-->
