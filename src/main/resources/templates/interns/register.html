@@ -2,7 +2,11 @@
 	<head th:replace="fragments/head :: head('Sign-Up')" />
 
 	<body>
-		<h1>Intern Registration</h1>
+
+	<div class="container">
+		<div class="center-align">
+			<h3>Intern Registration</h3>
+		</div>
 		<form th:action="@{/interns/register}" method="POST" th:object="${user}">
 			<label for="username">Username</label>
 			<input id="username" th:field="*{username}" />
@@ -12,9 +16,11 @@
 
 			<label for="password">Password</label>
 			<input id="password" type="password" th:field="*{password}" />
-
-			<input value="Sign me up!" type="submit" />
+			<div class="center-align">
+				<button class="waves-effect waves-light light-blue btn" type="submit">Create Account</button>
+			</div>
 		</form>
+	</div>
 		<footer th:replace="fragments/footer"></footer>
 	</body>
 </html>

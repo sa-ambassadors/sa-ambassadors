@@ -11,7 +11,7 @@
         <div id="show-form">
         <div sec:authorize="hasRole('ROLE_INTERN')" id="job-apply-div" th:switch="${userHasApplied}">
             <div th:case="false">
-            <button id="apply" class="waves-effect waves-light btn">Apply to job</button>
+            <button id="apply" class="waves-effect waves-light light-blue btn">Apply to job</button>
             </div>
             <div th:case="true">
             <p>Your application has been submitted.</p>
@@ -117,7 +117,7 @@
                 </div>
             </div>
 
-            <button id="save-job">Save</button>
+            <button class="waves-effect waves-light light-blue btn" id="save-job">Save</button>
         </form>
         </div>
         </div>
