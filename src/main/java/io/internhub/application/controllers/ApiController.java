@@ -8,6 +8,7 @@ import io.internhub.application.repositories.Users;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Iterator;
 import java.util.List;
 
 @SuppressWarnings("Duplicates")
@@ -190,6 +191,32 @@ public class ApiController {
         }
         return ResponseEntity.ok(fakeJob);
     }
+
+//    @GetMapping("/register/user/{username}")
+//    public ResponseEntity<Boolean> checkIfUsernameIsPresentInDatabase(@PathVariable String username) {
+//        Boolean userExistsInDataBase = false;
+//        Iterable<User> allUsers = users.findAll();
+//        Iterator<User> totalUsers = allUsers.iterator();
+//        while(totalUsers.hasNext()) {
+//            if (totalUsers.next().getUsername().equals(username)) {
+//                userExistsInDataBase = true;
+//            }
+//        }
+//        return ResponseEntity.ok(userExistsInDataBase);
+//    }
+//
+//    @GetMapping("/register/email/{email}")
+//    public ResponseEntity<Boolean> checkIfEmailIsPresentInDatabase(@PathVariable String email) {
+//        Boolean emailExistsInDataBase = false;
+//        Iterable<User> allUsers = users.findAll();
+//        Iterator<User> totalUsers = allUsers.iterator();
+//        while(totalUsers.hasNext()) {
+//            if (totalUsers.next().getEmail().equals(email)) {
+//                emailExistsInDataBase = true;
+//            }
+//        }
+//        return ResponseEntity.ok(emailExistsInDataBase);
+//    }
 }
 
 
