@@ -110,12 +110,27 @@
     font-size: 10em;
 }
 
+.tabs .tab a{
+    color:#01579b;
+} /*Black color to the text*/
 
+.tabs .tab a:hover {
+    background-color:#e1f5fe;
+    color:#0288d1;
+} /*Text color on hover*/
 
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+    background-color: #e1f5fe;
+    outline:none;
+} /*Background and text color when a tab is active*/
 
-
-
-
+.tabs .tab a.active {
+    background-color:#e1f5fe;
+    color:#0288d1;
+}
+.tabs .indicator {
+    background-color:#01579b;
+} /*Color of underline*/
 
 
 /*--------------------------- FORMS ----------------------------*/

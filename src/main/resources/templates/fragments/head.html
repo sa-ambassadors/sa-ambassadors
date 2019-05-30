@@ -23,10 +23,10 @@
 					<span sec:authorize="isAnonymous()"><a href="/" class="brand-logo">InternHub</a></span>
 						<!-- Search in nav -->
 					<ul class="right">
-						<li sec:authorize="isAuthenticated()">
+						<li sec:authorize="isAuthenticated()" style="display:none">
 							User ID: <span th:text="${#authentication.principal.id}"></span>
 						</li>
-						<li sec:authorize="isAuthenticated()">
+						<li sec:authorize="isAuthenticated()" style="display:none">
 							Username: <span id="username" th:text="${#authentication.principal.username}"></span>
 						</li>
 						<li sec:authorize="isAnonymous()"><a href="/interns/register">Interns</a></li>
