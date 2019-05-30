@@ -2,24 +2,30 @@
     <head th:replace="fragments/head :: head('Sign-Up')" >
     </head>
     <body>
+
     <div class="container content">
         <div class="center-align">
             <h3>Employer Registration</h3>
         </div>
-        <form th:action="@{/employers/register}" method="POST" th:object="${user}">
-            <label for="username">Username</label>
-            <input id="username" th:field="*{username}" />
+            <form th:action="@{/employers/register}" method="POST" th:object="${user}">
+                <label for="username">Username</label>
+                <input id="username" th:field="*{username}" />
 
-            <label for="email">Email</label>
-            <input id="email" th:field="*{email}" />
+                <label for="email">Email</label>
+                <input id="email" th:field="*{email}" />
 
-            <label for="password">Password</label>
-            <input id="password" type="password" th:field="*{password}" />
-            <div class="center-align">
-                <button class="waves-effect waves-light light-blue btn" type="submit">Create Account</button>
-            </div>
-        </form>
-    </div>
+                <label for="password">Password</label>
+                <input id="password" type="password" th:field="*{password}" />
+
+
+                <label for="password">Password</label>
+                <input id="password" type="password" th:field="*{password}" />
+                <div class="center-align">
+                  <button class="waves-effect waves-light light-blue btn" type="submit">Create Account</button>
+                </div>
+            </form>
+        </div>
+
 
     <footer th:replace="fragments/footer"></footer>
     </body>
