@@ -37,9 +37,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/js/**").permitAll()
-            .antMatchers("/employers/add-job")
-            .hasRole("EMPLOYER")
-            .and()
+                .antMatchers("/jobs/**", "interns/profile/**").access("((hasRole('INTERN') or hasRole('EMPLOYER')) and hasRole('ISAPPROVED')) or hasRole('ADMIN')")
+                .antMatchers("/interns/applied-index", "/interns/index").access("hasRole('INTERN') and hasRole('ISAPPROVED')")
+                .antMatchers("/employers/add-job", "/employers/index").access("hasRole('EMPLOYER') and hasRole('ISAPPROVED')")
+                .and()
 //                .authorizeRequests()
 //                .antMatchers("/admin/*")
 //                .hasAnyRole("INTERN")
@@ -47,7 +48,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/dashboard") // user's home page, it can be any URL
-                .permitAll() // Anyone can go to the login page
+                .permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/403")// Anyone can go to the login page
         ;
     }
 }

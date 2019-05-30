@@ -85,7 +85,7 @@ public class InternController {
         user.setInternProfile(internProfile);
         System.out.println(user.isEnabled());
         userDao.save(user);
-        return "redirect:/dashboard";
+        return "redirect:/profile";
     }
 
     @GetMapping("/interns/applied-index")
