@@ -35,22 +35,22 @@
         line-height: 0;
         font-size: larger;
 }
-    .circle-blue{
+    .circle-blue {
         background-color: #345777;
     }
 
-    .circle-yellow{
+    .circle-yellow {
         background-color: #F5CB09;
     }
 
-    .circle-orange{
+    .circle-orange {
         background-color: #F7882F;
     }
 
-    .button-label{
+    .button-label {
         margin: 0 auto;
 }
-    .slider-cap{
+    .slider-cap {
         position:absolute;
         z-index:10;
         width: 100%;
@@ -60,7 +60,7 @@
         color: white;
     }
 
-    .index-img{
+    .index-img {
         padding-top: 30px;
     }
 
@@ -83,11 +83,6 @@
 
 
 
-
-
-
-
-
 /*------------------------ LOGIN PAGE ----------------------------*/
 
 
@@ -97,21 +92,18 @@
 /*------------------------ DASHBOARDS ----------------------------*/
 
 
-.sidebar{
+.sidebar {
     height: calc(100vh - 64px);
     background-color: #345777;
 }
 
-.container-row{
+.container-row {
     margin:0 0 0 0;
 }
 
 .dashboard_num{
     font-size: 10em;
 }
-
-
-
 
 
 
@@ -139,7 +131,7 @@
         margin-right: 100%;
     }
 
-    .brand-logo{
+    .brand-logo {
         padding-left: 30px !important;
     }
 
@@ -166,76 +158,74 @@
 /*------------------------ ABOUT US ---------------------------*/
 
 
+    /*.the-project {*/
+        /*font-size: medium;*/
+    /*}*/
+
+    /*.the-team {*/
+        /*font-size: medium;*/
+    /*}*/
+
+    .what-is-internhub {
+        font-size: 45px;
+        color: #345777;
+        top: -30px;
+    }
+
     .description {
         margin-left: 20%;
         margin-right: 20%;
+        margin-top: 10%;
+        margin-bottom: 25%;
+        font-size: 1.5em;
     }
 
     .the-team {
-        margin-top: 200px;
-        width: 100%;
+        font-size: 20px;
+        margin-top: 0px;
+        margin-bottom: 15px;
+        margin-right: 5%;
+        color: #345777;
     }
 
     .the-team h1 {
         font-size: 45px;
-        top: -31px;
-        color: #F7882F
+        top: -70px;
+        color: #F7882F;
+        text-align: center;
     }
     .everyone-wrapper {
         padding-top: 1px;
         /*color: -----;*/
     }
     .each-person-wrapper {
-        width: 100%;
-        margin: 80px auto;
-        padding: 30px 0 40px;
+        margin: 10px auto;
+        padding: 10px 0 10px;
     }
 
     .each-person-img {
-        width: 20%;
         margin: auto;
-        height: 20%;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
     }
 
-    .each-person-desc {
-        width: 80%;
-        height: 150px;
-        margin: 0 auto;
-    }
+    /*.each-person-desc {*/
+        /*width: 80%;*/
+        /*height: 150px;*/
+        /*margin: 0 auto;*/
+    /*}*/
 
+    /* personal social links */
     a.links {
-        font-size: 2em;
+        font-size: 1em;
+        padding-bottom: 5px;
     }
 
 
 
 
 @media only screen and (min-width: 200px) {
-
-
-
-
-
-
-
-
-    /*.cory-img {*/
-        /*background-image: url("/static/img/Cory.jpg");*/
-        /*!*display: inline-block;*!*/
-    /*}*/
-
-    /*.cerissa-img {*/
-        /*background-image: url("/static/img/Cerissa.jpg");*/
-        /*!*display: inline-block;*!*/
-    /*}*/
-
-    /*.mike-img {*/
-        /*background-image: url("/static/img/Mike.jpg");*/
-        /*!*display: inline-block;*!*/
-    /*}*/
 
 
 }
