@@ -10,7 +10,8 @@
 					<hr />
 					<p>Company: <span th:text="${job.getCompanyName()}"></span></p>
 					<p>Description: <span th:text="${job.getJobDescription()}"></span></p>
-					<a th:href="@{'/jobs/' + ${job.getId()}}">View Full Post</a>
+					<button class="waves-effect waves-light light-blue btn" th:href="@{'/jobs/' + ${job.getId()}}">View
+						Full Post</button>
 					<hr />
 				</div>
 			</div>

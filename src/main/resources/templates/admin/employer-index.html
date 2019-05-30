@@ -17,7 +17,9 @@
                 <span th:text="${employer.getDescription()}" />
             <hr />
         </div>
-        <a th:href="@{'/admin/employer/' + ${employer.getId()}}">View Full Profile</a>
+        <button class="waves-effect waves-light light-blue btn"
+               th:href="@{'/admin/employer/' + ${employer.getId()}}">View
+            Full Profile</button>
 
     </div>
 </div>

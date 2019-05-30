@@ -15,7 +15,7 @@
                             <div>
                                 <h4 th:text="${internProfile.first_name} + ${internProfile.last_name}"></h4>
                                 <hr />
-                                <a th:href="@{'/interns/profile/' + ${internProfile.id}}">View profile</a>
+                                <button class="waves-effect waves-light light-blue btn" th:href="@{'/interns/profile/' + ${internProfile.id}}">View profile</button>
                                 <hr />
                             </div>
                         </div>

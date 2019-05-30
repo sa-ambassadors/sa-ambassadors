@@ -129,16 +129,20 @@ public class DashboardController {
             List<InternProfile> pendingInterns = new ArrayList<>();
 
             Iterable<InternProfile> allInternProfiles = interns.findAll();
+
+//            COUNTS FOR DASHBOARD
             for (InternProfile intern: allInternProfiles
                  ) {
                 totalInternCount += 1;
                 if(intern.isApproved()){
                     approvedInternCount += 1;
-                }else{
-                    pendingInterns.add(intern);
                 }
                 if(intern.isHired()){
                     hiredCount += 1;
+                }
+//               PROFILE IS COMPLETE BUT NOT APPROVED SEND TO ADMIN
+                if (intern.isComplete() && !intern.isApproved()){
+                    pendingInterns.add(intern);
                 }
             }
             Iterable<EmployerProfile> allEmployerProfiles = employers.findAll();
