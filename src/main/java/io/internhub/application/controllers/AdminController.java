@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class AdminController {
     private Users users;
@@ -52,7 +55,13 @@ public class AdminController {
     @GetMapping("admin/applicant-index")
     public String applicantIndex (Model model) {
         Iterable<InternProfile> allInternProfiles = internProfiles.findAll();
-        model.addAttribute("allInternProfiles", allInternProfiles);
+        List<InternProfile> completeInternProfiles = new ArrayList<>();
+        for (InternProfile internProfile : allInternProfiles) {
+            if (internProfile.isComplete() && !internProfile.isApproved()) {
+                completeInternProfiles.add(internProfile);
+            }
+        }
+        model.addAttribute("allInternProfiles", completeInternProfiles);
         return"admin/applicant-index";
     }
 
@@ -66,6 +75,8 @@ public class AdminController {
     @PostMapping("admin/applicant/{profileId}")
     public String postIndividualApplicantPage(Model model, @PathVariable String profileId) {
         InternProfile internProfile = internProfiles.findOne(Long.parseLong(profileId));
+        internProfile.setApproved(true);
+        internProfiles.save(internProfile);
         UserWithRoles userWithRoles = userDetailsLoader.loadWithUserName(internProfile.getUser().getUsername());
         userWithRoles.setEnabled(true);
         User user = internProfile.getUser();
@@ -77,6 +88,12 @@ public class AdminController {
     @GetMapping("admin/employer-index")
     public String employerIndex (Model model) {
         Iterable<EmployerProfile> allEmployerProfiles = employerProfiles.findAll();
+        List<EmployerProfile> completedEmployerProfiles = new ArrayList<>();
+        for (EmployerProfile employerProfile : allEmployerProfiles) {
+            if(!employerProfile.isApproved()) {
+                completedEmployerProfiles.add(employerProfile);
+            }
+        }
         model.addAttribute("allEmployerProfiles", allEmployerProfiles);
         return"admin/employer-index";
     }
@@ -91,6 +108,8 @@ public class AdminController {
     @PostMapping("admin/employer/{employerId}")
     public String postIndividualEmployerPage(Model model, @PathVariable String employerId) {
         EmployerProfile employerProfile = employerProfiles.findOne(Long.parseLong(employerId));
+        employerProfile.setApproved(true);
+        employerProfiles.save(employerProfile);
         UserWithRoles userWithRoles = userDetailsLoader.loadWithUserName(employerProfile.getUser().getUsername());
         userWithRoles.setEnabled(true);
         User user = employerProfile.getUser();
