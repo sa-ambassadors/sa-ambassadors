@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ErrorController {
 
-    @GetMapping("/403")
+    @GetMapping("403")
     public String getErrorPage() {
-        return "/403";
+        return "errors/reject";
     }
 }

@@ -1,12 +1,14 @@
+
+
 /*---------------- BODY CSS and VARIABLE DECLARATION -----------*/
 
     body {
         margin: 0 auto;
         padding: 0;
         font-family: 'Roboto', sans-serif;
-
-
     }
+
+
 /*-------------------- INDEX (landing page)---------------------*/
 
     .intern-message {
@@ -33,7 +35,7 @@
         color: white;
         text-align: center;
         line-height: 0;
-        font-size: larger;
+        font-size: 1em;
 }
     .circle-blue {
         background-color: #345777;
@@ -73,19 +75,11 @@
 
 
 
-
-
-
-
 /*--------------------- REGISTRATION PAGES -----------------------*/
 
 
 
-
-
 /*------------------------ LOGIN PAGE ----------------------------*/
-
-
 
 
 
@@ -119,6 +113,9 @@
     outline:none;
 } /*Background and text color when a tab is active*/
 
+
+/*------------------------- FORMS ------------------------------*/
+
 .tabs .tab a.active {
     background-color:#e1f5fe;
     color:#0288d1;
@@ -128,16 +125,12 @@
 } /*Color of underline*/
 
 
-/*--------------------------- FORMS ----------------------------*/
 
 
 
 
 
-
-
-
-/*------------------------ HEADERS -----------------------------*/
+/*------------------------ HEADERS / NAV BAR -----------------------------*/
 
     .nav-wrapper {
         @extend background-color: #00B0FF;
@@ -150,10 +143,19 @@
     }
 
     .brand-logo {
-        padding-left: 30px !important;
+        padding-left: 40px !important;
+        /*font-size: 30px;*/
+
     }
 
+    .nav-links {
+        font-size: 18px;
+        padding-right: 30px;
+    }
 
+    .login-nav {
+        padding-right: 45px;
+    }
 
 
 
@@ -164,8 +166,6 @@
         /*position: absolute;*/
 
     }
-
-
 
 
 
@@ -214,8 +214,9 @@
     }
     .everyone-wrapper {
         padding-top: 1px;
-        /*color: -----;*/
+        /*align-content: center;*/
     }
+
     .each-person-wrapper {
         margin: 10px auto;
         padding: 10px 0 10px;
