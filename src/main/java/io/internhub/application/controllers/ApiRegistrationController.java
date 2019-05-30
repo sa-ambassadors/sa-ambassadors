@@ -34,16 +34,23 @@ public class ApiRegistrationController {
             return ResponseEntity.ok(userExistsInDataBase);
         }
 
-        @GetMapping("/email/{email}")
+        @GetMapping("/email/{email:.+}")
         public ResponseEntity<Boolean> checkIfEmailIsPresentInDatabase(@PathVariable String email) {
+            System.out.println(email);
             Boolean emailExistsInDataBase = false;
             Iterable<User> allUsers = users.findAll();
-            Iterator<User> totalUsers = allUsers.iterator();
-            while (totalUsers.hasNext()) {
-                if (totalUsers.next().getEmail().equals(email)) {
+            for (User user : allUsers) {
+                if (user.getEmail().equals(email)) {
                     emailExistsInDataBase = true;
                 }
             }
+//            System.out.println("hello again");
+//            while (totalUsers.hasNext()) {
+//                if (totalUsers.next().getEmail().equals(email)) {
+//                    emailExistsInDataBase = true;
+//                }
+//            }
+//            System.out.println(emailExistsInDataBase);
             return ResponseEntity.ok(emailExistsInDataBase);
         }
     }
