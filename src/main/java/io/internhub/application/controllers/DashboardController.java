@@ -10,8 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class DashboardController {
@@ -44,17 +46,30 @@ public class DashboardController {
             EmployerProfile employerProfile = user.getEmployerProfile();
             List<Job> jobs = employerProfile.getJobs();
             int totalApps = 0;
+            List<InternProfile> profiles = new ArrayList<>();
             for (Job job: jobs
                  ) {
                 totalApps += job.getInternProfiles().size();
+                profiles.addAll(job.getInternProfiles());
             }
+            ArrayList<Long> profileIds = new ArrayList<>();
+            for(InternProfile profile: profiles){
+                profileIds.add(profile.getId());
+            }
+            List<Long> uniqueProfileIds = profileIds.stream().distinct().collect(Collectors.toList());
+            List<InternProfile> uniqueProfiles = new ArrayList<>();
+            for(Long profileId: uniqueProfileIds){
+                uniqueProfiles.add(interns.findOne(profileId));
+            }
+
+
             int numOfJobs;
             if(jobs.size() == 0){
                 numOfJobs = 0;
             }else{
                 numOfJobs = jobs.size();
             }
-
+            model.addAttribute("internProfiles",uniqueProfiles);
             model.addAttribute("jobs", jobs);
             model.addAttribute("numOfJobs", numOfJobs);
             model.addAttribute("totalApps", totalApps);
