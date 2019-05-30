@@ -3,14 +3,11 @@ package io.internhub.application.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
 @Controller
-public class AboutController {
+public class ErrorController {
 
-        @GetMapping("about")
-
-        public String about(){
-            return "/pages/about";
-        }
+    @GetMapping("403")
+    public String getErrorPage() {
+        return "/403";
     }
-
+}

@@ -13,35 +13,63 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
         <div sec:authorize="hasRole('ROLE_EMPLOYER')">
         <div class="row">
             <!--FIRST CARD SHOWS NUMBER OF JOBS-->
-            <div class="col s12 m4 l3">
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title">Total Job Postings</span>
-                        <h1 th:text="${numOfJobs}"></h1>
-                    </div>
-                    <div class="card-action">
-                        <p><a href="/employers/index">View My Postings</a></p>
-                        <p><a href="/employers/add-job">Add A Posting</a></p>
-                    </div>
+            <div class="col s12 m4 offset-m2">
+                <div class="center-align">
+                    <h1 class="dashboard_num" th:text="${numOfJobs}"></h1>
+                    <span>Total Job Postings</span>
+
                 </div>
             </div>
-
-
             <!--SECOND CARD SHOWS TOTAL APPLICANTS-->
-            <div class="col s12 m4 l3">
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title">Total Applicants</span>
-                        <h1 th:text="${totalApps}"></h1>
-                    </div>
-                    <div class="card-action">
-                        <p><a href="/employers/index">View Applications by Job</a></p>
-                        <p><a href="/employers/add-job">View All Applicants</a></p>
+            <div class="col s12 m4">
+                <div class="center-align">
+                    <h1 class="dashboard_num" th:text="${totalApps}"></h1>
+                    <span>Total Applicants</span>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="center-align">
+                        <a class="waves-effect waves-light light-blue btn" href="/employers/add-job">Add A Job Post</a>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s3 offset-s3"><a href="#applicantsByJob">Applicants by
+                            Job</a></li>
+                        <li class="tab col s3"><a href="#allApplicants">Applicants by Name</a></li>
 
-        </div>
+                    </ul>
+                </div>
+                <div id="applicantsByJob" class="col s12">
+                    <div class="container">
+                        <div th:each="job: ${jobs}">
+                            <div>
+                                <h4 th:text="${job.title}"></h4>
+                                <hr />
+                                <a th:href="@{'/jobs/' + ${job.getId()} +'/applicants'}">View Applicants</a>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="allApplicants" class="col s12">
+                    <div class="container">
+                        <div th:each="intern: ${internProfiles}">
+                            <div>
+                                <h4 th:text="${intern.first_name} + ' ' + ${intern.last_name}"></h4>
+                                <hr />
+                                <a th:href="@{'/interns/profile/' + ${intern.getId()}}">View Profile</a>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
         <!--EMPLOYER DIV ENDS-->
@@ -52,38 +80,53 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <!--ONLY INTERN CAN SEE SECTiON BELOW-->
         <div sec:authorize="hasRole('ROLE_INTERN')">
-            <div class="row container-row">
-                <!--FIRST CARD SHOWS NUMBER OF ALL JOBS AVAILABLE FOR INTERN -->
-                <div class="col s12 m4 offset-m1">
-                    <div class="card">
-                        <div class="card-content">
-                            <span class="card-title">Positions Available</span>
-                            <div th:switch="${totalRelevantJobs}">
-                                <span th:case="${0}"><h1 th:text="${totalJobs}"></h1></span>
-                                <span th:case="${totalRelevantJobs > 0}"><h1 th:text="${totalRelevantJobs}"></h1></span>
-                            </div>
-                        </div>
-                        <div class="card-action">
-                            <p><a href="/interns/index">View Available Positions</a></p>
-                        </div>
-                    </div>
+        <div class="row">
+            <!--FIRST CARD SHOWS NUMBER OF JOBS-->
+            <div class="col s12 m4 offset-m2">
+                <div class="center-align">
+                    <h1 class="dashboard_num" th:text="${totalJobs}"></h1>
+                    <span>Available Jobs</span>
                 </div>
-                <!--SECOND CARD SHOWS JOBS THE INTERN HAS APPLIED FOR-->
-                <div class="col s12 m4">
-                    <div class="card">
-                        <div class="card-content">
-                            <span class="card-title">Positions I've Applied For</span>
-                            <h1 th:text="${appliedTotal}"></h1>
-                        </div>
-                        <div class="card-action">
-                            <p><a href="/interns/applied-index">View All Jobs I've Applied For</a></p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!--ROW ENDS-->
             </div>
+            <!--SECOND CARD SHOWS TOTAL APPLICANTS-->
+            <div class="col s12 m4">
+                <div class="center-align">
+                    <h1 class="dashboard_num" th:text="${appliedTotal}"></h1>
+                    <span>Applications Sent</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs">
+                    <li class="tab col s3 offset-s3"><a href="#viewJobs">View Jobs</a></li>
+                    <li class="tab col s3"><a href="#appliedJobs">My Applications</a></li>
+
+                </ul>
+            </div>
+            <div id="viewJobs" class="col s12">
+                <div class="container">
+                    <div th:each="job: ${allJobs}">
+                        <div>
+                            <h4 th:text="${job.title}"></h4>
+                            <hr />
+                            <a th:href="@{'/jobs/' + ${job.getId()}}">View Job</a>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="appliedJobs" class="col s12">
+                <div class="container">
+                    <div th:each="job: ${appliedJobs}">
+                        <div>
+                            <h4 th:text="${job.getTitle()}"></h4>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
 
 <!--INTERN SECTION ENDS-->
@@ -91,35 +134,86 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <!--ONLY ADMIN CAN SEE THE SECTION BELOW-->
     
         <div sec:authorize="hasRole('ROLE_ADMIN')">
+            <!--<div class="row">-->
+                <!--&lt;!&ndash;FIRST CARD SHOWS INTERN STATS&ndash;&gt;-->
+                <!--<div class="col s12 m4 l3">-->
+                    <!--<div class="card">-->
+                        <!--<div class="card-content">-->
+                            <!--<span class="card-title">Approved Interns</span>-->
+                            <!--<h1><span th:text="${approvedInternCount}" />/<span th:text="${totalInternCount}" /></h1>-->
+
+                        <!--</div>-->
+                        <!--<div class="card-action">-->
+                            <!--<p><a href="/admin/applicant-index">View Pending Applications</a></p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--&lt;!&ndash;SECOND CARD SHOWS EMPLOYER STATS&ndash;&gt;-->
+                <!--<div class="col s12 m4 l3">-->
+                    <!--<div class="card">-->
+                        <!--<div class="card-content">-->
+                            <!--<span class="card-title">Approved Employers</span>-->
+                            <!--<h1><span th:text="${approvedEmployerCount}" />/<span th:text="${totalEmployerCount}" /> </h1>-->
+                        <!--</div>-->
+                        <!--<div class="card-action">-->
+                            <!--<p><a href="/admin/employer-index">View Pending Applications</a></p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--&lt;!&ndash;ROW ENDS&ndash;&gt;-->
+            <!--</div>-->
             <div class="row">
-                <!--FIRST CARD SHOWS INTERN STATS-->
-                <div class="col s12 m4 l3">
-                    <div class="card">
-                        <div class="card-content">
-                            <span class="card-title">Approved Interns</span>
-                            <h1><span th:text="${approvedInternCount}" />/<span th:text="${totalInternCount}" /></h1>
+                <!--FIRST CARD SHOWS NUMBER OF JOBS-->
+                <div class="col s12 m4 offset-m2">
+                    <div class="center-align">
+                        <h1 class="dashboard_num"><span th:text="${approvedInternCount}" />/<span th:text="${totalInternCount}" /></h1>
+                        <span>Approved Interns</span>
+                    </div>
+                </div>
+                <!--SECOND CARD SHOWS TOTAL APPLICANTS-->
+                <div class="col s12 m4">
+                    <div class="center-align">
+                        <h1 class="dashboard_num"><span th:text="${approvedEmployerCount}" />/<span
+                                th:text="${totalEmployerCount}" />
+                        </h1>
+                        <span>Approved Employers</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s3 offset-s3"><a href="#interns">Interns</a></li>
+                        <li class="tab col s3"><a href="#employers">Employers</a></li>
 
-                        </div>
-                        <div class="card-action">
-                            <p><a href="/admin/applicant-index">View Pending Applications</a></p>
+                    </ul>
+                </div>
+                <div id="interns" class="col s12">
+                    <div class="container">
+                        <div th:each="intern: ${pendingInterns}">
+                            <div>
+                                <h4 th:text="${intern.first_name} + ' ' + ${intern.last_name}"></h4>
+                                <hr />
+                                <a th:href="@{'admin/applicant/' + ${intern.getId()}}">Review Profile</a>
+                                <hr />
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!--SECOND CARD SHOWS EMPLOYER STATS-->
-                <div class="col s12 m4 l3">
-                    <div class="card">
-                        <div class="card-content">
-                            <span class="card-title">Approved Employers</span>
-                            <h1><span th:text="${approvedEmployerCount}" />/<span th:text="${totalEmployerCount}" /> </h1>
-                        </div>
-                        <div class="card-action">
-                            <p><a href="/admin/employer-index">View Pending Applications</a></p>
+                <div id="employers" class="col s12">
+                    <div class="container">
+                        <div th:each="employer: ${pendingEmployers}">
+                            <div>
+                                <h4 th:text="${employer.name}"></h4>
+                                <hr />
+                                <a th:href="@{'admin/employer/' + ${employer.getId()}}">Review Profile</a>
+                                <hr />
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!--ROW ENDS-->
             </div>
         </div>
         <footer th:replace="fragments/footer"></footer>

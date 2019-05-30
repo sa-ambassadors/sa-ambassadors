@@ -1,6 +1,7 @@
 <html>
 	<head th:replace="fragments/head :: head('Login')" />
 	<body>
+	<div class="container">
 		<h1>Log In</h1>
 		<div th:if="${param.error}">
 			Invalid Username and Password.
@@ -16,6 +17,7 @@
 			<input id="password" name="password" type="password" />
 			<input type="submit" value="Log In" />
 		</form>
+	</div>
 		<footer th:replace="fragments/footer"></footer>
 	</body>
 </html>
