@@ -49,15 +49,15 @@
 
         function declareUsernameAsValidIfDoesNotExistInDB(data) {
             if (usernameField.value.length < 6 || usernameField.value.length > 20) {
-                userWarning.innerHTML = "<p class='text-danger'>Username must be between 6 and 20 characters!</p>";
+                userWarning.innerHTML = "<p class='text-red'>Username must be between 6 and 20 characters!</p>";
                 usernameIsValid = false;
                 allowUserToSubmitIfAllChecksAreMet();
             } else if (data) {
-                userWarning.innerHTML = "<p class='text-danger'>Username already exists!</p>"
+                userWarning.innerHTML = "<p class='text-red'>Username already exists!</p>"
                 usernameIsValid = false;
                 allowUserToSubmitIfAllChecksAreMet();
             } else if (!data) {
-                userWarning.innerHTML = "<p class='text-success'>Username is looking good.</p>";
+                userWarning.innerHTML = "<p class='text-green'>Username is looking good.</p>";
                 usernameIsValid = true;
                 allowUserToSubmitIfAllChecksAreMet();
             }
@@ -65,16 +65,16 @@
 
         function declareEmailAsValidIfDoesNotExistInDB(data) {
             if (!validateEmail(emailField.value)) {
-                emailWarning.innerHTML = "<p class='text-danger'>Email needs to be in correct format!</p>";
+                emailWarning.innerHTML = "<p class='text-red'>Email needs to be in correct format!</p>";
                 emailIsValid = false;
                 allowUserToSubmitIfAllChecksAreMet();
             } else if (data) {
                 console.log(data);
-                emailWarning.innerHTML = "<p class='text-danger'>Email already exists!</p>";
+                emailWarning.innerHTML = "<p class='text-red'>Email already exists!</p>";
                 emailIsValid = false;
                 allowUserToSubmitIfAllChecksAreMet();
             } else if (validateEmail(emailField.value) && !data) {
-                emailWarning.innerHTML = "<p class='text-success'>Email looks a-okay.</p>";
+                emailWarning.innerHTML = "<p class='green'>Email looks a-okay.</p>";
                 emailIsValid = true;
                 allowUserToSubmitIfAllChecksAreMet();
             }
