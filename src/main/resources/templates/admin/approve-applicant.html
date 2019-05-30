@@ -11,15 +11,53 @@
         <form class="col s12" th:action="@{'/admin/applicant/' + ${internProfile.getId()}}" method="POST" th:object="${internProfile}">
 
             <div class="row">
-                <div class="input-field col s6">
-                    <label for="first-name">First Name:</label>
-                    <p id="first-name" th:text="*{first_name}" />
+                <div class="col s6">
+                    <label for="first-name-text">First Name:</label>
+                    <p id="first-name-text" th:text="*{first_name}" ></p>
                 </div>
-                <div class="input-field col s6">
-                    <label for="last-name">Last Name:</label>
-                    <p id="last-name" th:text="*{last_name}" />
+                <div class="col s6">
+                    <label for="last-name-text">Last Name:</label>
+                    <p id="last-name-text" th:text="*{last_name}"></p>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col s6">
+                    <label for="major-text">Major:</label>
+                    <p id="major-text" th:text="*{major}"></p>
+                </div>
+                <div class="col s6">
+                    <label for="minor-text">Minor:</label>
+                    <p id="minor-text" th:text="*{minor}"></p>
+                </div>
+            </div>
+
+            <!--            <div class="input-field col s12">-->
+            <!--                <p th:text="*{field_1}"></p>-->
+            <!--            </div>-->
+
+            <!--            <div class="input-field col s12">-->
+            <!--                <p th:text="*{field_2}"></p>-->
+            <!--            </div>-->
+
+            <!--            <div class="input-field col s12">-->
+            <!--                <p th:text="*{field_3}"></p>-->
+            <!--            </div>-->
+
+            <label for="transcript-text">Upload Transcripts:</label>
+            <p id="transcript-text" th:text="*{transcript_link}"></p>
+
+            <label for="essay-text">Upload Essay:</label>
+            <p id="essay-text" th:text="*{essay_link}"></p>
+
+            <label for="sa_highschool-text">Did you attend high school in San Antonio?</label>
+            <p id="sa_highschool-text" th:text="*{sa_highschool}"></p>
+
+            <label for="sa_college-text">Did you attend college in San Antonio?</label>
+            <p id="sa_college-text" th:text="*{sa_highschool}"></p>
+
+            <label for="first_to_college-text">Are you the first in your family to attend college?</label>
+            <p id="first_to_college-text" th:text="*{first_to_college}"></p>
 
             <button id="approve-app">Approve application</button>
         </form>
