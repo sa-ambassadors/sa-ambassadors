@@ -3,6 +3,7 @@
 	</head>
 
 	<body>
+	<div class="container content">
 		<h1>Create an account</h1>
 		<form th:action="@{/admin/register}" method="POST" th:object="${user}">
 			<label for="username">Username</label>
@@ -16,6 +17,8 @@
 
 			<button class="waves-effect waves-light light-blue btn" type="submit">Sign Up</button>
 		</form>
+	</div>
+
 	<footer th:replace="fragments/footer"></footer>
 	</body>
 </html>

@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="fragments/head :: head('Profile')">
+ <head th:replace="fragments/head :: head('Profile')">
         <script src="//static.filestackapi.com/filestack-js/2.x.x/filestack.min.js"></script>
     </head>
 
     <body>
+    <div class="container content">
         <form th:object="${internProfile}">
 
             <div class="row">
@@ -29,18 +28,6 @@
                 </div>
             </div>
 
-            <!--            <div class="input-field col s12">-->
-            <!--                <p th:text="*{field_1}"></p>-->
-            <!--            </div>-->
-
-            <!--            <div class="input-field col s12">-->
-            <!--                <p th:text="*{field_2}"></p>-->
-            <!--            </div>-->
-
-            <!--            <div class="input-field col s12">-->
-            <!--                <p th:text="*{field_3}"></p>-->
-            <!--            </div>-->
-
             <label for="transcript-text">Upload Transcripts:</label>
             <p id="transcript-text" th:text="*{transcript_link}"></p>
 
@@ -58,30 +45,9 @@
 
         </form>
 
-<!--        <script>-->
-<!--            document.getElementById("essay").addEventListener("click", function () {-->
-<!--                var client = filestack.init('AP1R1ce7mRLGkZ0ZugAT8z');-->
-<!--                client.picker({-->
-<!--                    onFileUploadFinished: function(response){-->
-<!--                        this.value ="https://cdn.filestackcontent.com/" + (response.handle);-->
-<!--                        document.getElementById("essay").value = this.value-->
-<!--                    }-->
-<!--                }).open();-->
-<!--            })-->
-<!--        </script>-->
-<!--        <script>-->
-<!--            document.getElementById("transcript").addEventListener("click", function () {-->
-<!--                var client = filestack.init('AP1R1ce7mRLGkZ0ZugAT8z');-->
-<!--                client.picker({-->
-<!--                    onFileUploadFinished: function(response){-->
-<!--                        this.value ="https://cdn.filestackcontent.com/" + (response.handle);-->
-<!--                        document.getElementById("transcript").value = this.value-->
 
-<!--                    }-->
-<!--                }).open();-->
-<!--            })-->
-<!--        </script>-->
+    </div>
+
 
         <footer th:replace="fragments/footer"></footer>
     </body>
-</html>

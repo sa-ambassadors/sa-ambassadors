@@ -8,6 +8,9 @@
     </head>
 
     <body>
+    <div class="container content">
+
+
         <form class="col s12" th:action="@{'/admin/applicant/' + ${internProfile.getId()}}" method="POST" th:object="${internProfile}">
 
             <div class="row">
@@ -32,18 +35,6 @@
                 </div>
             </div>
 
-            <!--            <div class="input-field col s12">-->
-            <!--                <p th:text="*{field_1}"></p>-->
-            <!--            </div>-->
-
-            <!--            <div class="input-field col s12">-->
-            <!--                <p th:text="*{field_2}"></p>-->
-            <!--            </div>-->
-
-            <!--            <div class="input-field col s12">-->
-            <!--                <p th:text="*{field_3}"></p>-->
-            <!--            </div>-->
-
             <label for="transcript-text">Upload Transcripts:</label>
             <p id="transcript-text" th:text="*{transcript_link}"></p>
 
@@ -61,6 +52,7 @@
 
             <button class="waves-effect waves-light light-blue btn" id="approve-app">Approve application</button>
         </form>
+    </div>
     <footer th:replace="fragments/footer"></footer>
     </body>
 </html>

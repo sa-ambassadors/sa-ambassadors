@@ -3,7 +3,7 @@
 	<head th:replace="fragments/head :: head('All Jobs!')" />
 
 	<body>
-		<div class="container">
+		<div class="container content">
 			<div th:each="job: ${jobs}">
 				<div>
 					<h4 th:text="${job.title}"></h4>

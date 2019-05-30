@@ -3,9 +3,9 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
     <head th:replace="fragments/head :: head('Job!')" />
-    <div class="container">
 
     <body>
+    <div class="container content">
         <span hidden="hidden" id="job-id" th:text="${job.getId()}"></span>
         <h3 th:text="${job.getTitle()}"></h3>
         <div id="show-form">
@@ -217,8 +217,8 @@
         })();
 
     </script>
-        <footer th:replace="fragments/footer"></footer>
-    </body>
     </div>
+    <footer th:replace="fragments/footer"></footer>
+    </body>
 
 </html>
