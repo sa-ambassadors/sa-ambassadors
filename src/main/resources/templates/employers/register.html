@@ -6,7 +6,7 @@
     </head>
 
     <body>
-        <h1>Create an account</h1>
+        <h1>Employee Registration</h1>
         <form th:action="@{/employers/register}" method="POST" th:object="${user}">
             <label for="username">Username</label>
             <input id="username" th:field="*{username}" />
