@@ -57,7 +57,7 @@
                 usernameIsValid = false;
                 allowUserToSubmitIfAllChecksAreMet();
             } else if (!data) {
-                userWarning.innerHTML = "<p class='red-text'>Username is looking good.</p>";
+                userWarning.innerHTML = "<p class='green-text'>Username is looking good.</p>";
                 usernameIsValid = true;
                 allowUserToSubmitIfAllChecksAreMet();
             }
@@ -83,11 +83,11 @@
 
         function declarePasswordValidIfValid() {
             if (passwordField.value.length < 6 || passwordField.value.length > 20) {
-                passwordWarning.innerHTML = "<p class='text-red'>Password needs to be between 6 and 20 characters!</p>"
+                passwordWarning.innerHTML = "<p class='red-text'>Password needs to be between 6 and 20 characters!</p>"
                 passwordIsValid = false;
                 allowUserToSubmitIfAllChecksAreMet();
             } else if (passwordField.value.length >= 6 && passwordField.value.length < 20) {
-                passwordWarning.innerHTML = "<p class='text-green'>Password length looks about right.</p>"
+                passwordWarning.innerHTML = "<p class='green-text'>Password length looks about right.</p>"
                 passwordIsValid = true;
                 allowUserToSubmitIfAllChecksAreMet();
             }
@@ -96,11 +96,11 @@
 
         function declarePasswordsMatchIfMatch() {
             if (passwordField.value === passwordFieldChecker.value) {
-                passwordCheckerWarning.innerHTML = "<p class='text-success'>Passwords match.</p>";
+                passwordCheckerWarning.innerHTML = "<p class='green-text'>Passwords match.</p>";
                 passwordsMatch = true;
                 allowUserToSubmitIfAllChecksAreMet();
             } else if (passwordField.value !== passwordFieldChecker.value) {
-                passwordCheckerWarning.innerHTML = "<p class='text-danger'>Passwords don't match!</p>";
+                passwordCheckerWarning.innerHTML = "<p class='red-text'>Passwords don't match!</p>";
                 passwordsMatch = false;
                 allowUserToSubmitIfAllChecksAreMet();
             }
