@@ -4,50 +4,82 @@
 
     <body>
     <div class="container content">
-        <form th:object="${internProfile}">
-
             <div class="row">
-                <div class="col s6">
-                    <label for="first-name-text">First Name:</label>
-                    <p id="first-name-text" th:text="*{first_name}" ></p>
-                </div>
-                <div class="col s6">
-                    <label for="last-name-text">Last Name:</label>
-                    <p id="last-name-text" th:text="*{last_name}"></p>
-                </div>
-            </div>
+                <form class="col s12" th:object="${internProfile}">
+                    <div class="row">
+                        <div class="col s12">
+                            <h3 style="display:inline-block; margin-right: 10px;" id="first-name-text"
+                                th:text="*{first_name}" />
+                            <h3 style="display:inline-block" id="last-name-text" th:text="*{last_name}" />
+                        </div>
+                    </div>
 
-            <div class="row">
-                <div class="col s6">
-                    <label for="major-text">Major:</label>
-                    <p id="major-text" th:text="*{major}"></p>
-                </div>
-                <div class="col s6">
-                    <label for="minor-text">Minor:</label>
-                    <p id="minor-text" th:text="*{minor}"></p>
-                </div>
-            </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <label for="major">Major:</label>
+                            <p id="major-text" th:text="*{major}"></p>
+                        </div>
+                        <div class="col s6">
+                            <label for="minor">Minor:</label>
+                            <p id="minor-text" th:text="*{minor}"></p>
+                        </div>
+                    </div>
 
-            <label for="transcript-text">Upload Transcripts:</label>
-            <p id="transcript-text" th:text="*{transcript_link}"></p>
+                    <div class="row">
+                        <div class="col s6">
+                            <label for="sa_highschool-text">Did you attend high school in San Antonio?</label>
 
-            <label for="essay-text">Upload Essay:</label>
-            <p id="essay-text" th:text="*{essay_link}"></p>
+                            <td th:switch="*{sa_highschool}">
+                                <p id="sa_highschool-text" th:case="true" th:text="Yes"/>
+                                <p id="sa_highschool-text" th:case="false" th:text="No"/>
+                            </td>
+                        </div>
+                        <div class="col s6">
+                            <label for="sa_college-text">Did you attend college in San Antonio?</label>
 
-            <label for="sa_highschool-text">Did you attend high school in San Antonio?</label>
-            <p id="sa_highschool-text" th:text="*{sa_highschool}"></p>
+                            <td th:switch="*{sa_college}">
+                                <p id="sa_college-text" th:case="true" th:text="Yes"/>
+                                <p id="sa_college-text" th:case="false" th:text="No"/>
+                            </td>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
 
-            <label for="sa_college-text">Did you attend college in San Antonio?</label>
-            <p id="sa_college-text" th:text="*{sa_highschool}"></p>
+                            <label for="first_to_college-text">Are you the first in your family to attend college?</label>
+                            <td th:switch="*{first_to_college}">
+                                <p id="first_to_college-text" th:case="true" th:text="Yes"/>
+                                <p id="first_to_college-text" th:case="false" th:text="No"/>
+                            </td>
 
-            <label for="first_to_college-text">Are you the first in your family to attend college?</label>
-            <p id="first_to_college-text" th:text="*{first_to_college}"></p>
+                        </div>
+                        <div class="col s6">
 
+                            <label for="sa_educational_program-text">Did you attend a San Antonio educational program?</label>
+                            <td th:switch="*{sa_educational_program}">
+                                <p id="sa_educational_program-text" th:case="true" th:text="Yes"/>
+                                <p id="sa_educational_program-text" th:case="false" th:text="No"/>
+                            </td>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <label for="transcript-text">Upload Transcripts:</label>
+                            <a id="transcript-text" th:href="*{transcript_link}" >View Transcript</a>
+                        </div>
+                        <div class="col s6">
+                            <label for="essay-text">Upload Essay:</label>
+                            <a id="essay-text" th:href="*{essay_link}">View Essay</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <a class="waves-effect waves-light light-blue btn" th:href="'mailto:'+ ${internProfile.getUser().getEmail()}">E-mail</a>
+                        </div>
+                    </div>
         </form>
-
-
     </div>
-
-
+    </div>
         <footer th:replace="fragments/footer"></footer>
     </body>
