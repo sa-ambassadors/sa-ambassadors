@@ -210,7 +210,7 @@
 
     .the-team {
         font-size: 20px;
-        margin-top: 0px;
+        margin-top: 0;
         margin-bottom: 15px;
         /*margin-right: 5%;*/
         color: #345777;
@@ -228,15 +228,17 @@
     }
 
     .each-person-wrapper {
-        margin: 10px auto;
-        padding: 10px 0 10px;
+        margin: 10px 10px;
+        padding: 10px 10px;
+
     }
 
     .each-person-img {
         margin: auto;
         background-size: cover;
         background-repeat: no-repeat;
-        background-position: center;
+        /*background-position: center;*/
+        /*margin-right: 10px;*/
     }
 
     /* personal social links */
