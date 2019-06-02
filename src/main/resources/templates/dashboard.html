@@ -1,6 +1,8 @@
 
     <head th:replace="fragments/head :: head('Dashboard')" />
     <body>
+
+    <h2>Dashboard</h2>
     <div class="container content">
         <!-- ONLY VISIBLE TO EMPLOYERS-->
         <div sec:authorize="hasRole('ROLE_EMPLOYER')">
