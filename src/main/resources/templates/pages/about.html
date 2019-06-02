@@ -1,35 +1,51 @@
 
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-      <!--xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"-->
-
     <!-- dynamic nav -->
     <head th:replace="fragments/head :: head('about')">
-      <meta charset="UTF-8" />
-      <link rel="stylesheet" href="/../css/main.css" />
-      <title>About</title>
 
       <!-- Compiled and minified CSS Materialize-->
       <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 
-         <!--&lt;!&ndash; Materialize icons &ndash;&gt;-->
-      <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />-->
+      <!--&lt;!&ndash; Materialize icons &ndash;&gt;--> 
+      <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /> -->
     </head>
 
 
     <body>
-
         <div class="container">
           <a th:href="@{/about}"></a>
+
            <!--<div class="row" align="center">-->
+
+          <div class="about-us-wrapper">
+              <div class="description">
+                  <div class="row">
+                      <div class="col s12 center-align ">
+                          <h4 class="what-is-internhub">What is InternHub?</h4>
+                      </div>
+                      <div class="col s12 center-align">
+                          <p>InternHub is a modern talent-matching tool designed to make recruiting better.
+                              It seeks to automate the San Antonio Ambassadors intern selection process, aggregating applicant responses
+                              and allowing administrators to efficiently match candidates to employers based on skills and experience.
+                              This technology improves the accuracy, cost, and speed of the hiring process for everyone involved.
+
+                              Our project incorporates Spring Boot with Spring Security, Thymeleaf, Hibernate, a MySQL database, the Filestack API, and a custom-built API .
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          </div> <!-- /about-us-wrapper -->
+
+           <!--<i class="large material-icons">expand_more</i>-->
+
+          <div class="container">
+           <div class="row" align="center">
               <div class="message-wrapper the-team" id="the-team" align="center">
 
               <h1>The Team</h1>
 
                 <div class="row">
                   <!--<div class="everyone-wrapper" align="center">-->
-
 
                       <div class="col s12 m4 12 each-person-wrapper the-team">
                           <h3>Cory Musick</h3>
@@ -96,7 +112,5 @@
                </div> <!-- /about-us-wrapper -->
            </div> <!-- /row -->
         </div> <!-- /container content -->
-  
     </body>
-</html>
 

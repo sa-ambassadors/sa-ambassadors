@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
     <head th:replace="fragments/head :: head('Job!')" />
 
@@ -8,22 +5,7 @@
     <div class="container content">
         <span hidden="hidden" id="job-id" th:text="${job.getId()}"></span>
         <h3 th:text="${job.getTitle()}"></h3>
-        <div id="show-form">
-        <div sec:authorize="hasRole('ROLE_INTERN')" id="job-apply-div" th:switch="${userHasApplied}">
-            <div th:case="false">
-            <button id="apply" class="waves-effect waves-light light-blue btn">Apply to job</button>
-            </div>
-            <div th:case="true">
-            <p>Your application has been submitted.</p>
-            </div>
-        </div>
-        <div sec:authorize="hasRole('ROLE_EMPLOYER')" id="edit-job-div" th:switch="${userOwnsJob}">
-            <div th:case="false">
-            </div>
-            <div th:case="true">
-                <button id="edit-job" class="waves-effect waves-light btn">Edit</button>
-            </div>
-        </div>
+    <div id="show-form" style="margin-bottom:20px;">
 
         <div class="row">
             <div class="col s6">
@@ -35,7 +17,6 @@
                 <p id="location-text" th:text="${job.getLocation()}"></p>
             </div>
         </div>
-
         <div class="row">
             <div class="col s6">
                 <label for="industry-text">Industry:</label>
@@ -48,30 +29,46 @@
         </div>
 
         <div class="row">
-            <div class="col s12">
+            <div class="col s6">
                 <label for="qualifications-text">Basic Qualifications:</label>
                 <p id="qualifications-text" th:text="${job.getBasicQualifications()}"></p>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col s12">
+            <div class="col s6">
                 <label for="responsibilities-text">Job Responsibilities:</label>
                 <p id="responsibilities-text" th:text="${job.getResponsibilities()}"></p>
             </div>
         </div>
-
         <div class="row">
             <div class="col s12">
                 <label for="description-text">Job Description:</label>
                 <p id="description-text" th:text="${job.getJobDescription()}"></p>
             </div>
         </div>
+        <div sec:authorize="hasRole('ROLE_INTERN')" id="job-apply-div" th:switch="${userHasApplied}">
+            <div th:case="false" class="center-align">
+                <button id="apply" class="waves-effect waves-light light-blue btn">Apply to job</button>
+            </div>
+            <div th:case="true" class="center-align">
+                <p>Your application has been submitted.</p>
+            </div>
         </div>
 
 
-        <div id="edit-form">
+        <div sec:authorize="hasRole('ROLE_EMPLOYER')" id="edit-job-div" th:switch="${userOwnsJob}">
+            <div th:case="false">
+            </div>
+            <div th:case="true" class="center-align">
+                <button id="edit-job" class="waves-effect waves-light light-blue btn">Edit</button>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+
+        <div id="edit-form" style="margin-bottom: 20px;">
         <div sec:authorize="hasRole('ROLE_EMPLOYER')">
+            <div class="container content">
         <form class="col s12" th:action="@{/profile}" method="POST" th:object="${job}">
 
             <div class="row">
@@ -116,12 +113,15 @@
                     <textarea placeholder="Job description" type="text" class="materialize-textarea" id="description" th:field="*{jobDescription}" />
                 </div>
             </div>
+            <div class="center-align">
+                <button class="waves-effect waves-light light-blue btn" id="save-job">Save</button>
+            </div>
 
-            <button class="waves-effect waves-light light-blue btn" id="save-job">Save</button>
         </form>
         </div>
         </div>
 
+    </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script>
@@ -217,8 +217,7 @@
         })();
 
     </script>
-    </div>
+
     <footer th:replace="fragments/footer"></footer>
     </body>
 
-</html>

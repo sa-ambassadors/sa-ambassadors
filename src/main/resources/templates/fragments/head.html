@@ -6,8 +6,6 @@
 		<head>
 			<meta charset="UTF-8" />
 			<!-- Compiled and minified CSS Materialize-->
-			<!-- Bootstrap -->
-			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
 			<link rel="stylesheet"
 			      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 			<!--CUSTOM CSS-->
@@ -32,8 +30,9 @@
 						<li sec:authorize="isAuthenticated()" style="display:none">
 							Username: <span id="username" th:text="${#authentication.principal.username}"></span>
 						</li>
-						<li sec:authorize="isAnonymous()"><a class="nav-links" href="/interns/register">Interns</a></li>
-						<li sec:authorize="isAnonymous()"><a class="nav-links" href="/employers/register">Employers</a></li>
+						<!--<li sec:authorize="isAnonymous()"><a class="nav-links" href="/interns/register">Interns</a></li>-->
+						<!--<li sec:authorize="isAnonymous()"><a class="nav-links" href="/employers/register">Employers</a></li>-->
+						<li sec:authorize="hasRole('ROLE_INTERN')"><a class="nav-links" href="/profile">Profile</a></li>
 						<li><a class="nav-links" href="/about">About</a></li>
 						<li sec:authorize="isAuthenticated()"><a class="nav-links" href="/logout">Logout</a></li>
 						<li sec:authorize="isAnonymous()"><a class="nav-links login-nav" href="/login">Login</a></li>
