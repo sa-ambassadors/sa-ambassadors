@@ -12,76 +12,90 @@
       <!-- Compiled and minified CSS Materialize-->
       <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-      <!-- Bootstrap -->
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-         <!-- Materialize icons -->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+         <!--&lt;!&ndash; Materialize icons &ndash;&gt;-->
+      <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />-->
     </head>
 
+
     <body>
-      <div class="container content">
-      <a th:href="@{/about}"></a>
-        <div class="row" align="center">
 
-          <div class="about-us-wrapper">
-              <div class="description">
-                  <div class="row" align="text-left">
-                  <h4 class="col what-is-internhub">What is InternHub?</h4>
-                      <p>InternHub is a modern talent-matching tool designed to make recruiting better.
-                          It seeks to automate the San Antonio Ambassadors intern selection process, aggregating applicant responses
-                          and allowing administrators to efficiently match candidates to employers based on skills and experience.
-                          This technology improves the accuracy, cost, and speed of the hiring process for everyone involved.
-
-                          Our project incorporates Spring Boot with Spring Security, Thymeleaf, Hibernate, a MySQL database, the Filestack API, and a custom-built API .
-                      </p>
-                  </div>
-              </div>
-          </div> <!-- /about-us-wrapper -->
-
-           <!--<i class="large material-icons">expand_more</i>-->
-
-          <div class="container">
-           <div class="row" align="center">
+        <div class="container">
+          <a th:href="@{/about}"></a>
+           <!--<div class="row" align="center">-->
               <div class="message-wrapper the-team" id="the-team" align="center">
-                  <h1>The Team</h1>
 
-                  <div class="everyone-wrapper" align="center">
-                      <div class="col col-lg-4 each-person-wrapper the-team">
-                          <h2>Cory Musick</h2>
-                          <p><img width="250" height="250" alt="cory-profile" src="/img/Cory.jpg" /></p>
-                          <div class="each-person-description cory-description"></div>
-                          <p><a class="links" target="_blank" href="https://alumni.codeup.com/uploads/660-1558454208.pdf">Resume</a></p>
-                          <p><a class="links" target="_blank" href="https://www.linkedin.com/in/corymusick/">LinkedIn</a></p>
-                          <p><a class="links" target="_blank" href="https://github.com/corymusick">GitHub</a></p>
+              <h1>The Team</h1>
+
+                <div class="row">
+                  <!--<div class="everyone-wrapper" align="center">-->
+
+
+                      <div class="col s12 m4 12 each-person-wrapper the-team">
+                          <h3>Cory Musick</h3>
+
+                          <p class="profile-img"><img width="300" height="300" alt="cory-profile" src="/img/Cory.jpg" /></p>
+                          <div class="each-person-description cory-description">
+                              <p><a class="links" target="_blank" href="https://alumni.codeup.com/students/620">Codeup Profile</a></p>
+                              <p><a class="links" target="_blank" href="https://alumni.codeup.com/uploads/660-1558454208.pdf">Resume</a></p>
+                              <p><a class="links" target="_blank" href="https://www.linkedin.com/in/corymusick/">LinkedIn</a></p>
+                              <p><a class="links" target="_blank" href="https://github.com/corymusick">GitHub</a></p>
+                          </div>
                       </div>
 
-                      <div class="col col-lg-4 each-person-wrapper the-team">
-                          <h2>Cerissa Antill</h2>
-                          <p><img width="250" height="250" alt="cerissa-profile" src="/img/Cerissa.jpg" /></p>
-                          <div class="each-person-description cerissa-description"></div>
-                          <p><a class="links" target="_blank" href="https://alumni.codeup.com/uploads/666-1558456552.pdf">Resume</a></p>
-                          <p><a class="links" target="_blank" href="https://www.linkedin.com/in/cerissa-antill/">LinkedIn</a></p>
-                          <p><a class="links" target="_blank" href="https://github.com/cerissaantill">GitHub</a></p>
+
+
+                      <div class="col s12 m4 12 each-person-wrapper the-team">
+                          <h3>Cerissa Antill</h3>
+
+                          <p class="profile-img"><img width="300" height="300" alt="cerissa-profile" src="/img/Cerissa.jpg" /></p>
+                          <div class="each-person-description cerissa-description">
+                              <p><a class="links" target="_blank" href="https://alumni.codeup.com/students/626">Codeup Profile</a></p>
+                              <p><a class="links" target="_blank" href="https://alumni.codeup.com/uploads/666-1558456552.pdf">Resume</a></p>
+                              <p><a class="links" target="_blank" href="https://www.linkedin.com/in/cerissa-antill/">LinkedIn</a></p>
+                              <p><a class="links" target="_blank" href="https://github.com/cerissaantill">GitHub</a></p>
+                          </div>
                       </div>
 
-                      <div class="col col-lg-4 each-person-wrapper the-team">
-                          <h2>Mike Flores</h2>
-                          <p><img width="250" height="250" alt="mike-profile" src="/img/Mike.jpg" /></p>
-                          <div class="each-person-description mike-description"></div>
-                          <p><a class="links" target="_blank" href="https://alumni.codeup.com/uploads/656-1558451141.pdf">Resume</a></p>
-                          <p><a class="links" target="_blank" href="https://www.linkedin.com/in/michaelflores/">LinkedIn</a></p>
-                          <p><a class="links" target="_blank" href="https://github.com/michaelflores3717/">GitHub</a></p>
+
+                      <div class="col s12 m4 12 each-person-wrapper the-team">
+                          <h3>Mike Flores</h3>
+
+                          <p class="profile-img"><img width="300" height="300" alt="mike-profile" src="/img/Mike.jpg" /></p>
+                          <div class="each-person-description mike-description">
+                              <p><a class="links" target="_blank" href="https://alumni.codeup.com/students/616">Codeup Profile</a></p>
+                              <p><a class="links" target="_blank" href="https://alumni.codeup.com/uploads/656-1558451141.pdf">Resume</a></p>
+                              <p><a class="links" target="_blank" href="https://www.linkedin.com/in/michaelflores/">LinkedIn</a></p>
+                              <p><a class="links" target="_blank" href="https://github.com/michaelflores3717/">GitHub</a></p>
+                          </div>
                       </div>
 
-                    </div> <!-- /everyone wrapper  -->
-                </div> <!-- /message wrapper the-team -->
-            </div> <!-- /row  -->
+                    <!--</div> &lt;!&ndash; /everyone wrapper  &ndash;&gt;-->
 
-        </div>  <!-- container -->
+            </div> <!-- /message wrapper the-team -->
+        </div> <!-- /row  -->
+    </div>  <!-- container -->
 
-        </div> <!-- /row -->
+
+
+       <div class="container">
+           <div class="row" align="center">
+               <div class="about-us-wrapper">
+                   <div class="description">
+                       <div class="row" align="text-left">
+                           <h4 class="col col-lg what-is-internhub">What is InternHub?</h4>
+                           <p>InternHub is a modern talent-matching tool designed to make recruiting better.
+                               It seeks to automate the San Antonio Ambassadors intern selection process, aggregating applicant responses
+                               and allowing administrators to efficiently match candidates to employers based on skills and experience.
+                               This technology improves the accuracy, cost, and speed of the hiring process for everyone involved.
+
+                               Our project incorporates Spring Boot with Spring Security, Thymeleaf, Hibernate, a MySQL database, the Filestack API, and a custom-built API .
+                           </p>
+                       </div>
+                   </div> <!-- description -->
+               </div> <!-- /about-us-wrapper -->
+           </div> <!-- /row -->
         </div> <!-- /container content -->
-
   
     </body>
 </html>

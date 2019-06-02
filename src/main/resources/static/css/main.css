@@ -158,18 +158,18 @@
     }
 
     .brand-logo {
-        padding-left: 40px !important;
+        padding-left: 6% !important;
         /*font-size: 30px;*/
 
     }
 
     .nav-links {
         font-size: 18px;
-        padding-right: 30px;
+        padding-right: 35px;
     }
 
     .login-nav {
-        padding-right: 45px;
+        padding-right: 70px;
     }
 
 
@@ -179,53 +179,58 @@
 
 
 
-
-
-
 /*------------------------ ABOUT US ---------------------------*/
 
 
-    /*.the-project {*/
-        /*font-size: medium;*/
-    /*}*/
-
-    /*.the-team {*/
-        /*font-size: medium;*/
-    /*}*/
-
     .what-is-internhub {
-        font-size: 45px;
+        font-size: 55px;
         color: #345777;
         top: -30px;
         text-align: center;
     }
 
     .description {
-        margin-left: 20%;
-        margin-right: 20%;
+        margin-left: 5%;
+        margin-right: 5%;
         margin-top: 10%;
-        margin-bottom: 25%;
+        margin-bottom: 10%;
         font-size: 1.5em;
     }
 
     .the-team {
         font-size: 20px;
-        margin-top: 0;
+        margin-top: 10px;
         margin-bottom: 15px;
         /*margin-right: 5%;*/
         color: #345777;
     }
 
-    .the-team h1 {
-        font-size: 45px;
-        top: -70px;
+    .the-team h1{
+        font-size: 55px;
+        /*top: -60px;*/
+        padding-top: 35px;
         color: #F7882F;
         text-align: center;
     }
+
     .everyone-wrapper {
         padding-top: 1px;
+        margin: 0;
+
         /*align-content: center;*/
     }
+
+    /*.row {*/
+        /*display: flex;*/
+    /*}*/
+
+    /*.column {*/
+        /*!*float: left;*!*/
+        /*width: 33.33%;*/
+        /*padding: 5px;*/
+    /*}*/
+
+
 
     .each-person-wrapper {
         margin: 10px 10px;
@@ -233,12 +238,9 @@
 
     }
 
-    .each-person-img {
-        margin: auto;
-        background-size: cover;
-        background-repeat: no-repeat;
-        /*background-position: center;*/
-        /*margin-right: 10px;*/
+    .profile-img {
+        -webkit-filter: drop-shadow(5px 5px 5px #222);
+        filter: drop-shadow(5px 5px 5px #222);
     }
 
     /* personal social links */
