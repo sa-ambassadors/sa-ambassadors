@@ -265,6 +265,7 @@
 							<input type="hidden" id="transcript-field" th:field="*{transcript_link}" />
 							<br />
 							<button class="waves-effect waves-light light-blue btn-small" id="transcript">Upload</button>
+							<div id="upload-notifier"></div>
 						</div>
 						<div class="col s6 center-align">
 							<label class="active" for="essay-field">Upload Essay:</label>
@@ -296,6 +297,8 @@
 			</div>
 		</div>
 	</div>
+
+
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -425,10 +428,10 @@
                 document.querySelector("#last-name-text").innerText = data.last_name;
                 document.querySelector("#major-text").innerText = data.major;
                 document.querySelector("#minor-text").innerText = data.minor;
-                if (data.transcript_link != null) {
+                if (data.transcript_link != "") {
                     document.querySelector("#transcript-text").innerText = "Transcript uploaded."
                 }
-                if (data.essay_link != null) {
+                if (data.essay_link != "") {
                     document.querySelector("#essay-text").innerText = "Essay uploaded."
                 }
                 if (data.sa_highschool == true) {
@@ -528,7 +531,7 @@
                 onFileUploadFinished: function(response){
                     this.value ="https://cdn.filestackcontent.com/" + (response.handle);
                     document.getElementById("essay-field").value = this.value;
-                    document.getElementById("essay-test").value = "Essay uploaded."
+                    document.getElementById("essay-text").value = "Essay uploaded."
                 }
             }).open();
         })
@@ -541,7 +544,8 @@
                 onFileUploadFinished: function(response){
                     this.value ="https://cdn.filestackcontent.com/" + (response.handle);
                     document.getElementById("transcript-field").value = this.value;
-                    document.getElementById("transcript-text").value = "Transcript uploaded."
+					document.getElementById("upload-notifier").innerText = "File uploaded."
+                    document.getElementById("transcript-text").value = "File uploaded."
 
                 }
             }).open();
