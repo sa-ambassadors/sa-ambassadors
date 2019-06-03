@@ -82,7 +82,7 @@ public class AdminController {
         User user = internProfile.getUser();
         user.setEnabled(true);
         users.save(user);
-        return "redirect:/admin/applicant-index";
+        return "redirect:/dashboard";
     }
 
     @GetMapping("admin/employer-index")
@@ -115,7 +115,7 @@ public class AdminController {
         User user = employerProfile.getUser();
         user.setEnabled(true);
         users.save(user);
-        return "redirect:/admin/employer-index";
+        return "redirect:/dashboard";
     }
 }
 
